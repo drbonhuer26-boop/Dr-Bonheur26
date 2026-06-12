@@ -1,17 +1,17 @@
+bash
+
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Dr Bonheur</title>
-  
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="الملكي للهدايا">
   <meta name="theme-color" content="#0f0f0f" id="metaThemeColor">
-  
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet"/>
-  
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -21,8 +21,8 @@
       --card:       #222222;
       --border:     #2e2e2e;
       --gold:       #c9a84c;
-      --gold-light:#e8c97a;
-      --gold-dim:  #7a6230;
+      --gold-light: #e8c97a;
+      --gold-dim:   #7a6230;
       --text:       #f0ebe0;
       --muted:      #888880;
       --red:        #c0392b;
@@ -41,16 +41,15 @@
     }
 
     .hidden { display: none !important; }
-    
+
     .btn {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 12px 20px; border-radius: 8px; border: none;
       font-family: inherit; font-size: 14px; font-weight: 700;
       cursor: pointer; transition: all .2s; justify-content: center;
-      width: 100%; 
+      width: 100%;
     }
     @media (min-width: 600px) { .btn { width: auto; } }
-    
     .btn-gold  { background: var(--gold); color: var(--bg); }
     .btn-gold:hover  { background: var(--gold-light); transform: translateY(-1px); }
     .btn-dark  { background: var(--card); color: var(--text); border: 1px solid var(--border); }
@@ -82,10 +81,10 @@
     .gateway-container { max-width: 800px; margin: 0 auto; padding: 24px 16px; text-align: center; }
     .gateway-title { font-size: 24px; color: var(--gold); font-weight: 900; margin: 20px 0 6px; }
     .gateway-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
-    
+
     .gateway-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; }
     @media (min-width: 480px) { .gateway-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; } }
-    
+
     .gateway-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 20px 12px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; gap: 10px;
@@ -134,18 +133,17 @@
 
     .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     @media (min-width: 768px) { .menu-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; } }
-    
+
     .menu-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform .2s, border-color .2s; display: flex; flex-direction: column; }
     .menu-card img, .menu-card .img-placeholder { width: 100%; height: 130px; object-fit: cover; background: var(--surface); }
     @media (min-width: 768px) { .menu-card img, .menu-card .img-placeholder { height: 180px; } }
-    
     .menu-card .img-placeholder { display: flex; align-items: center; justify-content: center; font-size: 36px; }
     .menu-card .card-body { padding: 10px; flex: 1; display: flex; flex-direction: column; text-align: right; }
     .menu-card .card-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .menu-card .card-price { font-size: 14px; font-weight: 900; color: var(--gold); margin-top: 2px; }
     .menu-card .card-desc { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.4; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .menu-card .card-badge { display: inline-block; align-self: flex-start; background: var(--gold-dim); color: var(--gold-light); font-size: 9px; padding: 2px 6px; border-radius: 4px; margin-bottom: 6px; }
-    
+
     .stars-display { color: #f1c40f; font-size: 11px; margin: 4px 0; display: flex; align-items: center; gap: 2px; }
     .stars-display span { color: var(--muted); font-size: 10px; }
     .review-link { font-size: 11px; color: var(--gold); cursor: pointer; text-decoration: underline; margin-top: 4px; display: inline-block; margin-bottom: 10px; }
@@ -161,7 +159,7 @@
     .modal h3 { font-size: 16px; font-weight: 900; margin-bottom: 16px; color: var(--gold); text-align: right; }
     .modal .close-btn { position: absolute; top: 20px; left: 16px; cursor: pointer; color: var(--muted); font-size: 18px; padding: 4px; }
 
-    .cart-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); justify-content: space-between; text-align: right;}
+    .cart-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); justify-content: space-between; text-align: right; }
     .qty-btn { width: 30px; height: 30px; border-radius: 50%; background: var(--card); border: 1px solid var(--border); color: var(--text); cursor: pointer; font-size: 16px; display: inline-flex; align-items: center; justify-content: center; }
     .cart-total-row { font-size: 15px; font-weight: 900; margin: 12px 0; color: var(--gold-light); text-align: left; }
 
@@ -174,17 +172,13 @@
     #adminView { min-height: 100vh; }
     .admin-nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 12px; display: flex; flex-direction: column; align-items: stretch; position: sticky; top: 0; z-index: 50; }
     @media (min-width: 768px) { .admin-nav { flex-direction: row; align-items: center; padding: 0 24px; } }
-    
     .admin-nav .brand { font-size: 15px; font-weight: 900; color: var(--gold); padding: 12px 0 6px; text-align: center; }
     @media (min-width: 768px) { .admin-nav .brand { padding: 18px 0; margin-left: auto; text-align: right; } }
-    
     .nav-tabs { display: flex; justify-content: space-around; border-top: 1px solid var(--border); }
     @media (min-width: 768px) { .nav-tabs { border-top: none; } }
-    
     .nav-tab { padding: 12px 8px; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; border: none; background: none; font-family: inherit; border-bottom: 2px solid transparent; }
     @media (min-width: 768px) { .nav-tab { padding: 20px 16px; font-size: 14px; } }
     .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
-    
     .logout-btn { margin: 8px 0; font-size: 11px; padding: 6px; }
     @media (min-width: 768px) { .logout-btn { margin: 0; width: auto; } }
 
@@ -196,18 +190,18 @@
     .products-table, .admin-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
     .products-table td, .admin-table td, .admin-table th { padding: 10px; text-align: right; border-bottom: 1px solid var(--border); font-size: 12px; }
     .admin-table th { color: var(--gold); font-weight: 700; background: var(--card); }
-    .products-table img { width:40px; height:40px; border-radius:6px; object-fit:cover; }
+    .products-table img { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; }
 
     .orders-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
     @media (min-width: 768px) { .orders-grid { grid-template-columns: 1fr 1fr; } }
     .order-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: right; }
     .order-header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px; font-size: 13px; }
 
-    .stats-row { display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:20px; }
+    .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
     @media (min-width: 768px) { .stats-row { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
-    .stat-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px; border-top: 3px solid var(--border); text-align: right; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; border-top: 3px solid var(--border); text-align: right; }
     .stat-card.active-day { border-top-color: var(--gold); }
-    .stat-card .stat-value { font-size:18px; font-weight:900; margin-top: 4px; }
+    .stat-card .stat-value { font-size: 18px; font-weight: 900; margin-top: 4px; }
     .stat-card .stat-value span { color: var(--gold); font-size: 12px; }
 
     .report-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 24px; }
@@ -227,8 +221,14 @@
     .color-field { background: var(--bg); border: 1px solid var(--border); padding: 8px; border-radius: 8px; display: flex; flex-direction: column; gap: 4px; align-items: center; }
     .color-field input[type="color"] { width: 36px; height: 36px; border: none; cursor: pointer; background: transparent; }
 
-    .spinner { width:28px; height:28px; border:3px solid var(--border); border-top-color:var(--gold); border-radius:50%; animation: spin .8s linear infinite; margin: 40px auto; }
-    @keyframes spin { to { transform:rotate(360deg); } }
+    .spinner { width: 28px; height: 28px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin .8s linear infinite; margin: 40px auto; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Security warning banner */
+    .security-notice {
+      background: rgba(192,57,43,0.15); border: 1px solid var(--red); border-radius: 8px;
+      padding: 10px 14px; font-size: 11px; color: #e74c3c; text-align: right; margin-bottom: 14px;
+    }
   </style>
 </head>
 <body>
@@ -244,7 +244,7 @@
 
   <h1 class="gateway-title">مرحباً بك في عالم الهدايا</h1>
   <p class="gateway-subtitle">اختر الطريقة التي تفضلها لتنسيق هديتك المثالية</p>
-  
+
   <div class="gateway-grid">
     <div class="gateway-card" onclick="startShopping('box')">
       <div class="icon">📦</div>
@@ -270,10 +270,12 @@
     <h2 style="color:var(--gold); text-align:center; margin-bottom:16px; font-size:18px;">لوحة الإدارة</h2>
     <div class="field">
       <label>كلمة السر</label>
-      <input type="password" id="pwInput" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <input type="password" id="pwInput" onkeydown="if(event.key==='Enter') doLogin()"/>
     </div>
     <button class="btn btn-gold" onclick="doLogin()">دخول</button>
-    <p style="text-align:center; margin-top:12px;"><a onclick="showGateway()" style="color:var(--muted); cursor:pointer; font-size:12px;">← العودة للرئيسية</a></p>
+    <p style="text-align:center; margin-top:12px;">
+      <a onclick="showGateway()" style="color:var(--muted); cursor:pointer; font-size:12px;">← العودة للرئيسية</a>
+    </p>
   </div>
 </div>
 
@@ -282,7 +284,7 @@
     <p class="tagline" id="backToGatewayBtn" style="cursor:pointer; color:var(--gold); font-size:12px;" onclick="showGateway()">← تغيير طريقة التسوق</p>
     <h1 id="heroRestName" style="margin-top:4px;">متجرنا الفاخر للهدايا</h1>
     <p>تنسيق أرقى البراندات، العطور والورود لصنع أجمل الذكريات</p>
-    
+
     <div class="progress-wizard" id="wizardProgress">
       <div class="wizard-line-fill" id="wizardLineFill"></div>
       <div class="wizard-step" id="wStep1">
@@ -337,8 +339,8 @@
     <span class="close-btn" onclick="closeCartModal()">✕</span>
     <h3>🛒 سلة المشتريات والتغليف</h3>
     <div id="cartItemsList"></div>
-    
-    <div style="margin-top: 12px; background: var(--card); padding: 10px; border-radius: 8px; border:1px solid var(--border)">
+
+    <div style="margin-top:12px; background:var(--card); padding:10px; border-radius:8px; border:1px solid var(--border)">
       <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:13px;">
         <span>مجموع الهدايا:</span> <span id="modalSubtotal">0</span> دج
       </div>
@@ -350,10 +352,10 @@
       </div>
     </div>
 
-    <div class="order-form" style="margin-top: 14px;">
+    <div class="order-form" style="margin-top:14px;">
       <div class="field"><label>الاسم الكامل للمستلم</label><input type="text" id="custName"/></div>
       <div class="field"><label>رقم هاتف الاتصال</label><input type="tel" id="custPhone"/></div>
-      
+
       <div class="form-row">
         <div class="field">
           <label>الولاية</label>
@@ -388,7 +390,6 @@
   <div class="modal">
     <span class="close-btn" onclick="closeReviewsModal()">✕</span>
     <h3 id="reviewsModalTitle">آراء المقتنين</h3>
-    
     <div style="background:var(--card); padding:12px; border-radius:8px; border:1px solid var(--border);">
       <h4 style="font-size:12px; margin-bottom:8px; text-align:right;">أضف تقييمك وتجربتك:</h4>
       <div class="stars-selector" id="starsSelector">
@@ -410,9 +411,9 @@
   <nav class="admin-nav">
     <div class="brand">👑 لوحة التحكم والمبيعات</div>
     <div class="nav-tabs">
-      <button class="nav-tab active" onclick="showTab('tabMenu',this)">🎁 الكتالوج</button>
-      <button class="nav-tab" onclick="showTab('tabOrders',this)">📋 الطلبات</button>
-      <button class="nav-tab" onclick="showTab('tabSettings',this)">⚙️ الإعدادات</button>
+      <button class="nav-tab active" onclick="showTab('tabMenu', this)">🎁 الكتالوج</button>
+      <button class="nav-tab" onclick="showTab('tabOrders', this)">📋 الطلبات</button>
+      <button class="nav-tab" onclick="showTab('tabSettings', this)">⚙️ الإعدادات</button>
     </div>
     <button class="btn btn-dark btn-sm logout-btn" onclick="logout()">خروج</button>
   </nav>
@@ -472,7 +473,12 @@
         <div class="report-box"><h3>🗓️ أشهر السنة</h3><div id="monthsReportContainer"></div></div>
       </div>
 
-      <div class="section-header"><h2 style="font-size:14px; margin-bottom:12px;">📋 كشف طلبات الزبائن الواردة <button class="btn btn-dark btn-sm" onclick="fetchOrders()" style="display:inline-flex; padding:4px 8px; font-size:11px;">🔄 تحديث</button></h2></div>
+      <div>
+        <h2 style="font-size:14px; margin-bottom:12px;">
+          📋 كشف طلبات الزبائن الواردة
+          <button class="btn btn-dark btn-sm" onclick="fetchOrders()" style="display:inline-flex; padding:4px 8px; font-size:11px;">🔄 تحديث</button>
+        </h2>
+      </div>
       <div id="ordersList" class="orders-grid"><div class="spinner"></div></div>
     </div>
 
@@ -499,6 +505,7 @@
 
       <div class="add-product-form">
         <h3 style="font-size:14px; margin-bottom:6px;">🔐 تعديل كلمة مرور لوحة الإدارة</h3>
+        <div class="security-notice">⚠️ تنبيه: كلمة السر محفوظة محلياً فقط في هذا المتصفح. لا تشاركها مع أحد.</div>
         <div class="field"><label>كلمة المرور الحالية</label><input type="password" id="currentPw"/></div>
         <div class="field"><label>كلمة المرور الجديدة</label><input type="password" id="newPw"/></div>
         <button class="btn btn-gold" onclick="updatePassword()">تحديث كلمة السر</button>
@@ -507,99 +514,117 @@
       <div class="add-product-form">
         <h3 style="font-size:14px; margin-bottom:6px;">🚚 أسعار شحن الولايات الجزائرية (دج)</h3>
         <div class="shipping-rates-manager" id="shippingRatesManagerContainer"></div>
-        <button class="btn btn-gold" style="margin-top: 12px;" onclick="saveShippingRatesFromAdmin()">💾 حفظ أسعار الشحن</button>
+        <button class="btn btn-gold" style="margin-top:12px;" onclick="saveShippingRatesFromAdmin()">💾 حفظ أسعار الشحن</button>
       </div>
     </div>
   </div>
 </div>
 
 <div id="toast"></div>
-
 <audio id="orderAlertSound" src="https://assets.mixkit.co/active_storage/sfx/911/911-200.wav" preload="auto"></audio>
 
 <script>
-const X_MASTER_KEY = "$2a$10$NyQ2kvSc9YQOZdfBk34rwupQ7JC1q0NWCudoNS3RceulDVMjrjwFi"; 
-const MENU_BIN_ID   = "6a2ac33fda38895dfeadef1f";   
-const ORDERS_BIN_ID = "6a2ac8e1da38895dfeae1c47"; 
+// ======================================================
+// ⚠️  تحذير أمني: مفتاح API مكشوف في الكود الأمامي.
+// للحماية الكاملة، انقل طلبات JSONbin إلى proxy خلفي
+// مثل Netlify Functions أو Cloudflare Workers.
+// ======================================================
+const X_MASTER_KEY  = "$2a$10$NyQ2kvSc9YQOZdfBk34rwupQ7JC1q0NWCudoNS3RceulDVMjrjwFi";
+const MENU_BIN_ID   = "6a2ac33fda38895dfeadef1f";
+const ORDERS_BIN_ID = "6a2ac8e1da38895dfeae1c47";
 
-// تم ملء الكائن الجغرافي بالكامل بجميع الـ 58 ولاية لضمان عمل الدوائر والبلديات والأسعار بدون خطأ
+// ===================================================================
+// بيانات الجغرافيا الجزائرية — 58 ولاية كاملة مع الدوائر والبلديات
+// ===================================================================
 const ALGERIA_GEOGRAPHY = {
-  "01": { name: "01 - أدرار", dairas: { "أدرار": ["أدرار", "بودا"], "فنوغيل": ["فنوغيل", "تامست"] } },
-  "02": { name: "02 - الشلف", dairas: { "الشلف": ["الشلف", "سنجاس"], "تنس": ["تنس", "سيدي عكاشة"] } },
-  "03": { name: "03 - الأغواط", dairas: { "الأغواط": ["الأغواط"], "آفلو": ["آفلو", "سبقاق"] } },
-  "04": { name: "04 - أم البواقي", dairas: { "أم البواقي": ["أم البواقي"], "عين البيضاء": ["عين البيضاء"] } },
-  "05": { name: "05 - باتنة", dairas: { "باتنة": ["باتنة", "فيسديس"], "أريس": ["أريس"] } },
-  "06": { name: "06 - بجاية", dairas: { "بجاية": ["بجاية", "أوقاس"], "أقبو": ["أقبو"] } },
-  "07": { name: "07 - بسكرة", dairas: { "بسكرة": ["بسكرة", "الحاجب"], "أولاد جلال": ["أولاد جلال"] } },
-  "08": { name: "08 - بشار", dairas: { "بشار": ["بشار"], "القنادسة": ["القنادسة"] } },
-  "09": { name: "09 - البليدة", dairas: { "البليدة": ["البليدة", "بوعرفة"], "بوفاريك": ["بوفاريك", "قرواو"], "العفرون": ["العفرون"], "مفتاح": ["مفتاح"] } },
-  "10": { name: "10 - البويرة", dairas: { "البويرة": ["البويرة"], "الأخضرية": ["الأخضرية"] } },
-  "11": { name: "11 - تمنراست", dairas: { "تمنراست": ["تمنراست"], "عين صالح": ["عين صالح"] } },
-  "12": { name: "12 - تبسة", dairas: { "تبسة": ["تبسة"], "بئر العاتر": ["بئر العاتر"] } },
-  "13": { name: "13 - تلمسان", dairas: { "تلمسان": ["تلمسان"], "مغنية": ["مغنية"] } },
-  "14": { name: "14 - تيارت", dairas: { "تيارت": ["تيارت"], "فرندة": ["فرندة"] } },
-  "15": { name: "15 - تيزي وزو", dairas: { "تيزي وزو": ["تيزي وزو"], "عزازقة": ["عزازقة"] } },
-  "16": { name: "16 - الجزائر العاصمة", dairas: { "سيدي امحمد": ["الجزائر الوسطى", "سيدي امحمد"], "باب الوادي": ["باب الوادي", "القصبة"], "الحراش": ["الحراش", "بوروبة"], "بئر مراد رايس": ["بئر مراد رايس", "حيدرة"] } },
-  "17": { name: "17 - الجلفة", dairas: { "الجلفة": ["الجلفة"], "مسعد": ["مسعد"] } },
-  "18": { name: "18 - جيجل", dairas: { "جيجل": ["جيجل"], "الميلية": ["الميلية"] } },
-  "19": { name: "19 - سطيف", dairas: { "سطيف": ["سطيف"], "العلمة": ["العلمة", "بئر العرش"] } },
-  "20": { name: "20 - سعيدة", dairas: { "سعيدة": ["سعيدة"], "الحساسنة": ["الحساسنة"] } },
-  "21": { name: "21 - سكيكدة", dairas: { "سكيكدة": ["سكيكدة"], "القل": ["القل"] } },
-  "22": { name: "22 - سيدي بلعباس", dairas: { "سيدي بلعباس": ["سيدي بلعباس"], "تلاغ": ["تلاغ"] } },
-  "23": { name: "23 - عنابة", dairas: { "عنابة": ["عنابة"], "البوني": ["البوني"] } },
-  "24": { name: "24 - قالمة", dairas: { "قالمة": ["قالمة"], "وادي الزناتي": ["وادي الزناتي"] } },
-  "25": { name: "25 - قسنطينة", dairas: { "قسنطينة": ["قسنطينة"], "الخروب": ["الخروب", "عين سمارة"] } },
-  "26": { name: "26 - المدية", dairas: { "المدية": ["المدية"], "البرواقية": ["البرواقية"] } },
-  "27": { name: "27 - مستغانم", dairas: { "مستغانم": ["مستغانم"], "عين تادلس": ["عين تادلس"] } },
-  "28": { name: "28 - المسيلة", dairas: { "المسيلة": ["المسيلة"], "بوسعادة": ["بوسعادة"] } },
-  "29": { name: "29 - معسكر", dairas: { "معسكر": ["معسكر"], "سيق": ["سيق"] } },
-  "30": { name: "30 - ورقلة", dairas: { "ورقلة": ["ورقلة"], "تقرت": ["تقرت"] } },
-  "31": { name: "31 - وهران", dairas: { "وهران": ["وهران"], "بئر الجير": ["بئر الجير", "حاسي بونيف"], "عين الترك": ["عين الترك"] } },
-  "32": { name: "32 - البيض", dairas: { "البيض": ["البيض"], "بوقطب": ["بوقطب"] } },
-  "33": { name: "33 - إليزي", dairas: { "إليزي": ["إليزي"], "جانت": ["جانت"] } },
-  "34": { name: "34 - برج بوعريريج", dairas: { "برج بوعريريج": ["برج بوعريريج"], "راس الوادي": ["راس الوادي"] } },
-  "35": { name: "35 - بومرداس", dairas: { "بومرداس": ["بومرداس"], "بودواو": ["بودواو"] } },
-  "36": { name: "36 - الطارف", dairas: { "الطارف": ["الطارف"], "القالة": ["القالة"] } },
-  "37": { name: "37 - تندوف", dairas: { "تندوف": ["تندوف"] } },
-  "38": { name: "38 - تيسمسيلت", dairas: { "تيسمسيلت": ["تيسمسيلت"], "ثنية الحد": ["ثنية الحد"] } },
-  "39": { name: "39 - الوادي", dairas: { "الوادي": ["الوادي"], "قمار": ["قمار"] } },
-  "40": { name: "40 - خنشلة", dairas: { "خنشلة": ["خنشلة"], "ششار": ["ششار"] } },
-  "41": { name: "41 - سوق أهراس", dairas: { "سوق أهراس": ["سوق أهراس"], "سدراتة": ["سدراتة"] } },
-  "42": { name: "42 - تيبازة", dairas: { "تيبازة": ["تيبازة"], "حجوط": ["حجوط"], "شرشال": ["شرشال"] } },
-  "43": { name: "43 - ميلة", dairas: { "ميلة": ["ميلة"], "شلغوم العيد": ["شلغوم العيد"] } },
-  "44": { name: "44 - عين الدفلى", dairas: { "عين الدفلى": ["عين الدفلى"], "خميس مليانة": ["خميس مليانة"] } },
-  "45": { name: "45 - النعامة", dairas: { "النعامة": ["النعامة"], "مشرية": ["مشرية"] } },
-  "46": { name: "46 - عين تموشنت", dairas: { "عين تموشنت": ["عين تموشنت"], "حمامات بوحجر": ["حمامات بوحجر"] } },
-  "47": { name: "47 - غرداية", dairas: { "غرداية": ["غرداية"], "متليلي": ["متليلي"] } },
-  "48": { name: "48 - غليزان", dairas: { "غليزان": ["غليزان"], "وادي ارهيو": ["وادي ارهيو"] } },
-  "49": { name: "49 - تيميمون", dairas: { "تيميمون": ["تيميمون"] } },
-  "50": { name: "50 - برج باجي مختار", dairas: { "برج باجي مختار": ["برج باجي مختار"] } },
-  "51": { name: "51 - أولاد جلال", dairas: { "أولاد جلال": ["أولاد جلال"] } },
-  "52": { name: "52 - بني عباس", dairas: { "بني عباس": ["بني عباس"] } },
-  "53": { name: "53 - عين صالح", dairas: { "عين صالح": ["عين صالح"] } },
-  "54": { name: "54 - عين قزام", dairas: { "عين قزام": ["عين قزام"] } },
-  "55": { name: "55 - تقرت", dairas: { "تقرت": ["تقرت"] } },
-  "56": { name: "56 - المغير", dairas: { "المغير": ["المغير"] } },
-  "57": { name: "57 - المنيعة", dairas: { "المنيعة": ["المنيعة"] } },
-  "58": { name: "58 - أولاد جلال الفوقاني", dairas: { "سيدي خالد": ["سيدي خالد"] } }
+  "01": { name: "01 - أدرار", dairas: { "أدرار": ["أدرار", "بودا", "أولف", "تيميمون", "رقان"], "فنوغيل": ["فنوغيل", "تامست", "تيميمون الجديدة"], "تيمياوين": ["تيميمون", "أوقروت"] } },
+  "02": { name: "02 - الشلف", dairas: { "الشلف": ["الشلف", "سنجاس", "بنايرية"], "تنس": ["تنس", "سيدي عكاشة", "المرسى"], "أم الدروع": ["أم الدروع"], "الهرنفة": ["الهرنفة"], "بريرة": ["بريرة"], "بوقدير": ["بوقدير"], "وادي فضة": ["وادي فضة"] } },
+  "03": { name: "03 - الأغواط", dairas: { "الأغواط": ["الأغواط", "قصر الحيران", "سيدي بوزيد"], "آفلو": ["آفلو", "سبقاق"], "حاسي الرمل": ["حاسي الرمل"], "الغيشة": ["الغيشة"], "برج بوناعمة": ["برج بوناعمة"], "عين ماضي": ["عين ماضي"], "قلتة سيدي سعد": ["قلتة سيدي سعد"] } },
+  "04": { name: "04 - أم البواقي", dairas: { "أم البواقي": ["أم البواقي", "بن جرة", "بريش"], "عين البيضاء": ["عين البيضاء", "عين الزيتون"], "عين مليلة": ["عين مليلة", "فكيرينة"], "سيقوس": ["سيقوس"], "عين فكرون": ["عين فكرون"], "قصيبة": ["قصيبة"] } },
+  "05": { name: "05 - باتنة", dairas: { "باتنة": ["باتنة", "فيسديس", "عيون العصافير"], "أريس": ["أريس", "مداوروش"], "عين توتة": ["عين توتة"], "تيمقاد": ["تيمقاد"], "بريكة": ["بريكة"], "مروانة": ["مروانة"], "ثنية العابد": ["ثنية العابد"], "رأس العيون": ["رأس العيون"], "سريانة": ["سريانة"] } },
+  "06": { name: "06 - بجاية", dairas: { "بجاية": ["بجاية", "أوقاس", "تيشي", "تيفرة"], "أقبو": ["أقبو", "صدوق"], "خرطة": ["خرطة"], "سيدي عيش": ["سيدي عيش"], "الفنايرة": ["الفنايرة"], "أميزور": ["أميزور"], "شميني": ["شميني"], "ئيغيل علي": ["ئيغيل علي"] } },
+  "07": { name: "07 - بسكرة", dairas: { "بسكرة": ["بسكرة", "الحاجب", "لوطاية"], "أولاد جلال": ["أولاد جلال", "البسباس"], "سيدي عقبة": ["سيدي عقبة"], "طولقة": ["طولقة"], "زريبة الوادي": ["زريبة الوادي"], "برانيس": ["برانيس"], "مشونش": ["مشونش"] } },
+  "08": { name: "08 - بشار", dairas: { "بشار": ["بشار", "أبادلة"], "القنادسة": ["القنادسة"], "بني عباس": ["بني عباس"], "كرزاز": ["كرزاز"], "تاغيت": ["تاغيت"], "عين الصفراء": ["عين الصفراء"] } },
+  "09": { name: "09 - البليدة", dairas: { "البليدة": ["البليدة", "بوعرفة", "شبلي"], "بوفاريك": ["بوفاريك", "قرواو", "الأربعاء"], "العفرون": ["العفرون", "بوينان"], "مفتاح": ["مفتاح", "برج البحري"], "الشريعة": ["الشريعة"], "بني تامو": ["بني تامو"], "أولاد يعيش": ["أولاد يعيش"], "موزاية": ["موزاية"] } },
+  "10": { name: "10 - البويرة", dairas: { "البويرة": ["البويرة", "بشلول"], "الأخضرية": ["الأخضرية", "تاغزوت"], "عين بسام": ["عين بسام"], "سور الغزلان": ["سور الغزلان"], "مشدالة": ["مشدالة"], "أقبو (البويرة)": ["أقبو"], "لكحل": ["لكحل"], "آيت لزيز": ["آيت لزيز"] } },
+  "11": { name: "11 - تمنراست", dairas: { "تمنراست": ["تمنراست", "أبالسة"], "عين صالح": ["عين صالح", "فوقرت"], "عين قزام": ["عين قزام"], "إدلس": ["إدلس"] } },
+  "12": { name: "12 - تبسة", dairas: { "تبسة": ["تبسة", "الكويف", "عين الزرقاء"], "بئر العاتر": ["بئر العاتر", "فركان"], "الشريعة (تبسة)": ["الشريعة"], "الونزة": ["الونزة"], "تلاغمة": ["تلاغمة"], "عين الكبيرة": ["عين الكبيرة"] } },
+  "13": { name: "13 - تلمسان", dairas: { "تلمسان": ["تلمسان", "منصورة", "بني مستار"], "مغنية": ["مغنية", "هنين"], "غزوات": ["غزوات", "سبدو"], "ندرومة": ["ندرومة"], "بني سنوس": ["بني سنوس"], "بني بوسعيد": ["بني بوسعيد"], "رمشي": ["رمشي"], "أولاد ميمون": ["أولاد ميمون"] } },
+  "14": { name: "14 - تيارت", dairas: { "تيارت": ["تيارت", "مدروسة", "زمالة الأمير عبد القادر"], "فرندة": ["فرندة", "مشرع صفا"], "سوق اثنين": ["سوق اثنين"], "قصر الشلالة": ["قصر الشلالة"], "رحوية": ["رحوية"], "أولاد جلال (تيارت)": ["أولاد جلال"], "سيدي حسني": ["سيدي حسني"] } },
+  "15": { name: "15 - تيزي وزو", dairas: { "تيزي وزو": ["تيزي وزو", "بني دوالة"], "عزازقة": ["عزازقة", "آيت خليلي"], "ذراع بن خدة": ["ذراع بن خدة"], "ئيفرحونن": ["ئيفرحونن"], "بني يني": ["بني يني"], "بوغني": ["بوغني"], "تيزي غنيف": ["تيزي غنيف"], "واضية": ["واضية"] } },
+  "16": { name: "16 - الجزائر العاصمة", dairas: { "سيدي امحمد": ["الجزائر الوسطى", "سيدي امحمد", "بلكور"], "باب الوادي": ["باب الوادي", "القصبة", "الأبيار"], "الحراش": ["الحراش", "بوروبة", "بئر توتة"], "بئر مراد رايس": ["بئر مراد رايس", "حيدرة", "بن عكنون"], "الدار البيضاء": ["الدار البيضاء", "بئر خادم"], "برج البحري": ["برج البحري", "رويبة"], "حسين داي": ["حسين داي", "القبة"] } },
+  "17": { name: "17 - الجلفة", dairas: { "الجلفة": ["الجلفة", "أجلو", "سرج الغول"], "مسعد": ["مسعد", "دار الشيوخ"], "عين وسارة": ["عين وسارة"], "بيرين": ["بيرين"], "قطارة": ["قطارة"], "سلمانة": ["سلمانة"], "فيض البطمة": ["فيض البطمة"] } },
+  "18": { name: "18 - جيجل", dairas: { "جيجل": ["جيجل", "تاهر", "العوانة"], "الميلية": ["الميلية", "شقفة"], "قنجرة": ["قنجرة"], "زيامة منصورية": ["زيامة منصورية"], "الطاهير": ["الطاهير"], "سطارة": ["سطارة"], "الأمير عبد القادر": ["الأمير عبد القادر"] } },
+  "19": { name: "19 - سطيف", dairas: { "سطيف": ["سطيف", "حمام السخنة"], "العلمة": ["العلمة", "بئر العرش", "تيزي نبشار"], "قجال": ["قجال"], "بوعنداس": ["بوعنداس"], "عين أزال": ["عين أزال"], "عين ولمان": ["عين ولمان"], "أولاد سي أحمد": ["أولاد سي أحمد"], "عين عرنان": ["عين عرنان"] } },
+  "20": { name: "20 - سعيدة", dairas: { "سعيدة": ["سعيدة", "دوي ثابت"], "الحساسنة": ["الحساسنة", "سيدي أحمد"], "عين الحجر": ["عين الحجر"], "عين سلطان": ["عين سلطان"], "معمورة": ["معمورة"], "يوب": ["يوب"] } },
+  "21": { name: "21 - سكيكدة", dairas: { "سكيكدة": ["سكيكدة", "الحروش", "زردازة"], "القل": ["القل", "بني زيد"], "عزابة": ["عزابة"], "عين بازوزو": ["عين بازوزو"], "تمالوس": ["تمالوس"], "بوشطاطة": ["بوشطاطة"] } },
+  "22": { name: "22 - سيدي بلعباس", dairas: { "سيدي بلعباس": ["سيدي بلعباس", "مرحوم", "بن عشيبة الحمر"], "تلاغ": ["تلاغ", "مصطفى بن إبراهيم"], "بئر الحمام": ["بئر الحمام"], "محمد بن علي": ["محمد بن علي"], "سيدي خالد": ["سيدي خالد"], "عين ثريد": ["عين ثريد"] } },
+  "23": { name: "23 - عنابة", dairas: { "عنابة": ["عنابة", "سيدي عمار", "البونة"], "البوني": ["البوني"], "سرايدي": ["سرايدي"], "الحجار": ["الحجار"], "برحال": ["برحال"], "الشرفة": ["الشرفة"] } },
+  "24": { name: "24 - قالمة", dairas: { "قالمة": ["قالمة", "بلخير"], "وادي الزناتي": ["وادي الزناتي", "تاملوكة"], "عين بن بيضاء": ["عين بن بيضاء"], "خزارة": ["خزارة"], "بوعاتي محمود": ["بوعاتي محمود"], "عين مخلوف": ["عين مخلوف"] } },
+  "25": { name: "25 - قسنطينة", dairas: { "قسنطينة": ["قسنطينة", "الخروب", "عين سمارة", "حامة بوزيان"], "الخروب": ["الخروب", "بن باديس"], "إبن زياد": ["إبن زياد"], "زيغود يوسف": ["زيغود يوسف"], "أولاد رحمون": ["أولاد رحمون"] } },
+  "26": { name: "26 - المدية", dairas: { "المدية": ["المدية", "تابلاط"], "البرواقية": ["البرواقية", "أم العظائم"], "كاف لخضر": ["كاف لخضر"], "سيدي نعمان": ["سيدي نعمان"], "عين بوسيف": ["عين بوسيف"], "قلعة السلطان": ["قلعة السلطان"], "شلالة العذاورة": ["شلالة العذاورة"] } },
+  "27": { name: "27 - مستغانم", dairas: { "مستغانم": ["مستغانم", "صيادة", "عين نويسي"], "عين تادلس": ["عين تادلس", "ماضة"], "سيدي علي": ["سيدي علي"], "عشعاشة": ["عشعاشة"], "أولاد بغدال": ["أولاد بغدال"], "سور": ["سور"] } },
+  "28": { name: "28 - المسيلة", dairas: { "المسيلة": ["المسيلة", "أولاد مادي"], "بوسعادة": ["بوسعادة", "سيدي عيسى"], "عين الحجل": ["عين الحجل"], "سلطانة": ["سلطانة"], "برهوم": ["برهوم"], "مقرة": ["مقرة"], "أولاد سليمان": ["أولاد سليمان"], "عين ولمان": ["عين ولمان"] } },
+  "29": { name: "29 - معسكر", dairas: { "معسكر": ["معسكر", "بوهني", "ماوسة"], "سيق": ["سيق", "حاسي ماماش"], "غريس": ["غريس"], "تيغنيف": ["تيغنيف"], "زهانة": ["زهانة"], "أولاد ممة": ["أولاد ممة"], "المحمدية": ["المحمدية"] } },
+  "30": { name: "30 - ورقلة", dairas: { "ورقلة": ["ورقلة", "الرويسات", "حاسي مسعود"], "تقرت": ["تقرت", "بلدة أمر"], "نقوسة": ["نقوسة"], "عين البيضاء": ["عين البيضاء"], "تماسين": ["تماسين"], "الزاوية العابدية": ["الزاوية العابدية"] } },
+  "31": { name: "31 - وهران", dairas: { "وهران": ["وهران", "سيدي الشحمي", "عين الترك"], "بئر الجير": ["بئر الجير", "حاسي بونيف", "سيدي بن يبقى"], "عين الترك": ["عين الترك", "بوسفر", "مرسى الحجاج"], "أرزيو": ["أرزيو", "بطيوة"], "سيدي الشحمي": ["سيدي الشحمي", "أميودة"], "مسرغين": ["مسرغين"] } },
+  "32": { name: "32 - البيض", dairas: { "البيض": ["البيض", "غاسول"], "بوقطب": ["بوقطب", "تيوت"], "الأبيض سيدي الشيخ": ["الأبيض سيدي الشيخ"], "عين الصفراء": ["عين الصفراء"], "برج البيض": ["برج البيض"], "القصيبة": ["القصيبة"] } },
+  "33": { name: "33 - إليزي", dairas: { "إليزي": ["إليزي", "دبدب"], "جانت": ["جانت", "أفلو"], "برج عمر إدريس": ["برج عمر إدريس"], "إن أميناس": ["إن أميناس"] } },
+  "34": { name: "34 - برج بوعريريج", dairas: { "برج بوعريريج": ["برج بوعريريج", "بن دحمان"], "راس الوادي": ["راس الوادي", "الأنصار"], "المنصورة": ["المنصورة"], "الحمادنة": ["الحمادنة"], "برج زمورة": ["برج زمورة"], "أولاد داهومة": ["أولاد داهومة"], "قنادسة": ["قنادسة"] } },
+  "35": { name: "35 - بومرداس", dairas: { "بومرداس": ["بومرداس", "بودواو", "أفير"], "بودواو": ["بودواو", "إيسر"], "دلس": ["دلس"], "ذراع البن": ["ذراع البن"], "نعومة": ["نعومة"], "سي مصطفى": ["سي مصطفى"], "تيجلابين": ["تيجلابين"] } },
+  "36": { name: "36 - الطارف", dairas: { "الطارف": ["الطارف", "زيتونة"], "القالة": ["القالة", "بن مهيدي"], "عين العسل": ["عين العسل"], "شباط": ["شباط"], "بوحجار": ["بوحجار"], "بسباس": ["بسباس"] } },
+  "37": { name: "37 - تندوف", dairas: { "تندوف": ["تندوف", "أم العسل"] } },
+  "38": { name: "38 - تيسمسيلت", dairas: { "تيسمسيلت": ["تيسمسيلت", "لربعاء"], "ثنية الحد": ["ثنية الحد", "الأزهرية"], "بوقاعة": ["بوقاعة"], "خميستي": ["خميستي"], "سيدي العنتري": ["سيدي العنتري"], "بردي": ["بردي"] } },
+  "39": { name: "39 - الوادي", dairas: { "الوادي": ["الوادي", "تغزوت", "ورماس"], "قمار": ["قمار", "كوينين"], "الرباح": ["الرباح"], "بلدة عمر": ["بلدة عمر"], "الطالب العربي": ["الطالب العربي"], "الدبيلة": ["الدبيلة"] } },
+  "40": { name: "40 - خنشلة", dairas: { "خنشلة": ["خنشلة", "عين الطويلة"], "ششار": ["ششار", "بابار"], "شليا": ["شليا"], "مصارة": ["مصارة"], "قايس": ["قايس"], "الولجة": ["الولجة"] } },
+  "41": { name: "41 - سوق أهراس", dairas: { "سوق أهراس": ["سوق أهراس", "صدرات"], "سدراتة": ["سدراتة", "مضاورة"], "المشروحة": ["المشروحة"], "أولاد إدريس": ["أولاد إدريس"], "تاوورة": ["تاوورة"], "عين زانة": ["عين زانة"] } },
+  "42": { name: "42 - تيبازة", dairas: { "تيبازة": ["تيبازة", "القليعة", "بو إسماعيل"], "حجوط": ["حجوط", "سيدي راشد"], "شرشال": ["شرشال", "أحمر العين", "زلفانة"], "بوهارون": ["بوهارون"], "عقبة الجبر": ["عقبة الجبر"], "مسلمون": ["مسلمون"] } },
+  "43": { name: "43 - ميلة", dairas: { "ميلة": ["ميلة", "أولاد خلوف", "فرجيوة"], "شلغوم العيد": ["شلغوم العيد", "بن يحيى عبد الرحمن"], "تلاغمة": ["تلاغمة"], "سيدي مروان": ["سيدي مروان"], "سيدي خليفة": ["سيدي خليفة"], "أمقل": ["أمقل"] } },
+  "44": { name: "44 - عين الدفلى", dairas: { "عين الدفلى": ["عين الدفلى", "عريب"], "خميس مليانة": ["خميس مليانة", "جندل"], "العطاف": ["العطاف"], "بوراحل": ["بوراحل"], "حمام ريغة": ["حمام ريغة"], "مليانة": ["مليانة"], "بن علال": ["بن علال"] } },
+  "45": { name: "45 - النعامة", dairas: { "النعامة": ["النعامة", "مشرية"], "مشرية": ["مشرية", "صفيصيفة"], "عين الصفراء": ["عين الصفراء", "تيوت"], "المشرية": ["المشرية"], "قصدير": ["قصدير"], "جنين بورزق": ["جنين بورزق"] } },
+  "46": { name: "46 - عين تموشنت", dairas: { "عين تموشنت": ["عين تموشنت", "الأمير عبد القادر"], "حمامات بوحجر": ["حمامات بوحجر", "عقب الليف"], "سيدي بن عدة": ["سيدي بن عدة"], "بني صاف": ["بني صاف"], "أولاد الكيحل": ["أولاد الكيحل"], "عين لركة": ["عين لركة"] } },
+  "47": { name: "47 - غرداية", dairas: { "غرداية": ["غرداية", "بريان", "المنيعة"], "متليلي": ["متليلي", "ضاية بن ضحوة"], "بريان": ["بريان"], "العطف": ["العطف"], "بنورة": ["بنورة"], "القرارة": ["القرارة"] } },
+  "48": { name: "48 - غليزان", dairas: { "غليزان": ["غليزان", "جديوية", "بلعسل"], "وادي ارهيو": ["وادي ارهيو", "المسيد"], "سيدي خطاب": ["سيدي خطاب"], "زمورة": ["زمورة"], "عميرة ارايس": ["عميرة ارايس"], "أولاد يحيى خدراوي": ["أولاد يحيى خدراوي"] } },
+  "49": { name: "49 - تيميمون", dairas: { "تيميمون": ["تيميمون", "أولف", "تمقدشت"], "أوقروت": ["أوقروت"], "شروين": ["شروين"], "أدرار (تيميمون)": ["أدرار"] } },
+  "50": { name: "50 - برج باجي مختار", dairas: { "برج باجي مختار": ["برج باجي مختار", "تيمياوين"] } },
+  "51": { name: "51 - أولاد جلال", dairas: { "أولاد جلال": ["أولاد جلال", "بسبعة", "الشعيبة"], "سيدي خالد": ["سيدي خالد", "رأس الميعاد"], "طولقة": ["طولقة"] } },
+  "52": { name: "52 - بني عباس", dairas: { "بني عباس": ["بني عباس", "أقلي", "بشار الدقم"], "كرزاز": ["كرزاز"], "إقستن": ["إقستن"] } },
+  "53": { name: "53 - عين صالح", dairas: { "عين صالح": ["عين صالح", "فوقرت", "أبلسة"], "إن جير": ["إن جير"], "إن قزام": ["إن قزام"] } },
+  "54": { name: "54 - عين قزام", dairas: { "عين قزام": ["عين قزام", "تين زواتن", "برج موختار الجديدة"] } },
+  "55": { name: "55 - تقرت", dairas: { "تقرت": ["تقرت", "تماسين", "بلدة عمر"], "المقارين": ["المقارين"], "تبسبست": ["تبسبست"] } },
+  "56": { name: "56 - المغير", dairas: { "المغير": ["المغير", "سيدي خليل", "جامعة"], "الرباح": ["الرباح"], "سطيل": ["سطيل"] } },
+  "57": { name: "57 - المنيعة", dairas: { "المنيعة": ["المنيعة", "حاسي فحل", "تجنيين"], "ضاية بن ضحوة": ["ضاية بن ضحوة"] } },
+  "58": { name: "58 - سيدي بلعباس الجديدة", dairas: { "سيدي خالد": ["سيدي خالد", "طولقة الجديدة"], "أولاد سعيد": ["أولاد سعيد"] } }
 };
 
-let cart = [], menuItems = [], ordersList = [];
-let shoppingMode = 'box'; 
+// ======================================================
+// متغيرات الحالة العامة
+// ======================================================
+let cart = [];
+let menuItems = [];
+let ordersList = [];
+let shoppingMode = 'box';
 let currentReviewProductId = null;
 let selectedRatingStars = 5;
 let uploadedImageBase64 = "";
 let shippingRates = {};
-let lastOrdersCount = 0; 
+let lastOrdersCount = 0;
 let deferredPrompt;
+let adminPollingInterval = null;
 
-const DAYS_NAMES = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
-const MONTHS_NAMES = ["شهر 1", "شهر 2", "شهر 3", "شهر 4", "شهر 5", "شهر 6", "شهر 7", "شهر 8", "شهر 9", "شهر 10", "شهر 11", "شهر 12"];
+const DAYS_NAMES   = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+const MONTHS_NAMES = ["شهر 1","شهر 2","شهر 3","شهر 4","شهر 5","شهر 6","شهر 7","شهر 8","شهر 9","شهر 10","شهر 11","شهر 12"];
 
+// ======================================================
+// التهيئة عند تحميل الصفحة
+// ======================================================
 window.addEventListener('load', () => {
-  if(!localStorage.getItem('admin_password')) { localStorage.setItem('admin_password', 'admin123'); }
-  if(!localStorage.getItem('restaurant_name')) { localStorage.setItem('restaurant_name', 'بوتيك الهدايا والبراندات الفاخرة'); }
-  
+  if (!localStorage.getItem('admin_password')) {
+    localStorage.setItem('admin_password', 'admin123');
+  }
+  if (!localStorage.getItem('restaurant_name')) {
+    localStorage.setItem('restaurant_name', 'بوتيك الهدايا والبراندات الفاخرة');
+  }
   loadCustomTheme();
   initShippingRates();
   applyRestaurantName();
@@ -607,9 +632,13 @@ window.addEventListener('load', () => {
   registerPwaServiceWorker();
 });
 
+// ======================================================
+// الثيم والألوان
+// ======================================================
 function loadCustomTheme() {
-  const savedTheme = localStorage.getItem('custom_gift_theme');
-  if (savedTheme) {
+  try {
+    const savedTheme = localStorage.getItem('custom_gift_theme');
+    if (!savedTheme) return;
     const theme = JSON.parse(savedTheme);
     const root = document.documentElement;
     root.style.setProperty('--gold', theme.gold);
@@ -619,12 +648,13 @@ function loadCustomTheme() {
     root.style.setProperty('--card', adjustColorBrightness(theme.surface, 8));
     root.style.setProperty('--border', adjustColorBrightness(theme.surface, 15));
     root.style.setProperty('--gold-dim', adjustColorBrightness(theme.gold, -35));
-    
     document.getElementById('themeGold').value = theme.gold;
     document.getElementById('themeGoldLight').value = theme.goldLight;
     document.getElementById('themeBg').value = theme.bg;
     document.getElementById('themeSurface').value = theme.surface;
     document.getElementById('metaThemeColor').setAttribute('content', theme.bg);
+  } catch (e) {
+    console.warn('فشل تحميل الثيم المحفوظ:', e);
   }
 }
 
@@ -654,15 +684,18 @@ window.resetThemeToDefault = () => {
 };
 
 function adjustColorBrightness(hex, percent) {
-  let R = parseInt(hex.substring(1,3),16), G = parseInt(hex.substring(3,5),16), B = parseInt(hex.substring(5,7),16);
-  R = parseInt(R * (100 + percent) / 100); G = parseInt(G * (100 + percent) / 100); B = parseInt(B * (100 + percent) / 100);
-  R = (R<255)?R:255; G = (G<255)?G:255; B = (B<255)?B:255;
-  let rHex = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
-  let gHex = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
-  let bHex = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
-  return "#"+rHex+gHex+bHex;
+  let R = parseInt(hex.substring(1, 3), 16);
+  let G = parseInt(hex.substring(3, 5), 16);
+  let B = parseInt(hex.substring(5, 7), 16);
+  R = Math.min(255, parseInt(R * (100 + percent) / 100));
+  G = Math.min(255, parseInt(G * (100 + percent) / 100));
+  B = Math.min(255, parseInt(B * (100 + percent) / 100));
+  return "#" + R.toString(16).padStart(2, '0') + G.toString(16).padStart(2, '0') + B.toString(16).padStart(2, '0');
 }
 
+// ======================================================
+// PWA
+// ======================================================
 function registerPwaServiceWorker() {
   if ('serviceWorker' in navigator) {
     const swCode = `
@@ -675,19 +708,17 @@ function registerPwaServiceWorker() {
       });
     `;
     const blob = new Blob([swCode], { type: 'application/javascript' });
-    const swUrl = URL.createObjectURL(blob);
-    navigator.serviceWorker.register(swUrl).catch(e => console.log('PWA SW Error'));
+    navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
   }
-
   const manifestObj = {
-    "name": "بوتيك الهدايا والبراندات الفاخرة",
-    "short_name": "الملكي للهدايا",
-    "start_url": "./",
-    "display": "standalone",
-    "background_color": "#0f0f0f",
-    "theme_color": "#c9a84c",
-    "orientation": "portrait",
-    "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/1162/1162251.png", "type": "image/png", "sizes": "512x512" }]
+    name: "بوتيك الهدايا والبراندات الفاخرة",
+    short_name: "الملكي للهدايا",
+    start_url: "./",
+    display: "standalone",
+    background_color: "#0f0f0f",
+    theme_color: "#c9a84c",
+    orientation: "portrait",
+    icons: [{ src: "https://cdn-icons-png.flaticon.com/512/1162/1162251.png", type: "image/png", sizes: "512x512" }]
   };
   const link = document.createElement('link');
   link.rel = 'manifest';
@@ -696,7 +727,8 @@ function registerPwaServiceWorker() {
 }
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); deferredPrompt = e;
+  e.preventDefault();
+  deferredPrompt = e;
   document.getElementById('pwaBanner').classList.remove('hidden');
 });
 
@@ -709,16 +741,30 @@ document.getElementById('btnPwaInstall').addEventListener('click', async () => {
   }
 });
 
+// ======================================================
+// أسعار الشحن
+// ======================================================
 function initShippingRates() {
-  const saved = localStorage.getItem('gift_shipping_rates');
-  if(saved) {
-    shippingRates = JSON.parse(saved);
-  } else {
-    Object.keys(ALGERIA_GEOGRAPHY).forEach(code => { shippingRates[code] = { home: 600, office: 400 }; });
-    localStorage.setItem('gift_shipping_rates', JSON.stringify(shippingRates));
+  try {
+    const saved = localStorage.getItem('gift_shipping_rates');
+    if (saved) {
+      shippingRates = JSON.parse(saved);
+    } else {
+      Object.keys(ALGERIA_GEOGRAPHY).forEach(code => {
+        shippingRates[code] = { home: 600, office: 400 };
+      });
+      localStorage.setItem('gift_shipping_rates', JSON.stringify(shippingRates));
+    }
+  } catch (e) {
+    Object.keys(ALGERIA_GEOGRAPHY).forEach(code => {
+      shippingRates[code] = { home: 600, office: 400 };
+    });
   }
 }
 
+// ======================================================
+// التنقل بين الشاشات
+// ======================================================
 function applyRestaurantName() {
   const currentName = localStorage.getItem('restaurant_name');
   document.getElementById('heroRestName').textContent = currentName;
@@ -727,26 +773,48 @@ function applyRestaurantName() {
 
 window.updateRestaurantName = () => {
   const newName = document.getElementById('settingRestName').value.trim();
-  if(!newName) return;
+  if (!newName) return;
   localStorage.setItem('restaurant_name', newName);
   applyRestaurantName();
   toast('🏨 تم تحديث هوية الاسم بنجاح!');
 };
 
-window.showGateway = () => { toggle(['gatewayScreen'], ['loginScreen', 'customerView', 'adminView']); cart = []; updateCartUI(); };
-window.showLogin = () => toggle(['loginScreen'], ['gatewayScreen','customerView','adminView']);
-window.showCustomer = () => { toggle(['customerView'], ['loginScreen','gatewayScreen','adminView']); fetchMenu(false); checkMyOrderStatus(); };
-window.showAdmin = () => { toggle(['adminView'], ['loginScreen','customerView','gatewayScreen']); fetchMenu(true); fetchOrders(); applyRestaurantName(); renderAdminShippingRatesManager(); };
+window.showGateway = () => {
+  stopAdminPolling();
+  toggle(['gatewayScreen'], ['loginScreen', 'customerView', 'adminView']);
+  cart = [];
+  updateCartUI();
+};
 
-function toggle(show, hide){
+window.showLogin   = () => toggle(['loginScreen'], ['gatewayScreen', 'customerView', 'adminView']);
+
+window.showCustomer = () => {
+  toggle(['customerView'], ['loginScreen', 'gatewayScreen', 'adminView']);
+  fetchMenu(false);
+  checkMyOrderStatus();
+};
+
+window.showAdmin = () => {
+  toggle(['adminView'], ['loginScreen', 'customerView', 'gatewayScreen']);
+  fetchMenu(true);
+  fetchOrders();
+  applyRestaurantName();
+  renderAdminShippingRatesManager();
+  startAdminPolling();
+};
+
+function toggle(show, hide) {
   show.forEach(id => document.getElementById(id).classList.remove('hidden'));
   hide.forEach(id => document.getElementById(id).classList.add('hidden'));
 }
 
+// ======================================================
+// التسوق والويزارد
+// ======================================================
 window.startShopping = (mode) => {
   shoppingMode = mode;
   showCustomer();
-  
+
   if (mode === 'box') {
     updateWizardUI(1);
     document.getElementById('boxesSection').classList.remove('hidden');
@@ -754,7 +822,7 @@ window.startShopping = (mode) => {
     document.getElementById('productsSection').classList.remove('hidden');
     document.getElementById('productsSectionTitle').textContent = "الخطوة الثانية: أضف محتويات الهدية الفاخرة داخل العلبة";
   } else if (mode === 'ready') {
-    updateWizardUI(2); 
+    updateWizardUI(2);
     document.getElementById('boxesSection').classList.add('hidden');
     document.getElementById('readyBoxesSection').classList.remove('hidden');
     document.getElementById('productsSection').classList.add('hidden');
@@ -774,94 +842,143 @@ function updateWizardUI(step) {
   const w2 = document.getElementById('wStep2');
   const w3 = document.getElementById('wStep3');
 
-  if(shoppingMode !== 'box') {
-    w1.classList.add('hidden'); line.style.right = "50%"; if(step === 1) step = 2;
-  } else { w1.classList.remove('hidden'); }
+  if (shoppingMode !== 'box') {
+    w1.classList.add('hidden');
+    if (step === 1) step = 2;
+  } else {
+    w1.classList.remove('hidden');
+  }
 
-  if(shoppingMode === 'box') {
-    w1.classList.toggle('active', step === 1); w1.classList.toggle('done', step > 1);
-    w2.classList.toggle('active', step === 2); w2.classList.toggle('done', step > 2);
+  if (shoppingMode === 'box') {
+    w1.classList.toggle('active', step === 1);
+    w1.classList.toggle('done', step > 1);
+    w2.classList.toggle('active', step === 2);
+    w2.classList.toggle('done', step > 2);
     w3.classList.toggle('active', step === 3);
     line.style.width = step === 1 ? "0%" : step === 2 ? "50%" : "100%";
   } else {
-    w2.classList.toggle('active', step === 2); w2.classList.toggle('done', step > 2);
+    w2.classList.toggle('active', step === 2);
+    w2.classList.toggle('done', step > 2);
     w3.classList.toggle('active', step === 3);
     line.style.width = step === 2 ? "0%" : "100%";
   }
 }
 
+// ======================================================
+// رفع الصور — ضغط تلقائي
+// ======================================================
 window.handleFileSelect = (event) => {
-  const file = event.target.files[0]; if(!file) return;
-  
+  const file = event.target.files[0];
+  if (!file) return;
   const reader = new FileReader();
   reader.onload = (e) => {
     const img = new Image();
     img.onload = () => {
       const canvas = document.createElement('canvas');
-      let width = img.width; let height = img.height;
-      const MAX_WIDTH = 600; 
-      if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
-      canvas.width = width; canvas.height = height;
-      const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, width, height);
-      
-      uploadedImageBase64 = canvas.toDataURL('image/jpeg', 0.7); 
-      document.getElementById('fileLabelText').textContent = `✅ تم ضغط واعتماد الصورة`;
+      let width = img.width;
+      let height = img.height;
+      const MAX_WIDTH = 600;
+      if (width > MAX_WIDTH) {
+        height *= MAX_WIDTH / width;
+        width = MAX_WIDTH;
+      }
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+      uploadedImageBase64 = canvas.toDataURL('image/jpeg', 0.7);
+      document.getElementById('fileLabelText').textContent = '✅ تم ضغط واعتماد الصورة';
     };
     img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 };
 
+// ======================================================
+// API — jsonbin.io
+// ======================================================
 async function apiRequest(binId, method = 'GET', data = null) {
   const url = `https://api.jsonbin.io/v3/b/${binId}`;
-  const headers = { "X-Master-Key": X_MASTER_KEY, "Content-Type": "application/json" };
-  if(method === 'PUT') headers["X-Bin-Versioning"] = "false";
-  const options = { method, headers }; if (data) options.body = JSON.stringify(data);
+  const headers = {
+    "X-Master-Key": X_MASTER_KEY,
+    "Content-Type": "application/json"
+  };
+  if (method === 'PUT') headers["X-Bin-Versioning"] = "false";
+  const options = { method, headers };
+  if (data) options.body = JSON.stringify(data);
   const res = await fetch(method === 'GET' ? url + '/latest' : url, options);
-  const json = await res.json(); return method === 'GET' ? json.record : json;
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const json = await res.json();
+  return method === 'GET' ? json.record : json;
 }
 
+// ======================================================
+// التبويبات والإدارة
+// ======================================================
 window.showTab = (tabId, btn) => {
-  ['tabMenu', 'tabOrders', 'tabSettings'].forEach(id => document.getElementById(id).classList.toggle('hidden', id !== tabId));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active')); btn.classList.add('active');
+  ['tabMenu', 'tabOrders', 'tabSettings'].forEach(id =>
+    document.getElementById(id).classList.toggle('hidden', id !== tabId)
+  );
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
 };
 
 window.doLogin = () => {
-  if(document.getElementById('pwInput').value === localStorage.getItem('admin_password')){ showAdmin(); } else { toast('❌ كلمة السر خاطئة', true); }
+  const entered = document.getElementById('pwInput').value;
+  if (entered === localStorage.getItem('admin_password')) {
+    showAdmin();
+  } else {
+    toast('❌ كلمة السر خاطئة', true);
+  }
 };
-window.logout = () => showGateway();
+
+window.logout = () => {
+  showGateway();
+};
 
 window.updatePassword = () => {
-  const curr = document.getElementById('currentPw').value; const next = document.getElementById('newPw').value.trim();
-  if(curr !== localStorage.getItem('admin_password')) { toast('❌ الكلمة الحالية خاطئة', true); return; }
-  localStorage.setItem('admin_password', next); toast('🔒 تم التحديث!');
+  const curr = document.getElementById('currentPw').value;
+  const next = document.getElementById('newPw').value.trim();
+  if (!next || next.length < 4) { toast('❌ كلمة المرور الجديدة قصيرة جداً', true); return; }
+  if (curr !== localStorage.getItem('admin_password')) { toast('❌ الكلمة الحالية خاطئة', true); return; }
+  localStorage.setItem('admin_password', next);
+  document.getElementById('currentPw').value = '';
+  document.getElementById('newPw').value = '';
+  toast('🔒 تم التحديث!');
 };
 
+// ======================================================
+// المنتجات
+// ======================================================
 async function fetchMenu(isAdmin = false) {
   try {
     menuItems = await apiRequest(MENU_BIN_ID, 'GET');
-    if(!Array.isArray(menuItems)) menuItems = [];
+    if (!Array.isArray(menuItems)) menuItems = [];
     menuItems = menuItems.filter(i => i.id !== 'init');
-    if(isAdmin) renderAdminProducts(); else renderCustomerMenu();
-  } catch(e) { toast('❌ فشل جلب البيانات من السيرفر', true); }
+    if (isAdmin) renderAdminProducts();
+    else renderCustomerMenu();
+  } catch (e) {
+    toast('❌ فشل جلب البيانات من السيرفر', true);
+  }
 }
 
-function renderCustomerMenu(){
-  const boxes = menuItems.filter(i => i.category === 'box'); 
+function renderCustomerMenu() {
+  const boxes      = menuItems.filter(i => i.category === 'box');
   const readyBoxes = menuItems.filter(i => i.category === 'ready');
-  const products = menuItems.filter(i => i.category !== 'box' && i.category !== 'ready');
-  
-  document.getElementById('boxesGrid').innerHTML = boxes.length ? boxes.map(p => getCardHtml(p, true)).join('') : `<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر علب حالياً.</p>`;
-  document.getElementById('readyBoxesGrid').innerHTML = readyBoxes.length ? readyBoxes.map(p => getCardHtml(p, false)).join('') : `<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر بوكسات هدايا جاهزة حالياً.</p>`;
-  document.getElementById('menuGrid').innerHTML = products.length ? products.map(p => getCardHtml(p, false)).join('') : `<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر منتجات حالياً.</p>`;
+  const products   = menuItems.filter(i => i.category !== 'box' && i.category !== 'ready');
+
+  document.getElementById('boxesGrid').innerHTML     = boxes.length      ? boxes.map(p => getCardHtml(p, true)).join('')  : '<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر علب حالياً.</p>';
+  document.getElementById('readyBoxesGrid').innerHTML = readyBoxes.length ? readyBoxes.map(p => getCardHtml(p, false)).join('') : '<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر بوكسات هدايا جاهزة حالياً.</p>';
+  document.getElementById('menuGrid').innerHTML       = products.length   ? products.map(p => getCardHtml(p, false)).join('') : '<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر منتجات حالياً.</p>';
 }
 
 function getCardHtml(p, isBoxCard) {
   const reviews = p.reviews || [];
-  const avg = reviews.length ? (reviews.reduce((s,r)=>s+r.stars,0)/reviews.length).toFixed(1) : "5.0";
+  const avg = reviews.length
+    ? (reviews.reduce((s, r) => s + r.stars, 0) / reviews.length).toFixed(1)
+    : "5.0";
   return `
   <div class="menu-card">
-    ${p.img ? `<img src="${esc(p.img)}">` : `<div class="img-placeholder">🎁</div>`}
+    ${p.img ? `<img src="${esc(p.img)}" loading="lazy">` : `<div class="img-placeholder">🎁</div>`}
     <div class="card-body">
       <div class="card-name">${esc(p.name)}</div>
       <div class="stars-display">★ ${avg} <span>(${reviews.length})</span></div>
@@ -872,14 +989,14 @@ function getCardHtml(p, isBoxCard) {
   </div>`;
 }
 
-function renderAdminProducts(){
+function renderAdminProducts() {
   document.getElementById('adminProductsList').innerHTML = `
     <table class="products-table">
       <thead><tr><th>الصورة</th><th>العنصر</th><th>التصنيف</th><th>السعر</th><th>التحكم</th></tr></thead>
       <tbody>
         ${menuItems.map(p => `
           <tr>
-            <td>${p.img ? `<img src="${esc(p.img)}">` : `<div style="background:var(--card); width:40px; height:40px; border-radius:6px;"></div>`}</td>
+            <td>${p.img ? `<img src="${esc(p.img)}" loading="lazy">` : `<div style="background:var(--card); width:40px; height:40px; border-radius:6px;"></div>`}</td>
             <td><strong>${esc(p.name)}</strong></td>
             <td style="color:var(--muted); font-size:11px;">${p.category === 'ready' ? '🎁 بوكس جاهز' : p.category === 'box' ? '📦 علبة فارغة' : '🛍️ قطعة منفردة'}</td>
             <td style="color:var(--gold); font-weight:bold;">${p.price} دج</td>
@@ -890,168 +1007,305 @@ function renderAdminProducts(){
 }
 
 window.addProduct = async () => {
-  const name = document.getElementById('pName').value.trim(); const price = parseFloat(document.getElementById('pPrice').value);
-  const category = document.getElementById('pCategory').value; const desc = document.getElementById('pDesc').value.trim();
-  if(!name || !price) return;
-  menuItems.unshift({ id: 'p_'+Date.now(), name, price, category, img: uploadedImageBase64, desc, reviews: [] });
-  await apiRequest(MENU_BIN_ID, 'PUT', menuItems);
-  document.getElementById('pName').value = ''; document.getElementById('pPrice').value = ''; uploadedImageBase64 = "";
-  document.getElementById('pDesc').value = '';
-  document.getElementById('fileLabelText').textContent = "اختر صورة للمنتج";
-  toast('✅ تم الحفظ!'); fetchMenu(true);
-};
+  const name     = document.getElementById('pName').value.trim();
+  const price    = parseFloat(document.getElementById('pPrice').value);
+  const category = document.getElementById('pCategory').value;
+  const desc     = document.getElementById('pDesc').value.trim();
+  if (!name || !price) { toast('❌ اسم المنتج والسعر مطلوبان', true); return; }
 
-window.deleteProduct = async (id) => {
-  if(!confirm('هل تود الحذف؟')) return; menuItems = menuItems.filter(p => p.id !== id);
-  await apiRequest(MENU_BIN_ID, 'PUT', menuItems.length === 0 ? [{id:"init", price:0}] : menuItems);
+  menuItems.unshift({
+    id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+    name, price, category,
+    img: uploadedImageBase64,
+    desc,
+    reviews: []
+  });
+  await apiRequest(MENU_BIN_ID, 'PUT', menuItems);
+  document.getElementById('pName').value  = '';
+  document.getElementById('pPrice').value = '';
+  document.getElementById('pDesc').value  = '';
+  uploadedImageBase64 = '';
+  document.getElementById('fileLabelText').textContent = 'اختر صورة للمنتج';
+  toast('✅ تم الحفظ!');
   fetchMenu(true);
 };
 
+window.deleteProduct = async (id) => {
+  if (!confirm('هل تود الحذف؟')) return;
+  menuItems = menuItems.filter(p => p.id !== id);
+  await apiRequest(MENU_BIN_ID, 'PUT', menuItems.length === 0 ? [{ id: 'init', price: 0 }] : menuItems);
+  fetchMenu(true);
+};
+
+// ======================================================
+// التقييمات
+// ======================================================
 window.openReviewsModal = (prodId) => {
-  currentReviewProductId = prodId; const p = menuItems.find(x => x.id === prodId); if(!p) return;
+  currentReviewProductId = prodId;
+  const p = menuItems.find(x => x.id === prodId);
+  if (!p) return;
   document.getElementById('reviewsModalTitle').textContent = `آراء حول: ${p.name}`;
-  setSelectStars(5); renderCommentsList(p.reviews || []);
+  setSelectStars(5);
+  renderCommentsList(p.reviews || []);
   document.getElementById('reviewsModal').classList.remove('hidden');
 };
+
 window.closeReviewsModal = () => document.getElementById('reviewsModal').classList.add('hidden');
 
 window.setSelectStars = (num) => {
-  selectedRatingStars = num; document.querySelectorAll('#starsSelector .star').forEach((s, idx) => s.classList.toggle('active', idx < num));
+  selectedRatingStars = num;
+  document.querySelectorAll('#starsSelector .star').forEach((s, idx) =>
+    s.classList.toggle('active', idx < num)
+  );
 };
 
 window.submitReview = async () => {
   const user = document.getElementById('revUser').value.trim() || 'مقتني مجهول';
-  const text = document.getElementById('revText').value.trim(); if(!text) return;
-  const p = menuItems.find(x => x.id === currentReviewProductId); if(!p) return;
-  if(!p.reviews) p.reviews = [];
+  const text = document.getElementById('revText').value.trim();
+  if (!text) return;
+  const p = menuItems.find(x => x.id === currentReviewProductId);
+  if (!p) return;
+  if (!p.reviews) p.reviews = [];
   p.reviews.unshift({ user, text, stars: selectedRatingStars, date: new Date().toLocaleDateString('ar-DZ') });
-  await apiRequest(MENU_BIN_ID, 'PUT', menuItems); toast('⭐ شكراً لتقييمك!'); renderCommentsList(p.reviews); fetchMenu(false);
+  await apiRequest(MENU_BIN_ID, 'PUT', menuItems);
+  toast('⭐ شكراً لتقييمك!');
+  renderCommentsList(p.reviews);
+  fetchMenu(false);
 };
 
 function renderCommentsList(reviews) {
   const container = document.getElementById('commentsListContainer');
-  container.innerHTML = reviews.length ? reviews.map(r => `
-    <div class="comment-item">
-      <div class="comment-meta"><strong>${esc(r.user)}</strong><span>${'★'.repeat(r.stars)}</span></div>
-      <div>${esc(r.text)}</div>
-    </div>`).join('') : `<p style="font-size:11px; color:var(--muted); text-align:center;">لا توجد تقييمات سابقة.</p>`;
+  container.innerHTML = reviews.length
+    ? reviews.map(r => `
+        <div class="comment-item">
+          <div class="comment-meta"><strong>${esc(r.user)}</strong><span>${'★'.repeat(r.stars)}</span></div>
+          <div>${esc(r.text)}</div>
+        </div>`).join('')
+    : '<p style="font-size:11px; color:var(--muted); text-align:center;">لا توجد تقييمات سابقة.</p>';
 }
 
+// ======================================================
+// السلة
+// ======================================================
 window.addToCart = (id, isBoxCard) => {
-  const p = menuItems.find(x=>x.id===id); if(!p) return;
-  if(shoppingMode === 'box' && isBoxCard) {
-    cart = cart.filter(c => { const m = menuItems.find(x => x.id === c.id); return m && m.category !== 'box'; });
+  const p = menuItems.find(x => x.id === id);
+  if (!p) return;
+  if (shoppingMode === 'box' && isBoxCard) {
+    cart = cart.filter(c => {
+      const m = menuItems.find(x => x.id === c.id);
+      return m && m.category !== 'box';
+    });
   }
-  const existing = cart.find(c=>c.id===id); if(existing) existing.qty++; else cart.push({ id, name:p.name, price:p.price, qty:1 });
-  updateCartUI(); toast('🛒 أُضيف للسلة'); if(shoppingMode === 'box' && isBoxCard) updateWizardUI(2);
+  const existing = cart.find(c => c.id === id);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ id, name: p.name, price: p.price, qty: 1 });
+  }
+  updateCartUI();
+  toast('🛒 أُضيف للسلة');
+  if (shoppingMode === 'box' && isBoxCard) updateWizardUI(2);
 };
 
-function updateCartUI(){
-  const total = cart.reduce((s,c)=>s+c.price*c.qty,0); const count = cart.reduce((s,c)=>s+c.qty,0);
-  document.getElementById('cartCount').textContent = count; document.getElementById('cartTotalLabel').textContent = total + " دج";
-  document.getElementById('cartBar').classList.toggle('hidden', count===0);
+function updateCartUI() {
+  const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const count = cart.reduce((s, c) => s + c.qty, 0);
+  document.getElementById('cartCount').textContent   = count;
+  document.getElementById('cartTotalLabel').textContent = total + " دج";
+  document.getElementById('cartBar').classList.toggle('hidden', count === 0);
 }
 
 window.openCartModal = () => {
-  if(shoppingMode === 'box') {
-    if(!cart.some(c => { const m = menuItems.find(x => x.id === c.id); return m && m.category === 'box'; })) {
-      toast('❌ اختر علبة التغليف أولاً في أعلى الصفحة!', true); return;
-    }
+  if (shoppingMode === 'box') {
+    const hasBox = cart.some(c => {
+      const m = menuItems.find(x => x.id === c.id);
+      return m && m.category === 'box';
+    });
+    if (!hasBox) { toast('❌ اختر علبة التغليف أولاً في أعلى الصفحة!', true); return; }
   }
   updateWizardUI(3);
   document.getElementById('cartItemsList').innerHTML = cart.map(c => `
     <div class="cart-item">
       <div><strong>${esc(c.name)}</strong><div>${c.price} دج</div></div>
       <div style="display:flex; align-items:center; gap:6px;">
-        <button class="qty-btn" onclick="changeQty('${c.id}', -1)">-</button><span>${c.qty}</span><button class="qty-btn" onclick="changeQty('${c.id}', 1)">+</button>
+        <button class="qty-btn" onclick="changeQty('${c.id}', -1)">-</button>
+        <span>${c.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${c.id}', 1)">+</button>
       </div>
     </div>`).join('');
-  document.getElementById('custWilaya').innerHTML = '<option value="">-- اختر الولاية --</option>' + Object.keys(ALGERIA_GEOGRAPHY).map(code => `<option value="${code}">${ALGERIA_GEOGRAPHY[code].name}</option>`).join('');
-  calculateTotalShipping(); document.getElementById('cartModal').classList.remove('hidden');
+
+  document.getElementById('custWilaya').innerHTML =
+    '<option value="">-- اختر الولاية --</option>' +
+    Object.keys(ALGERIA_GEOGRAPHY).map(code =>
+      `<option value="${code}">${ALGERIA_GEOGRAPHY[code].name}</option>`
+    ).join('');
+
+  calculateTotalShipping();
+  document.getElementById('cartModal').classList.remove('hidden');
 };
 
-window.closeCartModal = () => { document.getElementById('cartModal').classList.add('hidden'); updateWizardUI(cart.length > 0 ? 2 : 1); };
+window.closeCartModal = () => {
+  document.getElementById('cartModal').classList.add('hidden');
+  updateWizardUI(cart.length > 0 ? 2 : 1);
+};
+
 window.changeQty = (id, amt) => {
-  const c = cart.find(x => x.id === id); if(!c) return; c.qty += amt; if(c.qty <= 0) cart = cart.filter(x => x.id !== id);
-  updateCartUI(); if(cart.length === 0) closeCartModal(); else openCartModal();
+  const c = cart.find(x => x.id === id);
+  if (!c) return;
+  c.qty += amt;
+  if (c.qty <= 0) cart = cart.filter(x => x.id !== id);
+  updateCartUI();
+  if (cart.length === 0) closeCartModal();
+  else openCartModal();
 };
 
 window.onWilayaChange = () => {
   const code = document.getElementById('custWilaya').value;
-  if(!code) { document.getElementById('custDaira').innerHTML = '<option value="">اختر الولاية أولاً</option>'; calculateTotalShipping(); return; }
-  document.getElementById('custDaira').innerHTML = '<option value="">-- اختر الدائرة --</option>' + Object.keys(ALGERIA_GEOGRAPHY[code].dairas).map(d => `<option value="${d}">${d}</option>`).join('');
+  if (!code) {
+    document.getElementById('custDaira').innerHTML = '<option value="">اختر الولاية أولاً</option>';
+    document.getElementById('custCommune').innerHTML = '<option value="">اختر الدائرة أولاً</option>';
+    calculateTotalShipping();
+    return;
+  }
+  document.getElementById('custDaira').innerHTML =
+    '<option value="">-- اختر الدائرة --</option>' +
+    Object.keys(ALGERIA_GEOGRAPHY[code].dairas).map(d =>
+      `<option value="${d}">${d}</option>`
+    ).join('');
   calculateTotalShipping();
 };
 
 window.onDairaChange = () => {
-  const code = document.getElementById('custWilaya').value; const daira = document.getElementById('custDaira').value;
-  if(!daira) return;
-  document.getElementById('custCommune').innerHTML = '<option value="">-- اختر البلدية --</option>' + ALGERIA_GEOGRAPHY[code].dairas[daira].map(c => `<option value="${c}">${c}</option>`).join('');
+  const code  = document.getElementById('custWilaya').value;
+  const daira = document.getElementById('custDaira').value;
+  if (!daira || !code) return;
+  document.getElementById('custCommune').innerHTML =
+    '<option value="">-- اختر البلدية --</option>' +
+    ALGERIA_GEOGRAPHY[code].dairas[daira].map(c =>
+      `<option value="${c}">${c}</option>`
+    ).join('');
 };
 
 window.calculateTotalShipping = () => {
-  const subtotal = cart.reduce((s,c)=>s+c.price*c.qty,0); const code = document.getElementById('custWilaya').value;
-  const type = document.getElementById('custDeliveryType').value; 
-  let fee = 0;
-  if(code && shippingRates[code]) { fee = shippingRates[code][type] || 0; }
-  document.getElementById('modalSubtotal').textContent = subtotal; document.getElementById('modalShippingFee').textContent = fee;
+  const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const code = document.getElementById('custWilaya').value;
+  const type = document.getElementById('custDeliveryType').value;
+  const fee  = (code && shippingRates[code]) ? (shippingRates[code][type] || 0) : 0;
+  document.getElementById('modalSubtotal').textContent  = subtotal;
+  document.getElementById('modalShippingFee').textContent = fee;
   document.getElementById('cartModalTotal').textContent = subtotal + fee;
 };
 
+// ======================================================
+// إرسال الطلب
+// ======================================================
 window.submitOrder = async () => {
-  const name = document.getElementById('custName').value.trim(); const phone = document.getElementById('custPhone').value.trim();
-  const code = document.getElementById('custWilaya').value; const daira = document.getElementById('custDaira').value;
-  const commune = document.getElementById('custCommune').value; const type = document.getElementById('custDeliveryType').value;
-  if(!name || !phone || !code || !daira || !commune) { toast('❌ املأ كافة البيانات المطلوبة', true); return; }
-  
-  const subtotal = cart.reduce((s,c)=>s+c.price*c.qty,0); const shippingFee = shippingRates[code][type] || 0;
-  const orderId = 'gift_' + Date.now();
+  const name    = document.getElementById('custName').value.trim();
+  const phone   = document.getElementById('custPhone').value.trim();
+  const code    = document.getElementById('custWilaya').value;
+  const daira   = document.getElementById('custDaira').value;
+  const commune = document.getElementById('custCommune').value;
+  const type    = document.getElementById('custDeliveryType').value;
+
+  if (!name || !phone || !code || !daira || !commune) {
+    toast('❌ املأ كافة البيانات المطلوبة', true);
+    return;
+  }
+
+  const subtotal    = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const shippingFee = shippingRates[code]?.[type] || 0;
+  const orderId     = 'gift_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+
   const newOrder = {
-    id: orderId, customerName: name, customerPhone: phone, wilaya: ALGERIA_GEOGRAPHY[code].name, daira, commune, deliveryType: type, giftMessage: document.getElementById('custGiftMsg').value.trim(),
-    items: cart.map(c => ({ name: c.name, price: c.price, qty: c.qty })), subtotal, shippingFee, total: subtotal + shippingFee, status: 'pending', timestamp: new Date().toISOString()
+    id: orderId,
+    customerName: name,
+    customerPhone: phone,
+    wilaya: ALGERIA_GEOGRAPHY[code].name,
+    daira,
+    commune,
+    deliveryType: type,
+    giftMessage: document.getElementById('custGiftMsg').value.trim(),
+    items: cart.map(c => ({ name: c.name, price: c.price, qty: c.qty })),
+    subtotal,
+    shippingFee,
+    total: subtotal + shippingFee,
+    status: 'pending',
+    timestamp: new Date().toISOString()
   };
 
   try {
-    let curr = await apiRequest(ORDERS_BIN_ID, 'GET'); if(!Array.isArray(curr)) curr = [];
-    curr.unshift(newOrder); await apiRequest(ORDERS_BIN_ID, 'PUT', curr);
-    localStorage.setItem('my_last_gift_order_id', orderId); toast('🎉 تم إرسال طلبك بنجاح!');
-    cart = []; updateCartUI(); closeCartModal(); showCustomer();
-  } catch(e) { toast('❌ حدث خطأ في الشبكة، جرب لاحقاً', true); }
+    let curr = await apiRequest(ORDERS_BIN_ID, 'GET');
+    if (!Array.isArray(curr)) curr = [];
+    curr.unshift(newOrder);
+    await apiRequest(ORDERS_BIN_ID, 'PUT', curr);
+    localStorage.setItem('my_last_gift_order_id', orderId);
+    toast('🎉 تم إرسال طلبك بنجاح!');
+    cart = [];
+    updateCartUI();
+    closeCartModal();
+    showCustomer();
+  } catch (e) {
+    toast('❌ حدث خطأ في الشبكة، جرب لاحقاً', true);
+  }
 };
 
+// ======================================================
+// تتبع الطلب
+// ======================================================
 window.checkMyOrderStatus = async () => {
-  const id = localStorage.getItem('my_last_gift_order_id'); if(!id) return;
+  const id = localStorage.getItem('my_last_gift_order_id');
+  if (!id) return;
   document.getElementById('customerTrackBox').classList.remove('hidden');
   document.getElementById('trackOrderIdLabel').textContent = `تتبع هديتك رقم (${id}):`;
   try {
-    const orders = await apiRequest(ORDERS_BIN_ID, 'GET'); const o = orders.find(x => x.id === id);
-    if(o) {
+    const orders = await apiRequest(ORDERS_BIN_ID, 'GET');
+    const o = orders.find(x => x.id === id);
+    if (o) {
       let txt = "⏳ قيد المراجعة والفرز الأول";
-      if(o.status==='preparing') txt = "🎀 هديتك قيد التنسيق والتغليف الفاخر الآن";
-      if(o.status==='done') txt = "🚚 خرجت مع الموزع / تم التسلام!";
+      if (o.status === 'preparing') txt = "🎀 هديتك قيد التنسيق والتغليف الفاخر الآن";
+      if (o.status === 'done')      txt = "🚚 خرجت مع الموزع / تم التسليم!";
       document.getElementById('trackStatusText').textContent = txt;
+    } else {
+      document.getElementById('trackStatusText').textContent = "⚠️ لم يتم العثور على الطلب.";
     }
-  } catch(e){}
+  } catch (e) {
+    document.getElementById('trackStatusText').textContent = "⚠️ تعذّر الاتصال، حاول لاحقاً.";
+  }
 };
 
+// ======================================================
+// الطلبات — لوحة الإدارة
+// ======================================================
 async function fetchOrders() {
   try {
-    ordersList = await apiRequest(ORDERS_BIN_ID, 'GET'); if(!Array.isArray(ordersList)) ordersList = [];
+    ordersList = await apiRequest(ORDERS_BIN_ID, 'GET');
+    if (!Array.isArray(ordersList)) ordersList = [];
     ordersList = ordersList.filter(o => o.id !== 'init_order');
+
     if (ordersList.length > lastOrdersCount && lastOrdersCount > 0) {
-      document.getElementById('orderAlertSound').play().catch(e=>console.log("Audio play context"));
+      document.getElementById('orderAlertSound').play().catch(() => {});
       toast('🔔 تنبيه: تم استقبال طلبية جديدة الآن!');
     }
-    lastOrdersCount = ordersList.length; renderAdminOrders(); processAdvancedStats();
-  } catch(e){}
+    lastOrdersCount = ordersList.length;
+    renderAdminOrders();
+    processAdvancedStats();
+  } catch (e) {
+    toast('❌ فشل تحديث الطلبات', true);
+  }
 }
 
 function renderAdminOrders() {
   const container = document.getElementById('ordersList');
-  if(ordersList.length === 0) { container.innerHTML = '<p style="color:var(--muted); padding:10px;">لا توجد طلبات.</p>'; return; }
+  if (ordersList.length === 0) {
+    container.innerHTML = '<p style="color:var(--muted); padding:10px;">لا توجد طلبات.</p>';
+    return;
+  }
   container.innerHTML = ordersList.map(o => `
     <div class="order-card">
-      <div class="order-header"><strong>الطلب: ${o.id}</strong> <span>${o.status}</span></div>
+      <div class="order-header">
+        <strong>الطلب: ${esc(o.id)}</strong>
+        <span>${esc(o.status)}</span>
+      </div>
       <div style="font-size:12px; margin-bottom:8px; line-height:1.5;">
         <p>👤 العميل: ${esc(o.customerName)} (${esc(o.customerPhone)})</p>
         <p>📍 العنوان: ${esc(o.wilaya)} | ${esc(o.commune)}</p>
@@ -1071,76 +1325,165 @@ function renderAdminOrders() {
 }
 
 window.changeOrderStatus = async (id, stat) => {
-  const o = ordersList.find(x => x.id === id); if(o) o.status = stat;
-  await apiRequest(ORDERS_BIN_ID, 'PUT', ordersList); fetchOrders();
+  const o = ordersList.find(x => x.id === id);
+  if (o) o.status = stat;
+  try {
+    await apiRequest(ORDERS_BIN_ID, 'PUT', ordersList);
+    fetchOrders();
+  } catch (e) {
+    toast('❌ فشل تحديث الحالة', true);
+  }
 };
 
 window.deleteOrder = async (id) => {
-  if(!confirm('هل تود شطب الطلب؟')) return; ordersList = ordersList.filter(o => o.id !== id);
-  await apiRequest(ORDERS_BIN_ID, 'PUT', ordersList); fetchOrders();
+  if (!confirm('هل تود شطب الطلب؟')) return;
+  ordersList = ordersList.filter(o => o.id !== id);
+  try {
+    await apiRequest(ORDERS_BIN_ID, 'PUT', ordersList);
+    fetchOrders();
+  } catch (e) {
+    toast('❌ فشل الحذف', true);
+  }
 };
 
+// ======================================================
+// إدارة أسعار الشحن
+// ======================================================
 function renderAdminShippingRatesManager() {
-  document.getElementById('shippingRatesManagerContainer').innerHTML = Object.keys(ALGERIA_GEOGRAPHY).map(code => {
-    const r = shippingRates[code] || { home: 600, office: 400 };
-    return `<div class="shipping-rate-row"><span>${ALGERIA_GEOGRAPHY[code].name}</span>
-      <input type="number" class="admin-ship-home" data-code="${code}" value="${r.home}"/>
-      <input type="number" class="admin-ship-office" data-code="${code}" value="${r.office}"/>
+  document.getElementById('shippingRatesManagerContainer').innerHTML =
+    Object.keys(ALGERIA_GEOGRAPHY).map(code => {
+      const r = shippingRates[code] || { home: 600, office: 400 };
+      return `<div class="shipping-rate-row">
+        <span>${ALGERIA_GEOGRAPHY[code].name}</span>
+        <input type="number" class="admin-ship-home" data-code="${code}" value="${r.home}"/>
+        <input type="number" class="admin-ship-office" data-code="${code}" value="${r.office}"/>
+      </div>`;
+    }).join('');
+}
+
+window.saveShippingRatesFromAdmin = () => {
+  document.querySelectorAll('.admin-ship-home').forEach(i => {
+    const c = i.getAttribute('data-code');
+    if (!shippingRates[c]) shippingRates[c] = {};
+    shippingRates[c].home = parseFloat(i.value) || 0;
+  });
+  document.querySelectorAll('.admin-ship-office').forEach(i => {
+    const c = i.getAttribute('data-code');
+    if (!shippingRates[c]) shippingRates[c] = {};
+    shippingRates[c].office = parseFloat(i.value) || 0;
+  });
+  localStorage.setItem('gift_shipping_rates', JSON.stringify(shippingRates));
+  toast('💾 تم الحفظ!');
+};
+
+// ======================================================
+// الإحصائيات والتقارير
+// ======================================================
+function processAdvancedStats() {
+  let todayTotal = 0, weekTotal = 0, monthTotal = 0;
+  const now = new Date();
+  const daysData   = { "الأحد": 0, "الإثنين": 0, "الثلاثاء": 0, "الأربعاء": 0, "الخميس": 0, "الجمعة": 0, "السبت": 0 };
+  const weeksData  = { "الأسبوع 1": 0, "الأسبوع 2": 0, "الأسبوع 3": 0, "الأسبوع 4": 0 };
+  const monthsData = {};
+  MONTHS_NAMES.forEach(m => monthsData[m] = 0);
+
+  ordersList.forEach(o => {
+    const oDate = new Date(o.timestamp);
+    const orderPrice = o.total || 0;
+    if (oDate.toDateString() === now.toDateString()) todayTotal += orderPrice;
+    if ((now - oDate) <= 7 * 24 * 60 * 60 * 1000) {
+      weekTotal += orderPrice;
+      const dName = DAYS_NAMES[oDate.getDay()];
+      if (daysData[dName] !== undefined) daysData[dName] += orderPrice;
+    }
+    if (oDate.getMonth() === now.getMonth() && oDate.getFullYear() === now.getFullYear()) {
+      monthTotal += orderPrice;
+      const d = oDate.getDate();
+      if (d <= 7)       weeksData["الأسبوع 1"] += orderPrice;
+      else if (d <= 14) weeksData["الأسبوع 2"] += orderPrice;
+      else if (d <= 21) weeksData["الأسبوع 3"] += orderPrice;
+      else              weeksData["الأسبوع 4"] += orderPrice;
+    }
+    if (oDate.getFullYear() === now.getFullYear()) {
+      monthsData[MONTHS_NAMES[oDate.getMonth()]] += orderPrice;
+    }
+  });
+
+  document.getElementById('statTodayPrice').innerHTML = todayTotal + '<span> دج</span>';
+  document.getElementById('statWeekPrice').innerHTML  = weekTotal  + '<span> دج</span>';
+  document.getElementById('statMonthPrice').innerHTML = monthTotal + '<span> دج</span>';
+  renderReportBars('daysReportContainer',   daysData);
+  renderReportBars('weeksReportContainer',  weeksData);
+  renderReportBars('monthsReportContainer', monthsData);
+}
+
+function renderReportBars(containerId, dataObj) {
+  const vals = Object.values(dataObj);
+  const max  = Math.max(...vals, 1);
+  document.getElementById(containerId).innerHTML = Object.keys(dataObj).map(key => {
+    const val = dataObj[key];
+    const pct = ((val / max) * 100).toFixed(0);
+    return `<div class="report-item">
+      <span class="label">${key}</span>
+      <div class="bar-bg"><div class="bar-fill" style="width: ${pct}%"></div></div>
+      <span class="val">${val} دج</span>
     </div>`;
   }).join('');
 }
 
-window.saveShippingRatesFromAdmin = () => {
-  document.querySelectorAll('.admin-ship-home').forEach(i => { const c = i.getAttribute('data-code'); if(!shippingRates[c]) shippingRates[c]={}; shippingRates[c].home = parseFloat(i.value)||0; });
-  document.querySelectorAll('.admin-ship-office').forEach(i => { const c = i.getAttribute('data-code'); shippingRates[c].office = parseFloat(i.value)||0; });
-  localStorage.setItem('gift_shipping_rates', JSON.stringify(shippingRates)); toast('💾 تم الحفظ!');
-};
-
-function processAdvancedStats() {
-  let todayTotal = 0, weekTotal = 0, monthTotal = 0; const now = new Date();
-  let daysData = { "الأحد":0, "الإثنين":0, "الثلاثاء":0, "الأربعاء":0, "الخميس":0, "الجمعة":0, "السبت":0 };
-  let weeksData = { "الأسبوع 1":0, "الأسبوع 2":0, "الأسبوع 3":0, "الأسبوع 4":0 }; let monthsData = {}; MONTHS_NAMES.forEach(m => monthsData[m] = 0);
-
-  ordersList.forEach(o => {
-    const oDate = new Date(o.timestamp); const orderPrice = o.total || 0;
-    if(oDate.toDateString() === now.toDateString()) todayTotal += orderPrice;
-    if((now - oDate) <= 7 * 24 * 60 * 60 * 1000) { weekTotal += orderPrice; const dName = DAYS_NAMES[oDate.getDay()]; if(daysData[dName]!==undefined) daysData[dName]+=orderPrice; }
-    if(oDate.getMonth() === now.getMonth()) {
-      monthTotal += orderPrice;
-      const d = oDate.getDate(); if(d <= 7) weeksData["الأسبوع 1"] += orderPrice; else if(d <= 14) weeksData["الأسبوع 2"] += orderPrice; else if(d <= 21) weeksData["الأسبوع 3"] += orderPrice; else weeksData["الأسبوع 4"] += orderPrice;
+// ======================================================
+// Polling ذكي — يعمل فقط عندما لوحة الإدارة مفتوحة
+// ======================================================
+function startAdminPolling() {
+  stopAdminPolling();
+  adminPollingInterval = setInterval(() => {
+    if (!document.getElementById('adminView').classList.contains('hidden')) {
+      fetchOrders();
     }
-    if(oDate.getFullYear() === now.getFullYear()) { monthsData[MONTHS_NAMES[oDate.getMonth()]] += orderPrice; }
-  });
-
-  document.getElementById('statTodayPrice').innerHTML = todayTotal + '<span> دج</span>';
-  document.getElementById('statWeekPrice').innerHTML = weekTotal + '<span> دج</span>';
-  document.getElementById('statMonthPrice').innerHTML = monthTotal + '<span> دج</span>';
-  renderReportBars('daysReportContainer', daysData); renderReportBars('weeksReportContainer', weeksData); renderReportBars('monthsReportContainer', monthsData);
+  }, 20000);
 }
 
-function reportBars(containerId, dataObj) {
-  const vals = Object.values(dataObj); const max = Math.max(...vals, 1);
-  document.getElementById(containerId).innerHTML = Object.keys(dataObj).map(key => {
-    const val = dataObj[key]; const pct = ((val / max) * 100).toFixed(0);
-    return `<div class="report-item"><span class="label">${key}</span><div class="bar-bg"><div class="bar-fill" style="width: ${pct}%\"></div></div><span class="val">${val} دج</span></div>`;
-  }).join('');
+function stopAdminPolling() {
+  if (adminPollingInterval) {
+    clearInterval(adminPollingInterval);
+    adminPollingInterval = null;
+  }
 }
 
-function renderReportBars(containerId, dataObj) {
-  const vals = Object.values(dataObj); const max = Math.max(...vals, 1);
-  document.getElementById(containerId).innerHTML = Object.keys(dataObj).map(key => {
-    const val = dataObj[key]; const pct = ((val / max) * 100).toFixed(0);
-    return `<div class="report-item"><span class="label">${key}</span><div class="bar-bg"><div class="bar-fill" style="width: ${pct}%\"></div></div><span class="val">${val} دج</span></div>`;
-  }).join('');
-}
+// إيقاف الـ polling عند إخفاء التبويب لتوفير الطلبات
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopAdminPolling();
+  } else if (!document.getElementById('adminView').classList.contains('hidden')) {
+    startAdminPolling();
+  }
+});
 
+// ======================================================
+// أدوات مساعدة
+// ======================================================
 function toast(msg, isError = false) {
-  const t = document.getElementById('toast'); t.textContent = msg; t.classList.toggle('error', isError); t.classList.add('show');
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.toggle('error', isError);
+  t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
-function esc(str) { if(!str) return ''; return str.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
 
-setInterval(() => { if (!document.getElementById('adminView').classList.contains('hidden')) { fetchOrders(); } }, 20000);
+function esc(str) {
+  if (!str) return '';
+  return str.toString()
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 </script>
 </body>
 </html>
+HTMLEOF
+echo "Done: $?"
+Output
+
+Done: 0
