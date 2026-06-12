@@ -1,6 +1,3 @@
-bash
-
-cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -31,6 +28,16 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
       --shadow:     0 4px 20px rgba(0,0,0,0.5);
     }
 
+    body.light-theme {
+      --bg:         #f7f5f0;
+      --surface:    #ffffff;
+      --card:       #f0ece2;
+      --border:     #e0dccf;
+      --text:       #2a2a2a;
+      --muted:      #8a8578;
+      --shadow:     0 4px 20px rgba(0,0,0,0.08);
+    }
+
     body {
       font-family: 'Tajawal', sans-serif;
       background: var(--bg);
@@ -39,6 +46,30 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
       transition: background 0.3s, color 0.3s;
       -webkit-tap-highlight-color: transparent;
     }
+
+    /* تم تعديل مكان الأزرار إلى الأسفل لتجنب التداخل مع شريط الإدارة */
+    .top-controls {
+      position: fixed; bottom: 80px; left: 15px; z-index: 500;
+      display: flex; gap: 6px; flex-direction: column;
+    }
+    .top-controls button {
+      background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      border-radius: 20px; padding: 8px 14px; font-size: 14px; font-weight: 700;
+      cursor: pointer; font-family: inherit; box-shadow: var(--shadow);
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+    }
+    .top-controls button:hover { border-color: var(--gold); }
+
+    /* الفلترة والترتيب */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; align-items: center;
+    }
+    .filter-bar select, .filter-bar input {
+      width: auto; flex: 1; min-width: 110px; padding: 8px 10px; font-size: 12px;
+    }
+    .filter-bar .filter-search { flex: 2; min-width: 140px; }
+
+    .badge-best { background: var(--gold); color: var(--bg); }
 
     .hidden { display: none !important; }
 
@@ -233,6 +264,11 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 </head>
 <body>
 
+<div class="top-controls">
+  <button id="themeToggleBtn" onclick="toggleDarkLight()" title="تبديل الوضع"><span id="themeToggleIcon">☀️</span></button>
+  <button id="langToggleBtn" onclick="toggleLanguage()" title="تغيير اللغة"><span id="langToggleIcon">FR</span></button>
+</div>
+
 <div id="gatewayScreen" class="gateway-container">
   <div id="pwaBanner" class="pwa-install-banner hidden">
     <div style="text-align: right;">
@@ -322,6 +358,22 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 
   <div class="menu-section" id="productsSection">
     <h2 id="productsSectionTitle">محتويات الهدية والبراندات</h2>
+    <div class="filter-bar">
+      <input type="text" id="filterSearch" class="filter-search" placeholder="🔍 بحث عن منتج..." oninput="renderCustomerMenu()" data-i18n-placeholder="search_placeholder"/>
+      <select id="filterCategory" onchange="renderCustomerMenu()">
+        <option value="">📂 كل التصنيفات</option>
+        <option value="flower">💐 ورود وتنسيقات</option>
+        <option value="cosmetics">💄 عطور ومستحضرات</option>
+        <option value="luxury">🍫 شوكولاتة وإكسسوارات</option>
+      </select>
+      <select id="filterSort" onchange="renderCustomerMenu()">
+        <option value="default">↕️ الترتيب الافتراضي</option>
+        <option value="bestseller">🔥 الأكثر طلباً</option>
+        <option value="priceAsc">⬆️ السعر: من الأقل</option>
+        <option value="priceDesc">⬇️ السعر: من الأعلى</option>
+        <option value="rating">⭐ الأعلى تقييماً</option>
+      </select>
+    </div>
     <div id="menuGrid" class="menu-grid"><div class="spinner"></div></div>
   </div>
 
@@ -611,9 +663,44 @@ let shippingRates = {};
 let lastOrdersCount = 0;
 let deferredPrompt;
 let adminPollingInterval = null;
+let bestSellerIds = new Set();
+let currentLang = 'ar';
 
 const DAYS_NAMES   = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
 const MONTHS_NAMES = ["شهر 1","شهر 2","شهر 3","شهر 4","شهر 5","شهر 6","شهر 7","شهر 8","شهر 9","شهر 10","شهر 11","شهر 12"];
+
+// ======================================================
+// وظائف الوضع المظلم وتغيير اللغة
+// ======================================================
+window.toggleDarkLight = () => {
+  const body = document.body;
+  const icon = document.getElementById('themeToggleIcon');
+  body.classList.toggle('light-theme');
+  if (body.classList.contains('light-theme')) {
+    icon.textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+  } else {
+    icon.textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+  }
+};
+
+window.toggleLanguage = () => {
+  const icon = document.getElementById('langToggleIcon');
+  const htmlTag = document.documentElement;
+  
+  if (currentLang === 'ar') {
+    currentLang = 'fr';
+    icon.textContent = 'AR';
+    htmlTag.setAttribute('lang', 'fr');
+    htmlTag.setAttribute('dir', 'ltr');
+  } else {
+    currentLang = 'ar';
+    icon.textContent = 'FR';
+    htmlTag.setAttribute('lang', 'ar');
+    htmlTag.setAttribute('dir', 'rtl');
+  }
+};
 
 // ======================================================
 // التهيئة عند تحميل الصفحة
@@ -625,7 +712,18 @@ window.addEventListener('load', () => {
   if (!localStorage.getItem('restaurant_name')) {
     localStorage.setItem('restaurant_name', 'بوتيك الهدايا والبراندات الفاخرة');
   }
+
+  // --- تفعيل الوضع المظلم/الفاتح المحفوظ ---
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    const icon = document.getElementById('themeToggleIcon');
+    if(icon) icon.textContent = '🌙';
+  }
+
   loadCustomTheme();
+  loadCachedBestSellers();
+  loadDisplayPreferences();
   initShippingRates();
   applyRestaurantName();
   showGateway();
@@ -964,11 +1062,37 @@ async function fetchMenu(isAdmin = false) {
 function renderCustomerMenu() {
   const boxes      = menuItems.filter(i => i.category === 'box');
   const readyBoxes = menuItems.filter(i => i.category === 'ready');
-  const products   = menuItems.filter(i => i.category !== 'box' && i.category !== 'ready');
+  let products   = menuItems.filter(i => i.category !== 'box' && i.category !== 'ready');
 
-  document.getElementById('boxesGrid').innerHTML     = boxes.length      ? boxes.map(p => getCardHtml(p, true)).join('')  : '<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر علب حالياً.</p>';
-  document.getElementById('readyBoxesGrid').innerHTML = readyBoxes.length ? readyBoxes.map(p => getCardHtml(p, false)).join('') : '<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر بوكسات هدايا جاهزة حالياً.</p>';
-  document.getElementById('menuGrid').innerHTML       = products.length   ? products.map(p => getCardHtml(p, false)).join('') : '<p style="color:var(--muted); padding:10px; font-size:12px;">لا تتوفر منتجات حالياً.</p>';
+  // الفلترة والترتيب (فقط على قسم المنتجات)
+  const searchEl = document.getElementById('filterSearch');
+  const catEl    = document.getElementById('filterCategory');
+  const sortEl   = document.getElementById('filterSort');
+
+  if (searchEl && searchEl.value.trim()) {
+    const q = searchEl.value.trim().toLowerCase();
+    products = products.filter(p => (p.name || '').toLowerCase().includes(q) || (p.desc || '').toLowerCase().includes(q));
+  }
+  if (catEl && catEl.value) {
+    products = products.filter(p => p.category === catEl.value);
+  }
+  if (sortEl) {
+    const sortBy = sortEl.value;
+    if (sortBy === 'priceAsc') products = [...products].sort((a, b) => a.price - b.price);
+    else if (sortBy === 'priceDesc') products = [...products].sort((a, b) => b.price - a.price);
+    else if (sortBy === 'rating') products = [...products].sort((a, b) => {
+      const avg = p => (p.reviews && p.reviews.length) ? p.reviews.reduce((s, r) => s + r.stars, 0) / p.reviews.length : 0;
+      return avg(b) - avg(a);
+    });
+    else if (sortBy === 'bestseller') products = [...products].sort((a, b) => {
+      const score = p => bestSellerIds.has(p.id) ? 1 : 0;
+      return score(b) - score(a);
+    });
+  }
+
+  document.getElementById('boxesGrid').innerHTML     = boxes.length      ? boxes.map(p => getCardHtml(p, true)).join('')  : `<p style="color:var(--muted); padding:10px; font-size:12px;" data-i18n="no_boxes">لا تتوفر علب حالياً.</p>`;
+  document.getElementById('readyBoxesGrid').innerHTML = readyBoxes.length ? readyBoxes.map(p => getCardHtml(p, false)).join('') : `<p style="color:var(--muted); padding:10px; font-size:12px;" data-i18n="no_ready">لا تتوفر بوكسات هدايا جاهزة حالياً.</p>`;
+  document.getElementById('menuGrid').innerHTML       = products.length   ? products.map(p => getCardHtml(p, false)).join('') : `<p style="color:var(--muted); padding:10px; font-size:12px;" data-i18n="no_products">لا تتوفر منتجات مطابقة لبحثك.</p>`;
 }
 
 function getCardHtml(p, isBoxCard) {
@@ -976,10 +1100,12 @@ function getCardHtml(p, isBoxCard) {
   const avg = reviews.length
     ? (reviews.reduce((s, r) => s + r.stars, 0) / reviews.length).toFixed(1)
     : "5.0";
+  const isBest = bestSellerIds.has(p.id);
   return `
   <div class="menu-card">
     ${p.img ? `<img src="${esc(p.img)}" loading="lazy">` : `<div class="img-placeholder">🎁</div>`}
     <div class="card-body">
+      ${isBest ? `<span class="card-badge badge-best">🔥 الأكثر طلباً</span>` : ''}
       <div class="card-name">${esc(p.name)}</div>
       <div class="stars-display">★ ${avg} <span>(${reviews.length})</span></div>
       <div class="card-price">${p.price} دج</div>
@@ -1264,6 +1390,7 @@ window.checkMyOrderStatus = async () => {
       let txt = "⏳ قيد المراجعة والفرز الأول";
       if (o.status === 'preparing') txt = "🎀 هديتك قيد التنسيق والتغليف الفاخر الآن";
       if (o.status === 'done')      txt = "🚚 خرجت مع الموزع / تم التسليم!";
+      if (o.status === 'cancelled') txt = "❌ تم إلغاء هذا الطلب.";
       document.getElementById('trackStatusText').textContent = txt;
     } else {
       document.getElementById('trackStatusText').textContent = "⚠️ لم يتم العثور على الطلب.";
@@ -1276,6 +1403,39 @@ window.checkMyOrderStatus = async () => {
 // ======================================================
 // الطلبات — لوحة الإدارة
 // ======================================================
+function orderStatusLabel(status) {
+  switch (status) {
+    case 'pending':   return '⏳ قيد الانتظار';
+    case 'preparing': return '🎀 قيد التغليف';
+    case 'done':      return '🚚 تم التوصيل';
+    case 'cancelled': return '❌ ملغى';
+    default:          return esc(status);
+  }
+}
+
+// ======================================================
+// الأكثر طلباً — حساب من تاريخ الطلبات
+// ======================================================
+function computeBestSellers() {
+  const counts = {};
+  ordersList.forEach(o => {
+    (o.items || []).forEach(it => {
+      const match = menuItems.find(m => m.name === it.name);
+      if (match) counts[match.id] = (counts[match.id] || 0) + (it.qty || 1);
+    });
+  });
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 5).map(e => e[0]);
+  bestSellerIds = new Set(sorted);
+  try { localStorage.setItem('gift_bestsellers', JSON.stringify(sorted)); } catch (e) {}
+}
+
+function loadCachedBestSellers() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('gift_bestsellers') || '[]');
+    bestSellerIds = new Set(saved);
+  } catch (e) { bestSellerIds = new Set(); }
+}
+
 async function fetchOrders() {
   try {
     ordersList = await apiRequest(ORDERS_BIN_ID, 'GET');
@@ -1287,6 +1447,7 @@ async function fetchOrders() {
       toast('🔔 تنبيه: تم استقبال طلبية جديدة الآن!');
     }
     lastOrdersCount = ordersList.length;
+    computeBestSellers();
     renderAdminOrders();
     processAdvancedStats();
   } catch (e) {
@@ -1304,7 +1465,7 @@ function renderAdminOrders() {
     <div class="order-card">
       <div class="order-header">
         <strong>الطلب: ${esc(o.id)}</strong>
-        <span>${esc(o.status)}</span>
+        <span style="font-weight:700; color:${o.status==='done'?'var(--green)':o.status==='cancelled'?'var(--red)':'var(--gold)'};">${orderStatusLabel(o.status)}</span>
       </div>
       <div style="font-size:12px; margin-bottom:8px; line-height:1.5;">
         <p>👤 العميل: ${esc(o.customerName)} (${esc(o.customerPhone)})</p>
@@ -1313,11 +1474,15 @@ function renderAdminOrders() {
       <div style="background:var(--surface); padding:8px; border-radius:6px; margin-bottom:8px; font-size:11px;">
         ${o.items ? o.items.map(i => `<div>• ${esc(i.name)} × ${i.qty}</div>`).join('') : ''}
       </div>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
         <span style="font-weight:bold; color:var(--gold); font-size:13px;">${o.total} دج</span>
-        <div style="display:flex; gap:4px;">
-          <button class="btn btn-green btn-sm" onclick="changeOrderStatus('${o.id}', 'preparing')">🎀 غلّف</button>
-          <button class="btn btn-gold btn-sm" onclick="changeOrderStatus('${o.id}', 'done')">🚚 وصّل</button>
+        <div style="display:flex; gap:4px; align-items:center;">
+          <select class="btn-sm" style="width:auto; padding:6px 8px; font-size:11px;" onchange="changeOrderStatus('${o.id}', this.value)">
+            <option value="pending" ${o.status==='pending'?'selected':''}>⏳ قيد الانتظار</option>
+            <option value="preparing" ${o.status==='preparing'?'selected':''}>🎀 قيد التغليف</option>
+            <option value="done" ${o.status==='done'?'selected':''}>🚚 تم التوصيل</option>
+            <option value="cancelled" ${o.status==='cancelled'?'selected':''}>❌ ملغى</option>
+          </select>
           <button class="btn btn-red btn-sm" onclick="deleteOrder('${o.id}')">حذف</button>
         </div>
       </div>
@@ -1482,8 +1647,3 @@ function esc(str) {
 </script>
 </body>
 </html>
-HTMLEOF
-echo "Done: $?"
-Output
-
-Done: 0
