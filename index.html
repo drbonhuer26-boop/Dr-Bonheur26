@@ -47,7 +47,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* تم تعديل مكان الأزرار إلى الأسفل لتجنب التداخل مع شريط الإدارة */
     .top-controls {
       position: fixed; bottom: 80px; left: 15px; z-index: 500;
       display: flex; gap: 6px; flex-direction: column;
@@ -60,7 +59,6 @@
     }
     .top-controls button:hover { border-color: var(--gold); }
 
-    /* الفلترة والترتيب */
     .filter-bar {
       display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; align-items: center;
     }
@@ -70,7 +68,6 @@
     .filter-bar .filter-search { flex: 2; min-width: 140px; }
 
     .badge-best { background: var(--gold); color: var(--bg); }
-
     .hidden { display: none !important; }
 
     .btn {
@@ -113,17 +110,30 @@
     .gateway-title { font-size: 24px; color: var(--gold); font-weight: 900; margin: 20px 0 6px; }
     .gateway-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
 
-    .gateway-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; }
+    .gateway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
     @media (min-width: 480px) { .gateway-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; } }
 
     .gateway-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 20px 12px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; gap: 10px;
     }
-    .gateway-card:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+    .gateway-card:hover { border-color: var(--gold); box-shadow: var(--shadow); transform: translateY(-2px); }
     .gateway-card .icon { font-size: 36px; }
     .gateway-card h3 { color: var(--gold-light); font-size: 14px; font-weight: 700; }
     .gateway-card p { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+    /* زر الهدية المستطيل */
+    .gift-btn-rect {
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+      border: 2px solid var(--gold); border-radius: var(--radius);
+      padding: 18px 24px; cursor: pointer; transition: all 0.2s ease;
+      margin-bottom: 24px; font-family: inherit;
+    }
+    .gift-btn-rect:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.3); }
+    .gift-btn-rect .gift-icon { font-size: 32px; }
+    .gift-btn-rect .gift-text h3 { color: var(--bg); font-size: 16px; font-weight: 900; text-align: right; }
+    .gift-btn-rect .gift-text p { color: rgba(0,0,0,0.6); font-size: 11px; text-align: right; margin-top: 2px; }
 
     .pwa-install-banner {
       background: var(--surface); border: 1px solid var(--border); border-right: 4px solid var(--gold);
@@ -155,8 +165,6 @@
     .hero { background: linear-gradient(160deg, var(--gold-dim) 0%, var(--bg) 60%); border-bottom: 1px solid var(--border); padding: 24px 16px; text-align: center; }
     .hero h1 { font-size: 24px; font-weight: 900; color: var(--gold); }
     .hero p { font-size: 12px; color: var(--muted); margin-top: 4px; }
-    .hero .admin-link { margin-top: 10px; }
-    .hero .admin-link a { font-size: 11px; color: var(--border); cursor: pointer; text-decoration: underline; }
 
     .menu-section { max-width: 1100px; margin: 0 auto; padding: 20px 12px; }
     .menu-section h2 { font-size: 16px; font-weight: 900; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-align: right; }
@@ -193,6 +201,16 @@
     .cart-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); justify-content: space-between; text-align: right; }
     .qty-btn { width: 30px; height: 30px; border-radius: 50%; background: var(--card); border: 1px solid var(--border); color: var(--text); cursor: pointer; font-size: 16px; display: inline-flex; align-items: center; justify-content: center; }
     .cart-total-row { font-size: 15px; font-weight: 900; margin: 12px 0; color: var(--gold-light); text-align: left; }
+
+    /* Variations Styling */
+    .variant-scroll-box { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; margin: 14px 0; }
+    .variant-card { 
+      background: var(--card); border: 2px solid var(--border); border-radius: 8px; 
+      padding: 6px; min-width: 80px; text-align: center; cursor: pointer; transition: all 0.2s;
+    }
+    .variant-card.active { border-color: var(--gold); background: var(--surface); }
+    .variant-card img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; margin-bottom: 4px; }
+    .variant-card span { font-size: 11px; display: block; font-weight: 600; }
 
     .stars-selector { display: flex; gap: 8px; margin-bottom: 12px; font-size: 24px; cursor: pointer; color: var(--muted); justify-content: center; }
     .stars-selector .star.active { color: #f1c40f; }
@@ -252,10 +270,33 @@
     .color-field { background: var(--bg); border: 1px solid var(--border); padding: 8px; border-radius: 8px; display: flex; flex-direction: column; gap: 4px; align-items: center; }
     .color-field input[type="color"] { width: 36px; height: 36px; border: none; cursor: pointer; background: transparent; }
 
+    /* تبويبات أقسام الهدية */
+    .gift-tab-btn {
+      background: var(--card); border: 1px solid var(--border); color: var(--muted);
+      border-radius: 20px; padding: 7px 14px; font-size: 12px; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: all 0.2s;
+    }
+    .gift-tab-btn.active, .gift-tab-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+
+    /* modal الأصناف المحسّن */
+    .vm-vars-grid { 
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+      margin: 12px 0; max-height: 240px; overflow-y: auto; padding: 2px;
+    }
+    .variant-thumb {
+      background: var(--card); border: 2px solid var(--border); border-radius: 8px;
+      padding: 6px; text-align: center; cursor: pointer; transition: all 0.2s;
+    }
+    .variant-thumb.active { border-color: var(--gold); background: var(--surface); box-shadow: 0 0 8px rgba(201,168,76,0.3); }
+    .variant-thumb img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; margin-bottom: 4px; }
+    .variant-thumb .no-img { width: 100%; aspect-ratio: 1; background: var(--surface); border-radius: 6px; display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:4px; }
+    .variant-thumb span { font-size: 10px; display: block; font-weight: 600; line-height: 1.2; }
+
     .spinner { width: 28px; height: 28px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin .8s linear infinite; margin: 40px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
+    textarea { width:100%; background:var(--surface); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:inherit; font-size:13px; padding:10px; outline:none; transition:border-color 0.2s; }
+    textarea:focus { border-color: var(--gold); }
 
-    /* Security warning banner */
     .security-notice {
       background: rgba(192,57,43,0.15); border: 1px solid var(--red); border-radius: 8px;
       padding: 10px 14px; font-size: 11px; color: #e74c3c; text-align: right; margin-bottom: 14px;
@@ -278,26 +319,44 @@
     <button class="btn btn-gold btn-sm" id="btnPwaInstall">تثبيت</button>
   </div>
 
-  <h1 class="gateway-title">مرحباً بك في عالم الهدايا</h1>
-  <p class="gateway-subtitle">اختر الطريقة التي تفضلها لتنسيق هديتك المثالية</p>
+  <h1 class="gateway-title">مرحباً بك في متجرنا</h1>
+  <p class="gateway-subtitle">اختر القسم الذي تود تصفحه أو ابدأ بتنسيق هديتك الخاصة</p>
 
   <div class="gateway-grid">
-    <div class="gateway-card" onclick="startShopping('box')">
-      <div class="icon">📦</div>
-      <h3>علبة مخصصة</h3>
-      <p>ابدأ باختيار علبة التغليف أولاً ثم املأها بقطع الهدايا خطوة بخطوة.</p>
+    <div class="gateway-card" onclick="startShopping('cosmetics')">
+      <div class="icon">💄</div>
+      <h3>مواد التجميل</h3>
     </div>
-    <div class="gateway-card" onclick="startShopping('ready')">
-      <div class="icon">🎁</div>
-      <h3>بوكس جاهز</h3>
-      <p>تصفح واقتنِ علب هدايا فاخرة منسقة وجاهزة بالكامل للشراء الفوري.</p>
+    <div class="gateway-card" onclick="startShopping('sweets')">
+      <div class="icon">🍬</div>
+      <h3>حلويات</h3>
     </div>
-    <div class="gateway-card" onclick="startShopping('direct')">
-      <div class="icon">🛍️</div>
-      <h3>شراء مباشر</h3>
-      <p>تصفح الكتالوج واشترِ عطوراً، وروداً أو هدايا بشكل منفرد ومباشر.</p>
+    <div class="gateway-card" onclick="startShopping('devices')">
+      <div class="icon">💇‍♀️</div>
+      <h3>أجهزة العناية بالشعر</h3>
+    </div>
+    <div class="gateway-card" onclick="startShopping('perfumes')">
+      <div class="icon">✨</div>
+      <h3>عطور</h3>
+    </div>
+    <div class="gateway-card" onclick="startShopping('wash')">
+      <div class="icon">🛁</div>
+      <h3>غسول شعر وجسم</h3>
+    </div>
+    <div class="gateway-card" onclick="startShopping('other')">
+      <div class="icon">✏️</div>
+      <h3>منتجات متنوعة</h3>
+      <p>تصفح منتجات إضافية متنوعة</p>
     </div>
   </div>
+  <button class="btn btn-dark btn-sm" onclick="openOtherRequestModal()" style="width:auto; margin:8px auto 0; display:flex;">📝 لم تجد ما تريد؟ اطلب طلب خاص</button>
+  <button class="gift-btn-rect" onclick="startShopping('gift')">
+    <div class="gift-icon">🎁</div>
+    <div class="gift-text">
+      <h3>تنسيق هدية خاصة</h3>
+      <p>اختر العلبة أولاً، ثم أضف المحتويات من كافة الأقسام</p>
+    </div>
+  </button>
   <button class="btn btn-dark btn-sm" onclick="showLogin()" style="width:auto; margin:0 auto; display:block;">🔐 دخول الإدارة</button>
 </div>
 
@@ -317,19 +376,18 @@
 
 <div id="customerView" class="hidden">
   <div class="hero">
-    <p class="tagline" id="backToGatewayBtn" style="cursor:pointer; color:var(--gold); font-size:12px;" onclick="showGateway()">← تغيير طريقة التسوق</p>
+    <p class="tagline" id="backToGatewayBtn" style="cursor:pointer; color:var(--gold); font-size:12px;" onclick="showGateway()">← العودة للأقسام</p>
     <h1 id="heroRestName" style="margin-top:4px;">متجرنا الفاخر للهدايا</h1>
-    <p>تنسيق أرقى البراندات، العطور والورود لصنع أجمل الذكريات</p>
 
-    <div class="progress-wizard" id="wizardProgress">
+    <div class="progress-wizard hidden" id="wizardProgress">
       <div class="wizard-line-fill" id="wizardLineFill"></div>
       <div class="wizard-step" id="wStep1">
         <div class="wizard-node">1</div>
-        <div class="wizard-label">العلبة الفاخرة</div>
+        <div class="wizard-label">العلبة</div>
       </div>
       <div class="wizard-step" id="wStep2">
         <div class="wizard-node">2</div>
-        <div class="wizard-label">محتويات الهدية</div>
+        <div class="wizard-label">المحتويات</div>
       </div>
       <div class="wizard-step" id="wStep3">
         <div class="wizard-node">3</div>
@@ -351,27 +409,28 @@
     <div id="boxesGrid" class="menu-grid"></div>
   </div>
 
-  <div class="menu-section" id="readyBoxesSection">
-    <h2 id="readyBoxesSectionTitle">علب الهدايا المنسقة والجاهزة</h2>
-    <div id="readyBoxesGrid" class="menu-grid"></div>
+  <!-- تبويبات الأقسام في وضع الهدية -->
+  <div id="giftCategoryTabs" class="hidden" style="max-width:1100px; margin:0 auto; padding: 0 12px 12px;">
+    <div style="display:flex; gap:8px; flex-wrap:wrap; border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom:4px;">
+      <button class="gift-tab-btn active" onclick="filterGiftCategory('all', this)">🛍️ الكل</button>
+      <button class="gift-tab-btn" onclick="filterGiftCategory('cosmetics', this)">💄 تجميل</button>
+      <button class="gift-tab-btn" onclick="filterGiftCategory('sweets', this)">🍬 حلويات</button>
+      <button class="gift-tab-btn" onclick="filterGiftCategory('devices', this)">💇‍♀️ أجهزة</button>
+      <button class="gift-tab-btn" onclick="filterGiftCategory('perfumes', this)">✨ عطور</button>
+      <button class="gift-tab-btn" onclick="filterGiftCategory('wash', this)">🛁 غسول</button>
+      <button class="gift-tab-btn" onclick="filterGiftCategory('other', this)">✏️ متنوع</button>
+    </div>
   </div>
 
   <div class="menu-section" id="productsSection">
-    <h2 id="productsSectionTitle">محتويات الهدية والبراندات</h2>
-    <div class="filter-bar">
-      <input type="text" id="filterSearch" class="filter-search" placeholder="🔍 بحث عن منتج..." oninput="renderCustomerMenu()" data-i18n-placeholder="search_placeholder"/>
-      <select id="filterCategory" onchange="renderCustomerMenu()">
-        <option value="">📂 كل التصنيفات</option>
-        <option value="flower">💐 ورود وتنسيقات</option>
-        <option value="cosmetics">💄 عطور ومستحضرات</option>
-        <option value="luxury">🍫 شوكولاتة وإكسسوارات</option>
-      </select>
+    <h2 id="productsSectionTitle">تصفح المنتجات</h2>
+    <div class="filter-bar" id="productsFilterBar">
+      <input type="text" id="filterSearch" class="filter-search" placeholder="🔍 بحث عن منتج..." oninput="renderCustomerMenu()"/>
       <select id="filterSort" onchange="renderCustomerMenu()">
         <option value="default">↕️ الترتيب الافتراضي</option>
         <option value="bestseller">🔥 الأكثر طلباً</option>
         <option value="priceAsc">⬆️ السعر: من الأقل</option>
         <option value="priceDesc">⬇️ السعر: من الأعلى</option>
-        <option value="rating">⭐ الأعلى تقييماً</option>
       </select>
     </div>
     <div id="menuGrid" class="menu-grid"><div class="spinner"></div></div>
@@ -386,6 +445,73 @@
   </div>
 </div>
 
+<div id="otherRequestModal" class="modal-overlay hidden">
+  <div class="modal" style="max-width:420px;">
+    <span class="close-btn" onclick="document.getElementById('otherRequestModal').classList.add('hidden')">✕</span>
+    <h3 style="text-align:center; margin-bottom:4px;">✏️ طلب خاص</h3>
+    <p style="font-size:12px; color:var(--muted); text-align:center; margin-bottom:16px;">اكتب ما تريده بالتفصيل وسنتواصل معك لتأكيد الطلب</p>
+    <div class="field"><label>الاسم الكامل</label><input type="text" id="otherName"/></div>
+    <div class="field"><label>رقم الهاتف</label><input type="tel" id="otherPhone"/></div>
+    <div class="field">
+      <label>تفاصيل طلبك</label>
+      <textarea id="otherDetails" rows="4" placeholder="اكتب ما تريده بالتفصيل... (نوع المنتج، اللون، الكمية، أي تفصيل آخر)" style="resize:vertical; min-height:100px;"></textarea>
+    </div>
+    <button class="btn btn-gold" onclick="submitOtherRequest()">📨 إرسال الطلب</button>
+  </div>
+</div>
+
+<div id="editProductModal" class="modal-overlay hidden">
+  <div class="modal" style="max-width:500px;">
+    <span class="close-btn" onclick="closeEditModal()">✕</span>
+    <h3 style="margin-bottom:14px; color:var(--gold);">✏️ تعديل المنتج</h3>
+
+    <div class="form-row">
+      <div class="field"><label>اسم المنتج</label><input type="text" id="editName"/></div>
+      <div class="field"><label>السعر (دج)</label><input type="number" id="editPrice"/></div>
+    </div>
+    <div class="field">
+      <label>القسم</label>
+      <select id="editCategory">
+        <option value="box">📦 علبة هدايا</option>
+        <option value="cosmetics">💄 مواد التجميل</option>
+        <option value="sweets">🍬 حلويات</option>
+        <option value="devices">💇‍♀️ أجهزة العناية بالشعر</option>
+        <option value="perfumes">✨ عطور</option>
+        <option value="wash">🛁 غسول شعر وغسول الجسم</option>
+        <option value="other">✏️ شيء آخر / أقسام متنوعة</option>
+      </select>
+    </div>
+
+    <div style="background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <label style="color:var(--gold); font-weight:bold; font-size:13px;">🌟 الأصناف</label>
+        <button type="button" class="btn btn-dark btn-sm" onclick="addEditVariation()">+ صنف جديد</button>
+      </div>
+      <div id="editVariationsList"></div>
+    </div>
+
+    <button class="btn btn-gold" id="editSaveBtn" onclick="saveEditProduct()">💾 حفظ التعديلات</button>
+  </div>
+</div>
+
+<div id="variantModal" class="modal-overlay hidden">
+  <div class="modal" style="max-width: 420px; text-align: center;">
+    <span class="close-btn" onclick="closeVariantModal()">✕</span>
+    <h3 id="vmName" style="text-align: center; margin-bottom: 8px;"></h3>
+    <img id="vmMainImg" src="" style="width:100%; height:200px; object-fit:cover; border-radius:8px; background:var(--surface);">
+    <div id="vmPrice" style="color:var(--gold); font-weight:900; font-size: 18px; margin:8px 0;"></div>
+    
+    <div style="text-align: right; margin-top: 10px;">
+      <label style="color:var(--gold-light); font-weight:bold; font-size:13px;">اختر الصنف المطلوب:</label>
+      <div id="vmVars" class="vm-vars-grid"></div>
+    </div>
+    
+    <div id="vmOtherBlock" class="hidden"></div>
+    
+    <button class="btn btn-gold" id="btnAddToCartVariant" onclick="confirmAddVariantToCart()">أضف للسلة</button>
+  </div>
+</div>
+
 <div id="cartModal" class="modal-overlay hidden">
   <div class="modal">
     <span class="close-btn" onclick="closeCartModal()">✕</span>
@@ -394,7 +520,7 @@
 
     <div style="margin-top:12px; background:var(--card); padding:10px; border-radius:8px; border:1px solid var(--border)">
       <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:13px;">
-        <span>مجموع الهدايا:</span> <span id="modalSubtotal">0</span> دج
+        <span>مجموع المنتجات:</span> <span id="modalSubtotal">0</span> دج
       </div>
       <div style="display:flex; justify-content:space-between; margin-bottom:4px; color:var(--gold); font-size:13px;">
         <span>سعر الشحن:</span> <span id="modalShippingFee">0</span> دج
@@ -405,9 +531,19 @@
     </div>
 
     <div class="order-form" style="margin-top:14px;">
-      <div class="field"><label>الاسم الكامل للمستلم</label><input type="text" id="custName"/></div>
-      <div class="field"><label>رقم هاتف الاتصال</label><input type="tel" id="custPhone"/></div>
+      <div class="field"><label>الاسم الكامل</label><input type="text" id="custName"/></div>
+      <div class="field"><label>رقم الهاتف</label><input type="tel" id="custPhone"/></div>
 
+      <div class="field">
+        <label>نوع التوصيل</label>
+        <select id="custDeliveryType" onchange="onDeliveryTypeChange()">
+          <option value="home">🏠 توصيل للمنزل</option>
+          <option value="office">📦 استلام من مكتب البريد</option>
+          <option value="store">🏪 الاستلام من المتجر مباشرة (بدون توصيل)</option>
+        </select>
+      </div>
+
+      <div id="shippingAddressBlock">
       <div class="form-row">
         <div class="field">
           <label>الولاية</label>
@@ -422,18 +558,17 @@
         <label>البلدية</label>
         <select id="custCommune"><option value="">اختر الدائرة أولاً</option></select>
       </div>
-
-      <div class="field">
-        <label>نوع التوصيل</label>
-        <select id="custDeliveryType" onchange="calculateTotalShipping()">
-          <option value="home">🏠 توصيل للمنزل (بوابة المنزل)</option>
-          <option value="office">📦 استلام من مكتب شركة الشحن</option>
-        </select>
       </div>
 
-      <div class="field"><label>رسالة إهداء ترفق مع العلبة (اختياري)</label><textarea id="custGiftMsg" rows="2" placeholder="اكتب هنا الرسالة التي تطلب طباعتها..."></textarea></div>
+      <div id="storePickupBlock" class="hidden" style="background:var(--card); border:1px solid var(--gold-dim); border-radius:8px; padding:12px; text-align:center; margin-bottom:12px;">
+        <div style="font-size:24px; margin-bottom:6px;">🏪</div>
+        <div style="font-weight:700; color:var(--gold-light);">ستستلم طلبك مباشرة من المتجر</div>
+        <div style="font-size:11px; color:var(--muted); margin-top:4px;">سنتواصل معك لتحديد موعد الاستلام</div>
+      </div>
 
-      <button class="btn btn-gold" onclick="submitOrder()">✅ إرسال الطلب لقسم التغليف</button>
+      <div class="field"><label>ملاحظة للطلب أو رسالة إهداء</label><textarea id="custGiftMsg" rows="2" placeholder="ملاحظات إضافية..."></textarea></div>
+
+      <button class="btn btn-gold" onclick="submitOrder()">✅ تأكيد وإرسال الطلب</button>
     </div>
   </div>
 </div>
@@ -443,7 +578,6 @@
     <span class="close-btn" onclick="closeReviewsModal()">✕</span>
     <h3 id="reviewsModalTitle">آراء المقتنين</h3>
     <div style="background:var(--card); padding:12px; border-radius:8px; border:1px solid var(--border);">
-      <h4 style="font-size:12px; margin-bottom:8px; text-align:right;">أضف تقييمك وتجربتك:</h4>
       <div class="stars-selector" id="starsSelector">
         <span class="star" onclick="setSelectStars(1)">★</span>
         <span class="star" onclick="setSelectStars(2)">★</span>
@@ -452,7 +586,7 @@
         <span class="star" onclick="setSelectStars(5)">★</span>
       </div>
       <div class="field" style="margin-bottom:8px;"><input type="text" id="revUser" placeholder="الاسم الكريم" style="padding:8px 12px; font-size:13px;"/></div>
-      <div class="field" style="margin-bottom:8px;"><textarea id="revText" rows="2" placeholder="ما رأيك بجودة المنتج والتغليف؟" style="padding:8px 12px; font-size:13px;"></textarea></div>
+      <div class="field" style="margin-bottom:8px;"><textarea id="revText" rows="2" placeholder="ما رأيك بالمنتج؟" style="padding:8px 12px; font-size:13px;"></textarea></div>
       <button class="btn btn-gold btn-sm" onclick="submitReview()">إرسال التقييم</button>
     </div>
     <div class="comments-list" id="commentsListContainer"></div>
@@ -461,7 +595,7 @@
 
 <div id="adminView" class="hidden">
   <nav class="admin-nav">
-    <div class="brand">👑 لوحة التحكم والمبيعات</div>
+    <div class="brand">👑 لوحة التحكم</div>
     <div class="nav-tabs">
       <button class="nav-tab active" onclick="showTab('tabMenu', this)">🎁 الكتالوج</button>
       <button class="nav-tab" onclick="showTab('tabOrders', this)">📋 الطلبات</button>
@@ -473,52 +607,71 @@
   <div class="admin-body">
     <div id="tabMenu">
       <div class="add-product-form">
-        <h3 style="font-size:14px; margin-bottom:12px;">➕ إضافة عنصر جديد للكتالوج</h3>
+        <h3 style="font-size:14px; margin-bottom:12px;">➕ إضافة منتج جديد</h3>
         <div class="form-row">
           <div class="field"><label>اسم المنتج</label><input type="text" id="pName"/></div>
           <div class="field"><label>السعر (دج)</label><input type="number" id="pPrice"/></div>
         </div>
         <div class="form-row">
           <div class="field">
-            <label>تصنيف العنصر</label>
+            <label>القسم</label>
             <select id="pCategory">
-              <option value="ready">🎁 بوكس هدايا جاهز ومتكامل (Ready Box)</option>
-              <option value="box">📦 علبة هدايا وتغليف فاخر فارغ (Box)</option>
-              <option value="flower">💐 ورود طبيعية وتنسيقات حية</option>
-              <option value="cosmetics">💄 مستحضرات تجميل وعطور عالمية</option>
-              <option value="luxury">🍫 شوكولاتة فاخرة وإكسسوارات</option>
+              <option value="box">📦 علبة هدايا (للهدايا فقط)</option>
+              <option value="cosmetics">💄 مواد التجميل</option>
+              <option value="sweets">🍬 حلويات</option>
+              <option value="devices">💇‍♀️ أجهزة العناية بالشعر</option>
+              <option value="perfumes">✨ عطور</option>
+              <option value="wash">🛁 غسول شعر وغسول الجسم</option>
+              <option value="other">✏️ شيء آخر / أقسام متنوعة</option>
             </select>
           </div>
           <div class="field">
-            <label>صورة المنتج</label>
+            <label>الصورة الرئيسية للمنتج</label>
             <div class="file-input-wrapper">
               <label for="pImgFile" class="file-input-btn" id="fileLabelText" style="background:var(--bg); border:1px dashed var(--border); padding:10px; display:block; border-radius:8px; text-align:center; font-size:12px; color:var(--muted); cursor:pointer;">اختر صورة للمنتج</label>
-              <input type="file" id="pImgFile" accept="image/*" style="display:none;" onchange="handleFileSelect(event)"/>
+              <input type="file" id="pImgFile" accept="image/*" style="display:none;" onchange="handleMainFileSelect(event)"/>
             </div>
           </div>
         </div>
-        <div class="field"><label>الوصف بدقة</label><input type="text" id="pDesc"/></div>
-        <button class="btn btn-gold" onclick="addProduct()">➕ حفظ في المتجر</button>
+        
+        <!-- الأصناف الفرعية -->
+        <div style="background:var(--bg); padding:12px; border-radius:8px; border:1px solid var(--border); margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div>
+              <label style="color:var(--gold); font-weight:bold;">🌟 الأصناف (ألوان / روائح / نكهات...)</label>
+              <p style="font-size:11px; color:var(--muted); margin-top:3px;">الصنف الأول يُضاف تلقائياً مع اسم المنتج. أضف المزيد إن وُجد.</p>
+            </div>
+            <button type="button" class="btn btn-dark btn-sm" onclick="addAdminVariation()" style="white-space:nowrap;">+ صنف جديد</button>
+          </div>
+
+          <!-- الصنف الأول (مدمج دائماً) -->
+          <div style="background:var(--surface); border:1px solid var(--gold-dim); border-radius:8px; padding:10px; margin-bottom:8px;">
+            <div style="font-size:11px; color:var(--gold); font-weight:bold; margin-bottom:6px;">📌 الصنف الأول (إلزامي)</div>
+            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+              <input type="text" id="var0Name" placeholder="اسم الصنف" style="flex:2; min-width:100px; padding:8px; font-size:12px;">
+              <input type="number" id="var0Price" placeholder="السعر (دج)" style="flex:1; min-width:80px; padding:8px; font-size:12px;">
+              <div style="flex:1; min-width:60px; display:flex; align-items:center; justify-content:center; border:1px dashed var(--border); border-radius:6px; cursor:pointer; height:38px; overflow:hidden;" onclick="document.getElementById('varFile0').click()" id="var0ImgPreview">
+                <span style="font-size:10px; color:var(--muted);" id="var0ImgLabel">صورة</span>
+              </div>
+              <input type="file" id="varFile0" accept="image/*" style="display:none;" onchange="handleFirstVarImage(event)">
+            </div>
+          </div>
+
+          <!-- الأصناف الإضافية -->
+          <div id="adminVariationsList"></div>
+        </div>
+
+        <button class="btn btn-gold" onclick="addProduct()" style="margin-top:4px;">➕ حفظ المنتج</button>
       </div>
       <div id="adminProductsList"><div class="spinner"></div></div>
     </div>
 
     <div id="tabOrders" class="hidden">
       <div class="stats-row">
-        <div class="stat-card active-day">
-          <div style="font-size:11px; color:var(--muted)">💰 أرباح اليوم</div>
-          <div class="stat-value" id="statTodayPrice">0<span> دج</span></div>
-        </div>
-        <div class="stat-card">
-          <div style="font-size:11px; color:var(--muted)">📅 الأسبوع الحالي</div>
-          <div class="stat-value" id="statWeekPrice">0<span> دج</span></div>
-        </div>
-        <div class="stat-card">
-          <div style="font-size:11px; color:var(--muted)">📊 الشهر الحالي</div>
-          <div class="stat-value" id="statMonthPrice">0<span> دج</span></div>
-        </div>
+        <div class="stat-card active-day"><div style="font-size:11px; color:var(--muted)">💰 أرباح اليوم</div><div class="stat-value" id="statTodayPrice">0<span> دج</span></div></div>
+        <div class="stat-card"><div style="font-size:11px; color:var(--muted)">📅 الأسبوع الحالي</div><div class="stat-value" id="statWeekPrice">0<span> دج</span></div></div>
+        <div class="stat-card"><div style="font-size:11px; color:var(--muted)">📊 الشهر الحالي</div><div class="stat-value" id="statMonthPrice">0<span> دج</span></div></div>
       </div>
-
       <div class="report-grid">
         <div class="report-box"><h3>📅 أيام الأسبوع</h3><div id="daysReportContainer"></div></div>
         <div class="report-box"><h3>🗂️ أسابيع الشهر</h3><div id="weeksReportContainer"></div></div>
@@ -526,9 +679,10 @@
       </div>
 
       <div>
-        <h2 style="font-size:14px; margin-bottom:12px;">
+        <h2 style="font-size:14px; margin-bottom:12px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           📋 كشف طلبات الزبائن الواردة
-          <button class="btn btn-dark btn-sm" onclick="fetchOrders()" style="display:inline-flex; padding:4px 8px; font-size:11px;">🔄 تحديث</button>
+          <button class="btn btn-dark btn-sm" onclick="fetchOrders()" style="padding:4px 8px; font-size:11px;">🔄 تحديث</button>
+          <button class="btn btn-red btn-sm" onclick="clearAllOrders()" style="padding:4px 8px; font-size:11px;">🗑️ محو كل الطلبات</button>
         </h2>
       </div>
       <div id="ordersList" class="orders-grid"><div class="spinner"></div></div>
@@ -547,22 +701,12 @@
           <button class="btn btn-gold" onclick="saveCustomTheme()">💾 حفظ وتثبيت الثيم</button>
           <button class="btn btn-dark btn-sm" onclick="resetThemeToDefault()" style="margin-top:8px; font-size:11px; padding:6px;">🔄 الافتراضي</button>
         </div>
-
         <div class="add-product-form">
           <h3 style="font-size:14px; margin-bottom:6px;">🏨 إعدادات الاسم التجاري</h3>
-          <div class="field"><label>اسم بوتيك الهدايا</label><input type="text" id="settingRestName"/></div>
+          <div class="field"><label>اسم المتجر</label><input type="text" id="settingRestName"/></div>
           <button class="btn btn-gold" onclick="updateRestaurantName()">تحديث الهوية</button>
         </div>
       </div>
-
-      <div class="add-product-form">
-        <h3 style="font-size:14px; margin-bottom:6px;">🔐 تعديل كلمة مرور لوحة الإدارة</h3>
-        <div class="security-notice">⚠️ تنبيه: كلمة السر محفوظة محلياً فقط في هذا المتصفح. لا تشاركها مع أحد.</div>
-        <div class="field"><label>كلمة المرور الحالية</label><input type="password" id="currentPw"/></div>
-        <div class="field"><label>كلمة المرور الجديدة</label><input type="password" id="newPw"/></div>
-        <button class="btn btn-gold" onclick="updatePassword()">تحديث كلمة السر</button>
-      </div>
-
       <div class="add-product-form">
         <h3 style="font-size:14px; margin-bottom:6px;">🚚 أسعار شحن الولايات الجزائرية (دج)</h3>
         <div class="shipping-rates-manager" id="shippingRatesManagerContainer"></div>
@@ -577,183 +721,943 @@
 
 <script>
 // ======================================================
-// ⚠️  تحذير أمني: مفتاح API مكشوف في الكود الأمامي.
-// للحماية الكاملة، انقل طلبات JSONbin إلى proxy خلفي
-// مثل Netlify Functions أو Cloudflare Workers.
+// إعدادات الـ API والبيانات
 // ======================================================
 const X_MASTER_KEY  = "$2a$10$NyQ2kvSc9YQOZdfBk34rwupQ7JC1q0NWCudoNS3RceulDVMjrjwFi";
 const MENU_BIN_ID   = "6a2ac33fda38895dfeadef1f";
 const ORDERS_BIN_ID = "6a2ac8e1da38895dfeae1c47";
 
+// ضغط الصور - حجم صغير جداً لتجنب تجاوز حد الـ API (100KB)
+function compressImage(file, callback, maxPx = 300, quality = 0.45) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      let w = img.width, h = img.height;
+      if (w > h && w > maxPx) { h = Math.round(h * maxPx / w); w = maxPx; }
+      else if (h > maxPx) { w = Math.round(w * maxPx / h); h = maxPx; }
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      callback(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 // ===================================================================
-// بيانات الجغرافيا الجزائرية — 58 ولاية كاملة مع الدوائر والبلديات
+// بيانات الولايات الـ 58 الجزائرية الكاملة بدوائرها وبلدياتها
 // ===================================================================
 const ALGERIA_GEOGRAPHY = {
-  "01": { name: "01 - أدرار", dairas: { "أدرار": ["أدرار", "بودا", "أولف", "تيميمون", "رقان"], "فنوغيل": ["فنوغيل", "تامست", "تيميمون الجديدة"], "تيمياوين": ["تيميمون", "أوقروت"] } },
-  "02": { name: "02 - الشلف", dairas: { "الشلف": ["الشلف", "سنجاس", "بنايرية"], "تنس": ["تنس", "سيدي عكاشة", "المرسى"], "أم الدروع": ["أم الدروع"], "الهرنفة": ["الهرنفة"], "بريرة": ["بريرة"], "بوقدير": ["بوقدير"], "وادي فضة": ["وادي فضة"] } },
-  "03": { name: "03 - الأغواط", dairas: { "الأغواط": ["الأغواط", "قصر الحيران", "سيدي بوزيد"], "آفلو": ["آفلو", "سبقاق"], "حاسي الرمل": ["حاسي الرمل"], "الغيشة": ["الغيشة"], "برج بوناعمة": ["برج بوناعمة"], "عين ماضي": ["عين ماضي"], "قلتة سيدي سعد": ["قلتة سيدي سعد"] } },
-  "04": { name: "04 - أم البواقي", dairas: { "أم البواقي": ["أم البواقي", "بن جرة", "بريش"], "عين البيضاء": ["عين البيضاء", "عين الزيتون"], "عين مليلة": ["عين مليلة", "فكيرينة"], "سيقوس": ["سيقوس"], "عين فكرون": ["عين فكرون"], "قصيبة": ["قصيبة"] } },
-  "05": { name: "05 - باتنة", dairas: { "باتنة": ["باتنة", "فيسديس", "عيون العصافير"], "أريس": ["أريس", "مداوروش"], "عين توتة": ["عين توتة"], "تيمقاد": ["تيمقاد"], "بريكة": ["بريكة"], "مروانة": ["مروانة"], "ثنية العابد": ["ثنية العابد"], "رأس العيون": ["رأس العيون"], "سريانة": ["سريانة"] } },
-  "06": { name: "06 - بجاية", dairas: { "بجاية": ["بجاية", "أوقاس", "تيشي", "تيفرة"], "أقبو": ["أقبو", "صدوق"], "خرطة": ["خرطة"], "سيدي عيش": ["سيدي عيش"], "الفنايرة": ["الفنايرة"], "أميزور": ["أميزور"], "شميني": ["شميني"], "ئيغيل علي": ["ئيغيل علي"] } },
-  "07": { name: "07 - بسكرة", dairas: { "بسكرة": ["بسكرة", "الحاجب", "لوطاية"], "أولاد جلال": ["أولاد جلال", "البسباس"], "سيدي عقبة": ["سيدي عقبة"], "طولقة": ["طولقة"], "زريبة الوادي": ["زريبة الوادي"], "برانيس": ["برانيس"], "مشونش": ["مشونش"] } },
-  "08": { name: "08 - بشار", dairas: { "بشار": ["بشار", "أبادلة"], "القنادسة": ["القنادسة"], "بني عباس": ["بني عباس"], "كرزاز": ["كرزاز"], "تاغيت": ["تاغيت"], "عين الصفراء": ["عين الصفراء"] } },
-  "09": { name: "09 - البليدة", dairas: { "البليدة": ["البليدة", "بوعرفة", "شبلي"], "بوفاريك": ["بوفاريك", "قرواو", "الأربعاء"], "العفرون": ["العفرون", "بوينان"], "مفتاح": ["مفتاح", "برج البحري"], "الشريعة": ["الشريعة"], "بني تامو": ["بني تامو"], "أولاد يعيش": ["أولاد يعيش"], "موزاية": ["موزاية"] } },
-  "10": { name: "10 - البويرة", dairas: { "البويرة": ["البويرة", "بشلول"], "الأخضرية": ["الأخضرية", "تاغزوت"], "عين بسام": ["عين بسام"], "سور الغزلان": ["سور الغزلان"], "مشدالة": ["مشدالة"], "أقبو (البويرة)": ["أقبو"], "لكحل": ["لكحل"], "آيت لزيز": ["آيت لزيز"] } },
-  "11": { name: "11 - تمنراست", dairas: { "تمنراست": ["تمنراست", "أبالسة"], "عين صالح": ["عين صالح", "فوقرت"], "عين قزام": ["عين قزام"], "إدلس": ["إدلس"] } },
-  "12": { name: "12 - تبسة", dairas: { "تبسة": ["تبسة", "الكويف", "عين الزرقاء"], "بئر العاتر": ["بئر العاتر", "فركان"], "الشريعة (تبسة)": ["الشريعة"], "الونزة": ["الونزة"], "تلاغمة": ["تلاغمة"], "عين الكبيرة": ["عين الكبيرة"] } },
-  "13": { name: "13 - تلمسان", dairas: { "تلمسان": ["تلمسان", "منصورة", "بني مستار"], "مغنية": ["مغنية", "هنين"], "غزوات": ["غزوات", "سبدو"], "ندرومة": ["ندرومة"], "بني سنوس": ["بني سنوس"], "بني بوسعيد": ["بني بوسعيد"], "رمشي": ["رمشي"], "أولاد ميمون": ["أولاد ميمون"] } },
-  "14": { name: "14 - تيارت", dairas: { "تيارت": ["تيارت", "مدروسة", "زمالة الأمير عبد القادر"], "فرندة": ["فرندة", "مشرع صفا"], "سوق اثنين": ["سوق اثنين"], "قصر الشلالة": ["قصر الشلالة"], "رحوية": ["رحوية"], "أولاد جلال (تيارت)": ["أولاد جلال"], "سيدي حسني": ["سيدي حسني"] } },
-  "15": { name: "15 - تيزي وزو", dairas: { "تيزي وزو": ["تيزي وزو", "بني دوالة"], "عزازقة": ["عزازقة", "آيت خليلي"], "ذراع بن خدة": ["ذراع بن خدة"], "ئيفرحونن": ["ئيفرحونن"], "بني يني": ["بني يني"], "بوغني": ["بوغني"], "تيزي غنيف": ["تيزي غنيف"], "واضية": ["واضية"] } },
-  "16": { name: "16 - الجزائر العاصمة", dairas: { "سيدي امحمد": ["الجزائر الوسطى", "سيدي امحمد", "بلكور"], "باب الوادي": ["باب الوادي", "القصبة", "الأبيار"], "الحراش": ["الحراش", "بوروبة", "بئر توتة"], "بئر مراد رايس": ["بئر مراد رايس", "حيدرة", "بن عكنون"], "الدار البيضاء": ["الدار البيضاء", "بئر خادم"], "برج البحري": ["برج البحري", "رويبة"], "حسين داي": ["حسين داي", "القبة"] } },
-  "17": { name: "17 - الجلفة", dairas: { "الجلفة": ["الجلفة", "أجلو", "سرج الغول"], "مسعد": ["مسعد", "دار الشيوخ"], "عين وسارة": ["عين وسارة"], "بيرين": ["بيرين"], "قطارة": ["قطارة"], "سلمانة": ["سلمانة"], "فيض البطمة": ["فيض البطمة"] } },
-  "18": { name: "18 - جيجل", dairas: { "جيجل": ["جيجل", "تاهر", "العوانة"], "الميلية": ["الميلية", "شقفة"], "قنجرة": ["قنجرة"], "زيامة منصورية": ["زيامة منصورية"], "الطاهير": ["الطاهير"], "سطارة": ["سطارة"], "الأمير عبد القادر": ["الأمير عبد القادر"] } },
-  "19": { name: "19 - سطيف", dairas: { "سطيف": ["سطيف", "حمام السخنة"], "العلمة": ["العلمة", "بئر العرش", "تيزي نبشار"], "قجال": ["قجال"], "بوعنداس": ["بوعنداس"], "عين أزال": ["عين أزال"], "عين ولمان": ["عين ولمان"], "أولاد سي أحمد": ["أولاد سي أحمد"], "عين عرنان": ["عين عرنان"] } },
-  "20": { name: "20 - سعيدة", dairas: { "سعيدة": ["سعيدة", "دوي ثابت"], "الحساسنة": ["الحساسنة", "سيدي أحمد"], "عين الحجر": ["عين الحجر"], "عين سلطان": ["عين سلطان"], "معمورة": ["معمورة"], "يوب": ["يوب"] } },
-  "21": { name: "21 - سكيكدة", dairas: { "سكيكدة": ["سكيكدة", "الحروش", "زردازة"], "القل": ["القل", "بني زيد"], "عزابة": ["عزابة"], "عين بازوزو": ["عين بازوزو"], "تمالوس": ["تمالوس"], "بوشطاطة": ["بوشطاطة"] } },
-  "22": { name: "22 - سيدي بلعباس", dairas: { "سيدي بلعباس": ["سيدي بلعباس", "مرحوم", "بن عشيبة الحمر"], "تلاغ": ["تلاغ", "مصطفى بن إبراهيم"], "بئر الحمام": ["بئر الحمام"], "محمد بن علي": ["محمد بن علي"], "سيدي خالد": ["سيدي خالد"], "عين ثريد": ["عين ثريد"] } },
-  "23": { name: "23 - عنابة", dairas: { "عنابة": ["عنابة", "سيدي عمار", "البونة"], "البوني": ["البوني"], "سرايدي": ["سرايدي"], "الحجار": ["الحجار"], "برحال": ["برحال"], "الشرفة": ["الشرفة"] } },
-  "24": { name: "24 - قالمة", dairas: { "قالمة": ["قالمة", "بلخير"], "وادي الزناتي": ["وادي الزناتي", "تاملوكة"], "عين بن بيضاء": ["عين بن بيضاء"], "خزارة": ["خزارة"], "بوعاتي محمود": ["بوعاتي محمود"], "عين مخلوف": ["عين مخلوف"] } },
-  "25": { name: "25 - قسنطينة", dairas: { "قسنطينة": ["قسنطينة", "الخروب", "عين سمارة", "حامة بوزيان"], "الخروب": ["الخروب", "بن باديس"], "إبن زياد": ["إبن زياد"], "زيغود يوسف": ["زيغود يوسف"], "أولاد رحمون": ["أولاد رحمون"] } },
-  "26": { name: "26 - المدية", dairas: { "المدية": ["المدية", "تابلاط"], "البرواقية": ["البرواقية", "أم العظائم"], "كاف لخضر": ["كاف لخضر"], "سيدي نعمان": ["سيدي نعمان"], "عين بوسيف": ["عين بوسيف"], "قلعة السلطان": ["قلعة السلطان"], "شلالة العذاورة": ["شلالة العذاورة"] } },
-  "27": { name: "27 - مستغانم", dairas: { "مستغانم": ["مستغانم", "صيادة", "عين نويسي"], "عين تادلس": ["عين تادلس", "ماضة"], "سيدي علي": ["سيدي علي"], "عشعاشة": ["عشعاشة"], "أولاد بغدال": ["أولاد بغدال"], "سور": ["سور"] } },
-  "28": { name: "28 - المسيلة", dairas: { "المسيلة": ["المسيلة", "أولاد مادي"], "بوسعادة": ["بوسعادة", "سيدي عيسى"], "عين الحجل": ["عين الحجل"], "سلطانة": ["سلطانة"], "برهوم": ["برهوم"], "مقرة": ["مقرة"], "أولاد سليمان": ["أولاد سليمان"], "عين ولمان": ["عين ولمان"] } },
-  "29": { name: "29 - معسكر", dairas: { "معسكر": ["معسكر", "بوهني", "ماوسة"], "سيق": ["سيق", "حاسي ماماش"], "غريس": ["غريس"], "تيغنيف": ["تيغنيف"], "زهانة": ["زهانة"], "أولاد ممة": ["أولاد ممة"], "المحمدية": ["المحمدية"] } },
-  "30": { name: "30 - ورقلة", dairas: { "ورقلة": ["ورقلة", "الرويسات", "حاسي مسعود"], "تقرت": ["تقرت", "بلدة أمر"], "نقوسة": ["نقوسة"], "عين البيضاء": ["عين البيضاء"], "تماسين": ["تماسين"], "الزاوية العابدية": ["الزاوية العابدية"] } },
-  "31": { name: "31 - وهران", dairas: { "وهران": ["وهران", "سيدي الشحمي", "عين الترك"], "بئر الجير": ["بئر الجير", "حاسي بونيف", "سيدي بن يبقى"], "عين الترك": ["عين الترك", "بوسفر", "مرسى الحجاج"], "أرزيو": ["أرزيو", "بطيوة"], "سيدي الشحمي": ["سيدي الشحمي", "أميودة"], "مسرغين": ["مسرغين"] } },
-  "32": { name: "32 - البيض", dairas: { "البيض": ["البيض", "غاسول"], "بوقطب": ["بوقطب", "تيوت"], "الأبيض سيدي الشيخ": ["الأبيض سيدي الشيخ"], "عين الصفراء": ["عين الصفراء"], "برج البيض": ["برج البيض"], "القصيبة": ["القصيبة"] } },
-  "33": { name: "33 - إليزي", dairas: { "إليزي": ["إليزي", "دبدب"], "جانت": ["جانت", "أفلو"], "برج عمر إدريس": ["برج عمر إدريس"], "إن أميناس": ["إن أميناس"] } },
-  "34": { name: "34 - برج بوعريريج", dairas: { "برج بوعريريج": ["برج بوعريريج", "بن دحمان"], "راس الوادي": ["راس الوادي", "الأنصار"], "المنصورة": ["المنصورة"], "الحمادنة": ["الحمادنة"], "برج زمورة": ["برج زمورة"], "أولاد داهومة": ["أولاد داهومة"], "قنادسة": ["قنادسة"] } },
-  "35": { name: "35 - بومرداس", dairas: { "بومرداس": ["بومرداس", "بودواو", "أفير"], "بودواو": ["بودواو", "إيسر"], "دلس": ["دلس"], "ذراع البن": ["ذراع البن"], "نعومة": ["نعومة"], "سي مصطفى": ["سي مصطفى"], "تيجلابين": ["تيجلابين"] } },
-  "36": { name: "36 - الطارف", dairas: { "الطارف": ["الطارف", "زيتونة"], "القالة": ["القالة", "بن مهيدي"], "عين العسل": ["عين العسل"], "شباط": ["شباط"], "بوحجار": ["بوحجار"], "بسباس": ["بسباس"] } },
-  "37": { name: "37 - تندوف", dairas: { "تندوف": ["تندوف", "أم العسل"] } },
-  "38": { name: "38 - تيسمسيلت", dairas: { "تيسمسيلت": ["تيسمسيلت", "لربعاء"], "ثنية الحد": ["ثنية الحد", "الأزهرية"], "بوقاعة": ["بوقاعة"], "خميستي": ["خميستي"], "سيدي العنتري": ["سيدي العنتري"], "بردي": ["بردي"] } },
-  "39": { name: "39 - الوادي", dairas: { "الوادي": ["الوادي", "تغزوت", "ورماس"], "قمار": ["قمار", "كوينين"], "الرباح": ["الرباح"], "بلدة عمر": ["بلدة عمر"], "الطالب العربي": ["الطالب العربي"], "الدبيلة": ["الدبيلة"] } },
-  "40": { name: "40 - خنشلة", dairas: { "خنشلة": ["خنشلة", "عين الطويلة"], "ششار": ["ششار", "بابار"], "شليا": ["شليا"], "مصارة": ["مصارة"], "قايس": ["قايس"], "الولجة": ["الولجة"] } },
-  "41": { name: "41 - سوق أهراس", dairas: { "سوق أهراس": ["سوق أهراس", "صدرات"], "سدراتة": ["سدراتة", "مضاورة"], "المشروحة": ["المشروحة"], "أولاد إدريس": ["أولاد إدريس"], "تاوورة": ["تاوورة"], "عين زانة": ["عين زانة"] } },
-  "42": { name: "42 - تيبازة", dairas: { "تيبازة": ["تيبازة", "القليعة", "بو إسماعيل"], "حجوط": ["حجوط", "سيدي راشد"], "شرشال": ["شرشال", "أحمر العين", "زلفانة"], "بوهارون": ["بوهارون"], "عقبة الجبر": ["عقبة الجبر"], "مسلمون": ["مسلمون"] } },
-  "43": { name: "43 - ميلة", dairas: { "ميلة": ["ميلة", "أولاد خلوف", "فرجيوة"], "شلغوم العيد": ["شلغوم العيد", "بن يحيى عبد الرحمن"], "تلاغمة": ["تلاغمة"], "سيدي مروان": ["سيدي مروان"], "سيدي خليفة": ["سيدي خليفة"], "أمقل": ["أمقل"] } },
-  "44": { name: "44 - عين الدفلى", dairas: { "عين الدفلى": ["عين الدفلى", "عريب"], "خميس مليانة": ["خميس مليانة", "جندل"], "العطاف": ["العطاف"], "بوراحل": ["بوراحل"], "حمام ريغة": ["حمام ريغة"], "مليانة": ["مليانة"], "بن علال": ["بن علال"] } },
-  "45": { name: "45 - النعامة", dairas: { "النعامة": ["النعامة", "مشرية"], "مشرية": ["مشرية", "صفيصيفة"], "عين الصفراء": ["عين الصفراء", "تيوت"], "المشرية": ["المشرية"], "قصدير": ["قصدير"], "جنين بورزق": ["جنين بورزق"] } },
-  "46": { name: "46 - عين تموشنت", dairas: { "عين تموشنت": ["عين تموشنت", "الأمير عبد القادر"], "حمامات بوحجر": ["حمامات بوحجر", "عقب الليف"], "سيدي بن عدة": ["سيدي بن عدة"], "بني صاف": ["بني صاف"], "أولاد الكيحل": ["أولاد الكيحل"], "عين لركة": ["عين لركة"] } },
-  "47": { name: "47 - غرداية", dairas: { "غرداية": ["غرداية", "بريان", "المنيعة"], "متليلي": ["متليلي", "ضاية بن ضحوة"], "بريان": ["بريان"], "العطف": ["العطف"], "بنورة": ["بنورة"], "القرارة": ["القرارة"] } },
-  "48": { name: "48 - غليزان", dairas: { "غليزان": ["غليزان", "جديوية", "بلعسل"], "وادي ارهيو": ["وادي ارهيو", "المسيد"], "سيدي خطاب": ["سيدي خطاب"], "زمورة": ["زمورة"], "عميرة ارايس": ["عميرة ارايس"], "أولاد يحيى خدراوي": ["أولاد يحيى خدراوي"] } },
-  "49": { name: "49 - تيميمون", dairas: { "تيميمون": ["تيميمون", "أولف", "تمقدشت"], "أوقروت": ["أوقروت"], "شروين": ["شروين"], "أدرار (تيميمون)": ["أدرار"] } },
-  "50": { name: "50 - برج باجي مختار", dairas: { "برج باجي مختار": ["برج باجي مختار", "تيمياوين"] } },
-  "51": { name: "51 - أولاد جلال", dairas: { "أولاد جلال": ["أولاد جلال", "بسبعة", "الشعيبة"], "سيدي خالد": ["سيدي خالد", "رأس الميعاد"], "طولقة": ["طولقة"] } },
-  "52": { name: "52 - بني عباس", dairas: { "بني عباس": ["بني عباس", "أقلي", "بشار الدقم"], "كرزاز": ["كرزاز"], "إقستن": ["إقستن"] } },
-  "53": { name: "53 - عين صالح", dairas: { "عين صالح": ["عين صالح", "فوقرت", "أبلسة"], "إن جير": ["إن جير"], "إن قزام": ["إن قزام"] } },
-  "54": { name: "54 - عين قزام", dairas: { "عين قزام": ["عين قزام", "تين زواتن", "برج موختار الجديدة"] } },
-  "55": { name: "55 - تقرت", dairas: { "تقرت": ["تقرت", "تماسين", "بلدة عمر"], "المقارين": ["المقارين"], "تبسبست": ["تبسبست"] } },
-  "56": { name: "56 - المغير", dairas: { "المغير": ["المغير", "سيدي خليل", "جامعة"], "الرباح": ["الرباح"], "سطيل": ["سطيل"] } },
-  "57": { name: "57 - المنيعة", dairas: { "المنيعة": ["المنيعة", "حاسي فحل", "تجنيين"], "ضاية بن ضحوة": ["ضاية بن ضحوة"] } },
-  "58": { name: "58 - سيدي بلعباس الجديدة", dairas: { "سيدي خالد": ["سيدي خالد", "طولقة الجديدة"], "أولاد سعيد": ["أولاد سعيد"] } }
+  "01":{"name":"01 - أدرار","dairas":{"أدرار":["أدرار","أوقروت","تيمقتن","فنوغيل"],"رقان":["رقان","سالي","زاوية الكنتة"],"تيميمون":["تيميمون","تالوت","أولاد سعيد","قصر قدور","بودة","مسطر","اوفادي"],"بودة":["بودة"],"أولف":["أولف","تيت","اقبلي"],"بورج باجي مختار":["بورج باجي مختار"],"تيمياوين":["تيمياوين","سبع"],"فنوغيل":["فنوغيل","اقلع"],"شروين":["عين صالح","عين قزام"],"تازروك":["تازروك","إيليزي"]}},
+  "02":{"name":"02 - الشلف","dairas":{"الشلف":["الشلف","لحرية","بنايرية","سيدي عكاشة"],"تنس":["تنس","بني حواء","المرسى","صندل","بوزغاية"],"أم الدروع":["أم الدروع","بني بوعتاب","تاجنة"],"ابن باديس":["ابن باديس","وادي قويح"],"الهرانية":["الهرانية","سيدي عبدالرحمن"],"الشطية":["الشطية","وادي فضة","حمام ريغة"],"الكريمية":["الكريمية","أم الدروع","بني راشد"],"بريرة":["بريرة","لفتاح","مسكيانة"],"أبو الحسن":["أبو الحسن","مزغنة"],"خميستي":["خميستي","سيدي عمر"],"الزبوجة":["الزبوجة","القرية"]}},
+  "03":{"name":"03 - الأغواط","dairas":{"الأغواط":["الأغواط","قلتة سيدي سعد","حاسي الرمل"],"آفلو":["آفلو","بريدة","قصر الحيران"],"الحاج المشري":["الحاج المشري","سيدي مخلوف","تاجموت"],"حاسي الرمل":["حاسي الرمل"],"الغيشة":["الغيشة","برج الحواس"],"سبقاق":["سبقاق","قصر الخير"],"بريان":["بريان","وادي مرة"],"تاجروناست":["تاجروناست"],"عين ماضي":["عين ماضي","القصبة"]}},
+  "04":{"name":"04 - أم البواقي","dairas":{"أم البواقي":["أم البواقي","عين كرشة","عين بابوش","البلالة"],"عين البيضاء":["عين البيضاء","عين الديس","مسكيانة"],"عين مليلة":["عين مليلة","عين الزيتون","سيقوس"],"بريش":["بريش","أولاد حملة","منعة"],"سيقوس":["سيقوس","عين الاشياخ","وادي نيني"],"الفجوج":["الفجوج","ابن زياد"],"عين الفحل":["عين الفحل","عين قشرة"],"مسكيانة":["مسكيانة","سوق نعمان"]}},
+  "05":{"name":"05 - باتنة","dairas":{"باتنة":["باتنة","فسديس","تازولت"],"عين التوتة":["عين التوتة","بومية","اكمار"],"عين جاسر":["عين جاسر","بريكة","رأس العيون"],"بريكة":["بريكة","وادي الشعبة"],"ثنية العابد":["ثنية العابد","كيمل"],"سريانة":["سريانة","عيون العصافير","غسيرة"],"نقاوس":["نقاوس","الرحبات","لمسان"],"تيمقاد":["تيمقاد","الجزار"],"أولاد عوف":["أولاد عوف","بومقر"],"منعة":["منعة","وادي الماء"],"وادي الشعبة":["وادي الشعبة"],"المعذر":["المعذر"],"عيون العصافير":["عيون العصافير"],"بوزينة":["بوزينة"],"شير":["شير","أريس"],"أريس":["أريس","بيطام"],"تكوت":["تكوت","أولاد سلامة"],"عين يابوس":["عين يابوس"],"رأس العيون":["رأس العيون"],"غسيرة":["غسيرة"]}},
+  "06":{"name":"06 - بجاية","dairas":{"بجاية":["بجاية","أوقاس","تيشي"],"عزازقة":["عزازقة","تاسكريوث","الأخضرية"],"أقبو":["أقبو","ايغرام","أمالو"],"خرطة":["خرطة","بني قسيلة"],"صدوق":["صدوق","تيزي نبربر"],"إيغيل علي":["إيغيل علي","مكيرة"],"فناية الماتن":["فناية الماتن","بيرواغن"],"بني مليكيش":["بني مليكيش","ثيرين"],"بوجلو":["بوجلو","تبلاط"],"كميرة":["كميرة","تيفرة"],"سمحة":["سمحة","أمقيض"],"تيفرة":["تيفرة"],"الغربي":["الغربي"],"بني مرواحة":["بني مرواحة","ثيغيلوست"],"أوزلاقن":["أوزلاقن","بني جليل"]}},
+  "07":{"name":"07 - بسكرة","dairas":{"بسكرة":["بسكرة","أولاد جلال","سيدي عقبة"],"طولقة":["طولقة","برج بن عزوز","ليشانة"],"أولاد جلال":["أولاد جلال","لوطاية"],"سيدي عقبة":["سيدي عقبة","أوماش","عين الناقة"],"زيبان":["المزيرعة","عين النعام"],"الحاجب":["الحاجب","الفيض"],"الشعيبة":["الشعيبة"],"جمورة":["جمورة","بسباس"],"فوغالة":["فوغالة","مشونش"],"عين زعطوط":["عين زعطوط"],"برانيس":["برانيس"],"القنطرة":["القنطرة"],"عين الناقة":["عين الناقة"],"خنقة سيدي ناجي":["خنقة سيدي ناجي"]}},
+  "08":{"name":"08 - بشار","dairas":{"بشار":["بشار","صفيصفة","لحمر"],"عباديا":["عباديا","كرزاز"],"القنادسة":["القنادسة","إشر"],"تاغيت":["تاغيت"],"بني عباس":["بني عباس"],"بني ونيف":["بني ونيف","أولاد خضير"],"أبادلة":["أبادلة"],"العبادلة":["العبادلة"],"مريجة":["مريجة"],"ايقلي":["ايقلي"]}},
+  "09":{"name":"09 - البليدة","dairas":{"البليدة":["البليدة","شبلي","واد العلايق"],"بوفاريك":["بوفاريك","موزاية","بني تامو"],"الأربعاء":["الأربعاء","المحمدية","مفتاح"],"موزاية":["موزاية","ساحل"],"لعربعة":["لعربعة","بني خليل"],"بوعرفة":["بوعرفة","بن خليل"],"مفتاح":["مفتاح","اولاد يعيش"],"شريعة":["شريعة","إيفرحونن"],"القليعة":["القليعة","بلولة"],"إيفرحونن":["إيفرحونن"],"حمام ملوان":["حمام ملوان"]}},
+  "10":{"name":"10 - البويرة","dairas":{"البويرة":["البويرة","عين لحجر","سور الغزلان"],"عين بسام":["عين بسام","بودربالة","ذراع القايد"],"عين لحجر":["عين لحجر","قريش","زبربر"],"ثنية الحد":["ثنية الحد","اقلعيين"],"بشلول":["بشلول","تقمارت"],"راجيو":["راجيو","أعمر"],"أم لبخس":["أم لبخس","حوض الفضة"],"لخصيبة":["لخصيبة","إبراهيم عيسى"],"مشدالة":["مشدالة","منادر"],"اسواو":["اسواو"],"بوكرام":["بوكرام","القصبات"]}},
+  "11":{"name":"11 - تمنراست","dairas":{"تمنراست":["تمنراست","عبلساود"],"عين صالح":["عين صالح","فوقرت"],"إيليزي":["إيليزي","إن أمناس"],"إدلس":["إدلس"],"إن قزام":["إن قزام"],"تاماسينت":["تاماسينت"]}},
+  "12":{"name":"12 - تبسة","dairas":{"تبسة":["تبسة","بولحاف الدير","شريعة"],"بئر العاتر":["بئر العاتر","الونزة"],"الشريعة":["الشريعة","فركان"],"العقلة":["العقلة","نقرين"],"مرسط":["مرسط","الحويجبات"],"الحمامات":["الحمامات","عين الزرقة"],"قصر الصبيحي":["قصر الصبيحي"],"بئر مقدم":["بئر مقدم"],"بكارية":["بكارية"]}},
+  "13":{"name":"13 - تلمسان","dairas":{"تلمسان":["تلمسان","نداء","مغنية"],"مغنية":["مغنية","بابا علي","سيدي العبدلي"],"غزوات":["غزوات","أم طبول"],"سبدو":["سبدو","بني سنوس"],"الغزوات":["الغزوات","بني خالد"],"بني صاف":["بني صاف"],"سيدي بلعباس":["سيدي بلعباس","حمام بوحجر"],"عين يوسف":["عين يوسف"],"سوق الإثنين":["سوق الإثنين","بني وارسوس"],"رمشي":["رمشي"],"فليسن":["فليسن"],"عين تالوت":["عين تالوت","بني بهدل"],"الفحول":["الفحول"],"بني مستر":["بني مستر"]}},
+  "14":{"name":"14 - تيارت","dairas":{"تيارت":["تيارت","المهدية","فرندة"],"فرندة":["فرندة","القرين"],"سوق أهراس":["سوق أهراس","الحناية"],"عين الذهب":["عين الذهب","راشد"],"ملاكو":["ملاكو"],"مشرع الصفاء":["مشرع الصفاء","الرحوية"],"سبت":["سبت"],"قصر الشلالة":["قصر الشلالة","سيدي بختي"],"مداواره":["مداواره"],"واد ليلي":["واد ليلي","بحمول"],"عين كرمس":["عين كرمس"],"حمادية":["حمادية"],"الغومري":["الغومري"],"سيدي عبد الرحمن":["سيدي عبد الرحمن"]}},
+  "15":{"name":"15 - تيزي وزو","dairas":{"تيزي وزو":["تيزي وزو","بني وقنون","واقنون"],"عزازقة":["عزازقة","أغريب"],"أقبيل":["أقبيل","آت بومهدي"],"آزفون":["آزفون","إيضر","إيجر"],"بوزقن":["بوزقن","تيفرات"],"إيفيغا":["إيفيغا","إلواس"],"مقلع":["مقلع","تيغزرت"],"بوغني":["بوغني","بني زمنزر"],"لربعة نيت إيراثن":["لربعة نيت إيراثن","تيغرمت"],"مكيرة":["مكيرة","آيت عيسى ميمون"],"دراع بن خدة":["دراع بن خدة","تيزي غنيف"],"تيقزيرت":["تيقزيرت","إيفيسن"],"ماقودة":["ماقودة","بوزقن"],"واضية":["واضية"],"يتافقن":["يتافقن"],"أيت يحيى موسى":["أيت يحيى موسى"],"إيلولا ومالو":["إيلولا ومالو"]}},
+  "16":{"name":"16 - الجزائر","dairas":{"سيدي امحمد":["الجزائر الوسطى","بلكور","باب الدجاج"],"باب الوادي":["باب الوادي","القصبة","سيدي مهمد"],"الحراش":["الحراش","برج الكيفان","حمامات الأنفة"],"الدار البيضاء":["الدار البيضاء","بابا علي","الأخضرية"],"بئر مراد رايس":["بئر مراد رايس","بئر خادم","صالة","الدويرة"],"زرالدة":["زرالدة","حميز","سيدي عبدالله"],"اولاد فايت":["اولاد فايت","عين بنيان","رغاية"],"القبة":["القبة","دالي ابراهيم","بن عكنون"],"العاشور":["العاشور","سطاوالي","دراريا"]}},
+  "17":{"name":"17 - الجلفة","dairas":{"الجلفة":["الجلفة","حاسي بحبح","عين وسارة"],"مسعد":["مسعد","الشارف"],"عين وسارة":["عين وسارة","دار الشيوخ"],"سيدي بايزيد":["سيدي بايزيد","عمورة"],"بيرين":["بيرين"],"عين أعبيد":["عين أعبيد","بريبة"],"فيض البطمة":["فيض البطمة"],"حاسي الروفي":["حاسي الروفي"],"سلمانة":["سلمانة","عين بلقاسم"],"دواير":["دواير"],"زكار":["زكار"],"خميس الخشنة":["خميس الخشنة"],"مجبارة":["مجبارة"]}},
+  "18":{"name":"18 - جيجل","dairas":{"جيجل":["جيجل","الطاهير","الميلية"],"بجاوة":["بجاوة","سلمى بن زيادة"],"الشقفة":["الشقفة","القنار"],"عين ماضي":["عين ماضي"],"الميلية":["الميلية","ساور"],"الطاهير":["الطاهير","بودريعة"],"أمجاز قايد عيسى":["أمجاز قايد عيسى"],"الونساس":["الونساس"],"سيدي معروف":["سيدي معروف"],"إيراقن":["إيراقن","الشقفة"],"تاكسنة":["تاكسنة"]}},
+  "19":{"name":"19 - سطيف","dairas":{"سطيف":["سطيف","عين أرنات","عين ولمان"],"العلمة":["العلمة","عين الحجل","مزلوق"],"بوقاعة":["بوقاعة","بني عزيز","أولاد تبان"],"قجال":["قجال","بئر هدادة"],"عين اولمان":["عين اولمان","معاوية"],"بني عزيز":["بني عزيز","بني وسين"],"حمام السخنة":["حمام السخنة","عين لقراج"],"رأس الفلالة":["رأس الفلالة","أولاد ادريس"],"بابور":["بابور"],"عين التين":["عين التين","بني مورين"],"صالح باي":["صالح باي","تيزي ناث إيدير"],"الاير":["الاير"]}},
+  "20":{"name":"20 - سعيدة","dairas":{"سعيدة":["سعيدة","يوب","أولاد خالد"],"عين الحجر":["عين الحجر","عين سلطان"],"سيدي أمحمد بن علي":["سيدي أمحمد بن علي","تيرسين"],"سيدي بوبكر":["سيدي بوبكر"],"المعمورة":["المعمورة"],"دوي ثابت":["دوي ثابت"],"خدرة":["خدرة","حدادة"]}},
+  "21":{"name":"21 - سكيكدة","dairas":{"سكيكدة":["سكيكدة","الولجة","عزابة"],"القل":["القل","بني بشير","فلفلة"],"عزابة":["عزابة","بني زيد"],"عين شرفة":["عين شرفة","حمادي كرومة"],"الحروش":["الحروش","سطاورة"],"تمالوس":["تمالوس","سيدي مزغيش"],"رمضان جمال":["رمضان جمال","عين بازيز"],"بوشطاطة":["بوشطاطة","عين قشرة"],"القنواع":["القنواع"]}},
+  "22":{"name":"22 - سيدي بلعباس","dairas":{"سيدي بلعباس":["سيدي بلعباس","سيدي الجيلالي","مصطفى بن إبراهيم"],"محمد بن علي":["محمد بن علي","سيدي خالد"],"تلاغ":["تلاغ","مستغانم"],"مرحوم":["مرحوم","بني بهدل"],"رأس الماء":["رأس الماء"],"سفيزف":["سفيزف","عين ثريد"],"موسى بن عيسى":["موسى بن عيسى"],"بوخنفيس":["بوخنفيس"],"عين تيفريت":["عين تيفريت"],"سيدي حمادوش":["سيدي حمادوش"],"بلعربي":["بلعربي"],"مزاورو":["مزاورو"]}},
+  "23":{"name":"23 - عنابة","dairas":{"عنابة":["عنابة","سيدي عمار","برحال"],"العلمة":["العلمة","بو حجار"],"الحجار":["الحجار"],"سرايدي":["سرايدي"],"بن مهيدي":["بن مهيدي","شطايبي"],"عين الباردة":["عين الباردة"]}},
+  "24":{"name":"24 - قالمة","dairas":{"قالمة":["قالمة","نشمايا","بوحمدان"],"هيليوبوليس":["هيليوبوليس","بوشقوف"],"بوشقوف":["بوشقوف","سدراتة"],"وادي الزناتي":["وادي الزناتي","قلعة بوصبع"],"بلخير":["بلخير"],"خزارة":["خزارة"],"تملوكة":["تملوكة","سوق أهراس"],"عين مخلوف":["عين مخلوف","بني مزلين"],"المجلس":["المجلس"]}},
+  "25":{"name":"25 - قسنطينة","dairas":{"قسنطينة":["قسنطينة","ديدوش مراد","الخروب"],"الخروب":["الخروب","بني مسوس","زيغود يوسف"],"حامة بوزيان":["حامة بوزيان","عين أباعيد"],"إيبن باديس":["إيبن باديس"],"مسكيانة":["مسكيانة","عين عبيد"],"عين سمارة":["عين سمارة"],"بني حميدان":["بني حميدان"]}},
+  "26":{"name":"26 - المدية","dairas":{"المدية":["المدية","بني سليمان","قصر البخاري"],"بوسعادة":["بوسعادة","المطارفة","برهوم"],"كاف لخضر":["كاف لخضر","الحمدانة"],"قصر البخاري":["قصر البخاري","سيدي زيان"],"عين بوسيف":["عين بوسيف","شلالة العذاورة"],"الأزهرية":["الأزهرية"],"سيدي نعمان":["سيدي نعمان","بئر بن عابد"],"الدامة":["الدامة"],"بن شقاو":["بن شقاو","محمد بوضياف"],"البرواقية":["البرواقية","شلفة"],"عزيز":["عزيز"],"ربيعة":["ربيعة"]}},
+  "27":{"name":"27 - مستغانم","dairas":{"مستغانم":["مستغانم","حجادج","عين تادلس"],"عين تادلس":["عين تادلس","صيادة"],"المشرية":["المشرية","سيدي علي"],"مزغران":["مزغران","خير الدين"],"صيادة":["صيادة","وادي الخير"],"عشعاشة":["عشعاشة","شعبة"],"سيدي علي":["سيدي علي"],"تزقايت":["تزقايت","سور"],"بن عبد المالك":["بن عبد المالك"]}},
+  "28":{"name":"28 - المسيلة","dairas":{"المسيلة":["المسيلة","حمام الضلعة","برهوم"],"بوسعادة":["بوسعادة","سيدي عامر"],"المطارفة":["المطارفة","جلفة"],"سيدي عيسى":["سيدي عيسى","السوامع"],"برهوم":["برهوم","أولاد ماضي"],"تارمونت":["تارمونت"],"عين الريش":["عين الريش","سيدي بوزيد"],"اولاد ماضي":["اولاد ماضي","قجل"],"بن سرور":["بن سرور"],"أولاد رشاش":["أولاد رشاش"],"حمام الضلعة":["حمام الضلعة"],"الهامل":["الهامل"]}},
+  "29":{"name":"29 - معسكر","dairas":{"معسكر":["معسكر","غريس","الغمري"],"تيغنيف":["تيغنيف","بوهني"],"الحشيم":["الحشيم","سيق"],"أولاد موسى":["أولاد موسى","مومبيلييه"],"بوهني":["بوهني","زهانة"],"عين فراح":["عين فراح"],"عوف":["عوف","سيدي قادة"],"نسمت":["نسمت"],"غريس":["غريس","عزيل"],"قعدة":["قعدة"],"فروحة":["فروحة"],"سيق":["سيق","زهانة"]}},
+  "30":{"name":"30 - ورقلة","dairas":{"ورقلة":["ورقلة","الحجيرة","النزلة"],"تقرت":["تقرت","البرمة","الطيبات"],"حاسي مسعود":["حاسي مسعود","عين البيضاء"],"توقرت":["توقرت","الزاوية العابدية"],"عين البيضاء":["عين البيضاء"],"سيدي خويلد":["سيدي خويلد"],"المقارين":["المقارين"],"نزلة":["نزلة"]}},
+  "31":{"name":"31 - وهران","dairas":{"وهران":["وهران","مرسى الحجاج","سيدي الشحمي"],"سيدي الشحمي":["سيدي الشحمي","مسرغين"],"عين الترك":["عين الترك","المرسى الكبير"],"بطيوة":["بطيوة","بوفاتيس"],"بوزجر":["بوزجر","طاليلان"],"مرسى الكبير":["مرسى الكبير"],"ع الصنوبر":["ع الصنوبر","عين البيضاء"],"السانية":["السانية","خميستي"]}},
+  "32":{"name":"32 - البيض","dairas":{"البيض":["البيض","بوقطب","ستيتن"],"بريزينة":["بريزينة","أربعاء"],"ستيتن":["ستيتن","سيدي سليمان"],"قصيبة ولادة":["قصيبة ولادة"],"الشقيق":["الشقيق"],"بوقطب":["بوقطب","الكسب"],"الأبيض سيدي الشيخ":["الأبيض سيدي الشيخ"],"العسلة":["العسلة"],"بوعمامة":["بوعمامة"]}},
+  "33":{"name":"33 - إليزي","dairas":{"إليزي":["إليزي","إن أمناس"],"إن أمناس":["إن أمناس","إنجامن"],"بوطليس":["بوطليس"],"إدلس":["إدلس"]}},
+  "34":{"name":"34 - برج بوعريريج","dairas":{"برج بوعريريج":["برج بوعريريج","الأنصار","ابن باديس"],"رأس الأخضر":["رأس الأخضر","قلتة"],"بئر كسد":["بئر كسد"],"تسمير":["تسمير"],"عين تسرة":["عين تسرة","شعبة لعطارة"],"ثنية العابد":["ثنية العابد","عمقاد"],"صواماع":["صواماع"],"بن داود":["بن داود"],"مناعر":["مناعر"]}},
+  "35":{"name":"35 - بومرداس","dairas":{"بومرداس":["بومرداس","الثنية","زموري"],"بودواو":["بودواو","خميس خزنة"],"بوكدادوم":["بوكدادوم","تيجلابين"],"عمال":["عمال","الأرباطاش"],"إسحاول":["إسحاول","لمهراز"],"الخميس":["الخميس","دلفا"],"نفيس":["نفيس"],"بلديا":["بلديا"],"الثنية":["الثنية"],"قورايا":["قورايا","أوزرا"]}},
+  "36":{"name":"36 - الطارف","dairas":{"الطارف":["الطارف","عين الأسل","الحجار"],"بن مهيدي":["بن مهيدي","بوثلجة"],"الشط":["الشط","غزالة"],"عصل الدباغة":["عصل الدباغة"],"بحيرة الطيور":["بحيرة الطيور"],"قال":["قال","الريحانة"],"شيحي":["شيحي"],"عين الكرمة":["عين الكرمة"]}},
+  "37":{"name":"37 - تيندوف","dairas":{"تيندوف":["تيندوف","عباس"]}},
+  "38":{"name":"38 - تيسمسيلت","dairas":{"تيسمسيلت":["تيسمسيلت","ثنية الاحد","سيدي بوتوشنت"],"ثنية الاحد":["ثنية الاحد","كركارة"],"الازهرية":["الازهرية","لاربعاء"],"عيون الثلاثاء":["عيون الثلاثاء","كلوس"],"برج الأمير عبد القادر":["برج الأمير عبد القادر"],"لازار":["لازار"],"سيدي سليمان":["سيدي سليمان"]}},
+  "39":{"name":"39 - الوادي","dairas":{"الوادي":["الوادي","كوينين","بن قشة"],"الرباح":["الرباح","سيدي عون"],"الطالب العربي":["الطالب العربي","المريجة"],"ورماس":["ورماس"],"الحمراية":["الحمراية"],"جامعة":["جامعة"],"المقرن":["المقرن","السبع"],"بليدة":["بليدة"],"دوار القصة":["دوار القصة"],"ساحل":["ساحل","عين الزقار"],"قمار":["قمار","القطارة"]}},
+  "40":{"name":"40 - خنشلة","dairas":{"خنشلة":["خنشلة","بابار","قايس"],"بابار":["بابار","شلية"],"شيليا":["شيليا","الحاميمة"],"الحاميمة":["الحاميمة"],"خيران":["خيران"],"مرمر":["مرمر"]}},
+  "41":{"name":"41 - سوق أهراس","dairas":{"سوق أهراس":["سوق أهراس","سدراتة","الحنانشة"],"سدراتة":["سدراتة","لخضارة"],"ويلان":["ويلان","بئر بوهوش"],"الزعرورية":["الزعرورية"],"المشروحة":["المشروحة","تاورة"],"الراقوبة":["الراقوبة"],"بن عزوز":["بن عزوز"],"مداوروش":["مداوروش","خديجة"]}},
+  "42":{"name":"42 - تيبازة","dairas":{"تيبازة":["تيبازة","القليعة","بوراشد"],"القليعة":["القليعة","بوسماعيل"],"حاجوط":["حاجوط","سواريجه"],"الصواف":["الصواف"],"بوراشد":["بوراشد","الأمير عبد القادر"],"شرشل":["شرشل","مناصر"],"العفرون":["العفرون","فوكة"],"تيبازة":["تيبازة"]}},
+  "43":{"name":"43 - ميلة","dairas":{"ميلة":["ميلة","تسالة المرجة","وادي العثمانية"],"تسالة المرجة":["تسالة المرجة","سيدي خليفة"],"فرجيوة":["فرجيوة","عين مخلوف"],"شلغوم العيد":["شلغوم العيد","وادي سقان"],"أحمد راشدي":["أحمد راشدي","عين التين"],"الروافعة":["الروافعة","يابوس"],"التلاغمة":["التلاغمة"],"واد النجاء":["واد النجاء"],"بن يحيى عبد الرحمن":["بن يحيى عبد الرحمن"],"سيدي مروان":["سيدي مروان"]}},
+  "44":{"name":"44 - عين الدفلى","dairas":{"عين الدفلى":["عين الدفلى","الخميس","جندل"],"الخميس":["الخميس","بربوش"],"مليانة":["مليانة","بني دحمان"],"عين سلطان":["عين سلطان","بوكدادوم"],"الأمير عبد القادر":["الأمير عبد القادر"],"بربوش":["بربوش","مسدور"],"عين البنيان":["عين البنيان"],"عريب":["عريب"],"سيدي لعجال":["سيدي لعجال"]}},
+  "45":{"name":"45 - النعامة","dairas":{"النعامة":["النعامة","مشرية","عين الصفراء"],"عين الصفراء":["عين الصفراء","قصفة"],"المشرية":["المشرية","صفيصيفة"],"تيوت":["تيوت","موغل"],"بيدس":["بيدس"],"الأبيض سيدي الشيخ":["الأبيض سيدي الشيخ"]}},
+  "46":{"name":"46 - عين تيموشنت","dairas":{"عين تيموشنت":["عين تيموشنت","أولاد بوجمعة","العامرية"],"بني صاف":["بني صاف","الشعبة"],"الصبية":["الصبية","حمام بوحجر"],"أولاد كيحل":["أولاد كيحل","بوزدجر"],"السواحلية":["السواحلية"],"أغلال":["أغلال","سيدي بن عدة"],"حمام بوحجر":["حمام بوحجر"]}},
+  "47":{"name":"47 - غرداية","dairas":{"غرداية":["غرداية","مليكة","بريان"],"متليلي":["متليلي","حاسي الفحل"],"بريان":["بريان","زلفانة"],"القرارة":["القرارة","تيبيكنت"],"بنورة":["بنورة","لاربعاء"],"العطف":["العطف"],"الغروس":["الغروس"],"بونورة":["بونورة"],"منصورة":["منصورة"]}},
+  "48":{"name":"48 - غليزان","dairas":{"غليزان":["غليزان","وادي جمعة","مازونة"],"رليزان":["رليزان","جديوية"],"مازونة":["مازونة","سيدي ام الخير"],"عميرة أرسلان":["عميرة أرسلان","واريزان"],"بلحسين":["بلحسين","الحمادنة"],"الجيلالي بن عمر":["الجيلالي بن عمر"],"وادي الرهيو":["وادي الرهيو"],"سيدي ام الخير":["سيدي ام الخير"],"حمري":["حمري"]}},
+  "49":{"name":"49 - تيميمون","dairas":{"تيميمون":["تيميمون","أولاد سعيد","مسطر"],"قصر قدور":["قصر قدور"],"أوقروت":["أوقروت","بودة"],"بلدة":["بلدة","شروين"]}},
+  "50":{"name":"50 - برج باجي مختار","dairas":{"برج باجي مختار":["برج باجي مختار","تيمياوين"]}},
+  "51":{"name":"51 - أولاد جيلال","dairas":{"أولاد جيلال":["أولاد جيلال","البسباس"],"سيدي خالد":["سيدي خالد"],"بسباس":["بسباس"]}},
+  "52":{"name":"52 - بني عباس","dairas":{"بني عباس":["بني عباس"],"كرزاز":["كرزاز"],"بني ونيف":["بني ونيف"]}},
+  "53":{"name":"53 - إن صالح","dairas":{"إن صالح":["إن صالح","فوقرت"],"إين أمقل":["إين أمقل"]}},
+  "54":{"name":"54 - إن قزام","dairas":{"إن قزام":["إن قزام"],"تاماسينت":["تاماسينت"]}},
+  "55":{"name":"55 - توقرت","dairas":{"توقرت":["توقرت","الطيبات","البرمة"],"الزاوية العابدية":["الزاوية العابدية"]}},
+  "56":{"name":"56 - جانت","dairas":{"جانت":["جانت","إيهرير"],"إليزي":["إليزي"]}},
+  "57":{"name":"57 - المغير","dairas":{"المغير":["المغير","جامعة"],"القطارة":["القطارة"],"ورماس":["ورماس"]}},
+  "58":{"name":"58 - المنيعة","dairas":{"المنيعة":["المنيعة","بريزينة"],"حاسي الغلة":["حاسي الغلة"],"القصب":["القصب"]}}
 };
 
-// ======================================================
-// متغيرات الحالة العامة
-// ======================================================
-let cart = [];
-let menuItems = [];
-let ordersList = [];
-let shoppingMode = 'box';
-let currentReviewProductId = null;
-let selectedRatingStars = 5;
+let cart = [], menuItems = [], ordersList = [];
+let shoppingMode = 'gift'; 
+let filterGiftCat = 'all';
 let uploadedImageBase64 = "";
+let adminTempVariations = [];
+let editTempVariations = [];   // أصناف نافذة التعديل
+let editingProductId = null;   // ID المنتج قيد التعديل
+let currentViewingProduct = null;
+let selectedVariantIndex = 0;
 let shippingRates = {};
-let lastOrdersCount = 0;
-let deferredPrompt;
-let adminPollingInterval = null;
 let bestSellerIds = new Set();
 let currentLang = 'ar';
-
-const DAYS_NAMES   = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+const DAYS_NAMES = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
 const MONTHS_NAMES = ["شهر 1","شهر 2","شهر 3","شهر 4","شهر 5","شهر 6","شهر 7","شهر 8","شهر 9","شهر 10","شهر 11","شهر 12"];
 
 // ======================================================
-// وظائف الوضع المظلم وتغيير اللغة
-// ======================================================
-window.toggleDarkLight = () => {
-  const body = document.body;
-  const icon = document.getElementById('themeToggleIcon');
-  body.classList.toggle('light-theme');
-  if (body.classList.contains('light-theme')) {
-    icon.textContent = '🌙';
-    localStorage.setItem('theme', 'light');
-  } else {
-    icon.textContent = '☀️';
-    localStorage.setItem('theme', 'dark');
-  }
-};
-
-window.toggleLanguage = () => {
-  const icon = document.getElementById('langToggleIcon');
-  const htmlTag = document.documentElement;
-  
-  if (currentLang === 'ar') {
-    currentLang = 'fr';
-    icon.textContent = 'AR';
-    htmlTag.setAttribute('lang', 'fr');
-    htmlTag.setAttribute('dir', 'ltr');
-  } else {
-    currentLang = 'ar';
-    icon.textContent = 'FR';
-    htmlTag.setAttribute('lang', 'ar');
-    htmlTag.setAttribute('dir', 'rtl');
-  }
-};
-
-// ======================================================
-// التهيئة عند تحميل الصفحة
+// التهيئة
 // ======================================================
 window.addEventListener('load', () => {
-  if (!localStorage.getItem('admin_password')) {
-    localStorage.setItem('admin_password', 'admin123');
-  }
-  if (!localStorage.getItem('restaurant_name')) {
-    localStorage.setItem('restaurant_name', 'بوتيك الهدايا والبراندات الفاخرة');
-  }
-
-  // --- تفعيل الوضع المظلم/الفاتح المحفوظ ---
+  if (!localStorage.getItem('admin_password')) localStorage.setItem('admin_password', 'admin123');
+  if (!localStorage.getItem('restaurant_name')) localStorage.setItem('restaurant_name', 'بوتيك الهدايا والبراندات الفاخرة');
+  
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-theme');
-    const icon = document.getElementById('themeToggleIcon');
-    if(icon) icon.textContent = '🌙';
-  }
-
+  if (savedTheme === 'light') { document.body.classList.add('light-theme'); document.getElementById('themeToggleIcon').textContent = '🌙'; }
+  
   loadCustomTheme();
-  loadCachedBestSellers();
   loadDisplayPreferences();
   initShippingRates();
   applyRestaurantName();
   showGateway();
-  registerPwaServiceWorker();
 });
 
-// ======================================================
-// الثيم والألوان
-// ======================================================
 function loadCustomTheme() {
   try {
-    const savedTheme = localStorage.getItem('custom_gift_theme');
-    if (!savedTheme) return;
-    const theme = JSON.parse(savedTheme);
+    const saved = localStorage.getItem('custom_gift_theme');
+    if (!saved) return;
+    const theme = JSON.parse(saved);
     const root = document.documentElement;
     root.style.setProperty('--gold', theme.gold);
     root.style.setProperty('--gold-light', theme.goldLight);
     root.style.setProperty('--bg', theme.bg);
     root.style.setProperty('--surface', theme.surface);
-    root.style.setProperty('--card', adjustColorBrightness(theme.surface, 8));
-    root.style.setProperty('--border', adjustColorBrightness(theme.surface, 15));
-    root.style.setProperty('--gold-dim', adjustColorBrightness(theme.gold, -35));
-    document.getElementById('themeGold').value = theme.gold;
-    document.getElementById('themeGoldLight').value = theme.goldLight;
-    document.getElementById('themeBg').value = theme.bg;
-    document.getElementById('themeSurface').value = theme.surface;
-    document.getElementById('metaThemeColor').setAttribute('content', theme.bg);
-  } catch (e) {
-    console.warn('فشل تحميل الثيم المحفوظ:', e);
+  } catch(e) {}
+}
+
+window.toggleDarkLight = () => {
+  document.body.classList.toggle('light-theme');
+  const isLight = document.body.classList.contains('light-theme');
+  document.getElementById('themeToggleIcon').textContent = isLight ? '🌙' : '☀️';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+};
+
+window.toggleLanguage = () => {
+  currentLang = currentLang === 'ar' ? 'fr' : 'ar';
+  document.getElementById('langToggleIcon').textContent = currentLang.toUpperCase();
+  document.documentElement.setAttribute('lang', currentLang);
+  document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+};
+
+function initShippingRates() {
+  try {
+    const saved = localStorage.getItem('gift_shipping_rates');
+    if (saved) shippingRates = JSON.parse(saved);
+    else {
+      Object.keys(ALGERIA_GEOGRAPHY).forEach(c => shippingRates[c] = { home: 600, office: 400 });
+      localStorage.setItem('gift_shipping_rates', JSON.stringify(shippingRates));
+    }
+  } catch(e){}
+}
+
+function applyRestaurantName() {
+  const currentName = localStorage.getItem('restaurant_name');
+  document.getElementById('heroRestName').textContent = currentName;
+  if(document.getElementById('settingRestName')) document.getElementById('settingRestName').value = currentName;
+}
+
+// ======================================================
+// إدارة التنقل ووضع التسوق (Gateway)
+// ======================================================
+window.showGateway = () => {
+  document.getElementById('gatewayScreen').classList.remove('hidden');
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('customerView').classList.add('hidden');
+  document.getElementById('adminView').classList.add('hidden');
+  cart = []; updateCartUI();
+};
+
+window.showLogin   = () => { document.getElementById('gatewayScreen').classList.add('hidden'); document.getElementById('loginScreen').classList.remove('hidden'); };
+window.showCustomer = () => { document.getElementById('gatewayScreen').classList.add('hidden'); document.getElementById('customerView').classList.remove('hidden'); fetchMenu(false); checkMyOrderStatus(); };
+
+window.startShopping = (mode) => {
+  shoppingMode = mode;
+  filterGiftCat = 'all';
+  showCustomer();
+  const wiz = document.getElementById('wizardProgress');
+  const giftTabs = document.getElementById('giftCategoryTabs');
+  
+  if (mode === 'gift') {
+    wiz.classList.remove('hidden');
+    giftTabs.classList.remove('hidden');
+    updateWizardUI(1);
+    document.getElementById('boxesSection').classList.remove('hidden');
+    document.getElementById('productsSectionTitle').textContent = "الخطوة الثانية: أضف محتويات الهدية";
+    // إعادة تفعيل تبويب "الكل"
+    document.querySelectorAll('.gift-tab-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  } else {
+    wiz.classList.add('hidden');
+    giftTabs.classList.add('hidden');
+    document.getElementById('boxesSection').classList.add('hidden');
+    const titles = {
+      'cosmetics': '💄 مواد التجميل', 'sweets': '🍬 حلويات', 'devices': '💇‍♀️ أجهزة العناية بالشعر', 
+      'perfumes': '✨ عطور', 'wash': '🛁 غسول شعر وغسول الجسم', 'other': '✏️ منتجات متنوعة'
+    };
+    document.getElementById('productsSectionTitle').textContent = titles[mode] || "تصفح المنتجات";
   }
+};
+
+window.filterGiftCategory = (cat, btn) => {
+  filterGiftCat = cat;
+  document.querySelectorAll('.gift-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCustomerMenu();
+};
+
+function updateWizardUI(step) {
+  document.getElementById('wStep1').classList.toggle('active', step === 1);
+  document.getElementById('wStep1').classList.toggle('done', step > 1);
+  document.getElementById('wStep2').classList.toggle('active', step === 2);
+  document.getElementById('wStep2').classList.toggle('done', step > 2);
+  document.getElementById('wStep3').classList.toggle('active', step === 3);
+  document.getElementById('wizardLineFill').style.width = step === 1 ? "0%" : step === 2 ? "50%" : "100%";
+}
+
+// ======================================================
+// API
+// ======================================================
+async function apiRequest(binId, method = 'GET', data = null) {
+  const url = `https://api.jsonbin.io/v3/b/${binId}`;
+  const headers = { "X-Master-Key": X_MASTER_KEY, "Content-Type": "application/json" };
+  if (method === 'PUT') headers["X-Bin-Versioning"] = "false";
+  const options = { method, headers };
+  if (data) options.body = JSON.stringify(data);
+  const res = await fetch(method === 'GET' ? url + '/latest' : url, options);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const json = await res.json();
+  return method === 'GET' ? json.record : json;
+}
+
+// ======================================================
+// عرض الكتالوج للزبون
+// ======================================================
+async function fetchMenu(isAdmin = false) {
+  try {
+    let raw = await apiRequest(MENU_BIN_ID, 'GET');
+    if (!Array.isArray(raw)) raw = [];
+    raw = raw.filter(i => i.id !== 'init');
+    menuItems = injectImagesIntoItems(raw);
+    if (isAdmin) renderAdminProducts();
+    else renderCustomerMenu();
+  } catch (e) { toast('❌ فشل جلب البيانات', true); }
+}
+
+function renderCustomerMenu() {
+  const boxes = menuItems.filter(i => i.category === 'box');
+  let products = menuItems.filter(i => i.category !== 'box');
+
+  if (shoppingMode !== 'gift') {
+    products = products.filter(i => i.category === shoppingMode);
+  } else if (filterGiftCat !== 'all') {
+    products = products.filter(i => i.category === filterGiftCat);
+  }
+
+  const searchEl = document.getElementById('filterSearch');
+  const sortEl   = document.getElementById('filterSort');
+
+  if (searchEl && searchEl.value.trim()) {
+    const q = searchEl.value.trim().toLowerCase();
+    products = products.filter(p => p.name.toLowerCase().includes(q));
+  }
+  if (sortEl) {
+    const sortBy = sortEl.value;
+    if (sortBy === 'priceAsc') products.sort((a, b) => a.price - b.price);
+    else if (sortBy === 'priceDesc') products.sort((a, b) => b.price - a.price);
+  }
+
+  document.getElementById('boxesGrid').innerHTML = boxes.length ? boxes.map(p => getCardHtml(p, true)).join('') : `<p style="color:var(--muted); font-size:12px;">لا تتوفر علب حالياً.</p>`;
+  document.getElementById('menuGrid').innerHTML  = products.length ? products.map(p => getCardHtml(p, false)).join('') : `<p style="color:var(--muted); font-size:12px;">لا تتوفر منتجات في هذا القسم.</p>`;
+}
+
+function getCardHtml(p, isBoxCard) {
+  const hasVars = p.variations && p.variations.length > 0;
+  const btnText = hasVars ? "عرض الأصناف" : "+ السلة";
+  return `
+  <div class="menu-card">
+    ${p.img ? `<img src="${esc(p.img)}" loading="lazy">` : `<div class="img-placeholder">🎁</div>`}
+    <div class="card-body">
+      <div class="card-name">${esc(p.name)}</div>
+      <div class="card-price">${p.price} دج</div>
+      <button class="btn ${hasVars ? 'btn-dark' : 'btn-gold'} btn-sm" style="margin-top:auto;" onclick="handleProductClick('${p.id}', ${isBoxCard})">${btnText}</button>
+    </div>
+  </div>`;
+}
+
+// ======================================================
+// منطق السلة والأصناف (Variations)
+// ======================================================
+window.handleProductClick = (id, isBoxCard) => {
+  const p = menuItems.find(x => x.id === id);
+  if (!p) return;
+  if (p.variations && p.variations.length > 0) {
+    openVariantModal(p, isBoxCard);
+  } else {
+    addToCart(p.id, p.name, p.price, isBoxCard);
+  }
+};
+
+function openVariantModal(product, isBoxCard) {
+  currentViewingProduct = product;
+  selectedVariantIndex = 0;
+  
+  document.getElementById('vmName').textContent = product.name;
+  
+  renderVariantsInModal();
+  document.getElementById('btnAddToCartVariant').onclick = () => confirmAddVariantToCart(isBoxCard);
+  document.getElementById('variantModal').classList.remove('hidden');
+}
+
+function renderVariantsInModal() {
+  const p = currentViewingProduct;
+  const v = p.variations[selectedVariantIndex];
+  
+  document.getElementById('vmMainImg').src = v?.img || p.img || '';
+  // عرض سعر الصنف المختار (إذا كان له سعر خاص وإلا سعر المنتج)
+  const displayPrice = (v?.price && v.price > 0) ? v.price : p.price;
+  document.getElementById('vmPrice').textContent = displayPrice + ' دج';
+  
+  const varsHtml = p.variations.map((variant, idx) => {
+    const vPrice = (variant.price && variant.price > 0) ? variant.price : p.price;
+    return `
+    <div class="variant-thumb ${idx === selectedVariantIndex ? 'active' : ''}" onclick="selectVariant(${idx})">
+      ${variant.img 
+        ? `<img src="${variant.img}" loading="lazy">` 
+        : `<div class="no-img">${['💄','🍬','💇‍♀️','✨','🛁','🎁'][idx % 6]}</div>`}
+      <span>${esc(variant.name)}</span>
+      <span style="font-size:10px; color:var(--gold); font-weight:bold;">${vPrice} دج</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('vmVars').innerHTML = varsHtml;
+}
+
+window.selectVariant = (idx) => {
+  selectedVariantIndex = idx;
+  renderVariantsInModal();
+};
+
+window.confirmAddVariantToCart = (isBoxCard) => {
+  const p = currentViewingProduct;
+  const variant = p.variations[selectedVariantIndex];
+  if (!variant) return;
+  // استخدام سعر الصنف إذا كان محدداً، وإلا سعر المنتج الأساسي
+  const finalPrice = (variant.price && variant.price > 0) ? variant.price : p.price;
+  addToCart(p.id + '||' + selectedVariantIndex, p.name + ' - ' + variant.name, finalPrice, isBoxCard);
+  closeVariantModal();
+};
+
+window.closeVariantModal = () => {
+  document.getElementById('variantModal').classList.add('hidden');
+  currentViewingProduct = null;
+};
+
+function addToCart(cartItemId, name, price, isBoxCard) {
+  if (shoppingMode === 'gift' && isBoxCard) {
+    // الزبون اختار علبة (يجب أن نزيل أي علبة سابقة إذا أردنا علبة واحدة فقط، أو مجرد تنظيف)
+    cart = cart.filter(c => {
+      const m = menuItems.find(x => c.id.startsWith(x.id));
+      return m && m.category !== 'box';
+    });
+  }
+  
+  const existing = cart.find(c => c.id === cartItemId);
+  if (existing) existing.qty++;
+  else cart.push({ id: cartItemId, name, price, qty: 1 });
+  
+  updateCartUI();
+  toast('🛒 أُضيف للسلة');
+  if (shoppingMode === 'gift' && isBoxCard) updateWizardUI(2);
+}
+
+function updateCartUI() {
+  const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const count = cart.reduce((s, c) => s + c.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotalLabel').textContent = total + " دج";
+  document.getElementById('cartBar').classList.toggle('hidden', count === 0);
+}
+
+window.openCartModal = () => {
+  if (shoppingMode === 'gift') {
+    const hasBox = cart.some(c => {
+      const mainId = c.id.split('||')[0];
+      const m = menuItems.find(x => x.id === mainId);
+      return m && m.category === 'box';
+    });
+    if (!hasBox) { toast('❌ اختر علبة التغليف أولاً من الخطوة 1!', true); return; }
+    updateWizardUI(3);
+  }
+  
+  document.getElementById('cartItemsList').innerHTML = cart.map(c => `
+    <div class="cart-item">
+      <div><strong>${esc(c.name)}</strong><div>${c.price} دج</div></div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <button class="qty-btn" onclick="changeQty('${c.id}', -1)">-</button>
+        <span>${c.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${c.id}', 1)">+</button>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('custWilaya').innerHTML = '<option value="">-- اختر الولاية --</option>' + Object.keys(ALGERIA_GEOGRAPHY).map(c => `<option value="${c}">${ALGERIA_GEOGRAPHY[c].name}</option>`).join('');
+  onDeliveryTypeChange();
+  document.getElementById('cartModal').classList.remove('hidden');
+};
+
+window.onDeliveryTypeChange = () => {
+  const type = document.getElementById('custDeliveryType').value;
+  const isStore = type === 'store';
+  document.getElementById('shippingAddressBlock').classList.toggle('hidden', isStore);
+  document.getElementById('storePickupBlock').classList.toggle('hidden', !isStore);
+  calculateTotalShipping();
+};
+
+window.closeCartModal = () => document.getElementById('cartModal').classList.add('hidden');
+window.changeQty = (id, amt) => {
+  const c = cart.find(x => x.id === id);
+  if (!c) return;
+  c.qty += amt;
+  if (c.qty <= 0) cart = cart.filter(x => x.id !== id);
+  updateCartUI();
+  cart.length === 0 ? closeCartModal() : openCartModal();
+};
+
+window.onWilayaChange = () => {
+  const code = document.getElementById('custWilaya').value;
+  document.getElementById('custDaira').innerHTML = code ? '<option value="">-- اختر الدائرة --</option>' + Object.keys(ALGERIA_GEOGRAPHY[code].dairas).map(d => `<option value="${d}">${d}</option>`).join('') : '<option value="">اختر الولاية أولاً</option>';
+  calculateTotalShipping();
+};
+
+window.onDairaChange = () => {
+  const code = document.getElementById('custWilaya').value;
+  const daira = document.getElementById('custDaira').value;
+  document.getElementById('custCommune').innerHTML = (code && daira) ? '<option value="">-- اختر البلدية --</option>' + ALGERIA_GEOGRAPHY[code].dairas[daira].map(c => `<option value="${c}">${c}</option>`).join('') : '<option value="">اختر الدائرة أولاً</option>';
+};
+
+window.calculateTotalShipping = () => {
+  const sub = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const type = document.getElementById('custDeliveryType').value;
+  const fee = type === 'store' ? 0 : ((shippingRates[document.getElementById('custWilaya').value] || {})[type] || 0);
+  document.getElementById('modalSubtotal').textContent = sub;
+  document.getElementById('modalShippingFee').textContent = type === 'store' ? '🏪 مجاني' : fee;
+  document.getElementById('cartModalTotal').textContent = sub + (type === 'store' ? 0 : fee);
+};
+
+window.submitOrder = async () => {
+  const n = document.getElementById('custName').value.trim();
+  const p = document.getElementById('custPhone').value.trim();
+  const delivType = document.getElementById('custDeliveryType').value;
+  const w = document.getElementById('custWilaya').value;
+  if (!n || !p) { toast('❌ الاسم ورقم الهاتف مطلوبان', true); return; }
+  if (delivType !== 'store' && !w) { toast('❌ اختر الولاية للتوصيل', true); return; }
+
+  const sub = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const fee = delivType === 'store' ? 0 : ((shippingRates[w] || {})[delivType] || 0);
+  const orderId = 'gift_' + Date.now().toString().slice(-6);
+
+  const order = {
+    id: orderId, customerName: n, customerPhone: p,
+    wilaya: delivType === 'store' ? 'استلام من المتجر' : (ALGERIA_GEOGRAPHY[w]?.name || ''),
+    daira: delivType === 'store' ? '' : document.getElementById('custDaira').value,
+    commune: delivType === 'store' ? '' : document.getElementById('custCommune').value,
+    deliveryType: delivType,
+    giftMessage: document.getElementById('custGiftMsg').value.trim(),
+    items: cart.map(c => ({ name: c.name, price: c.price, qty: c.qty })),
+    subtotal: sub, shippingFee: fee, total: sub + fee, status: 'pending', timestamp: new Date().toISOString()
+  };
+
+  try {
+    let curr = await apiRequest(ORDERS_BIN_ID, 'GET');
+    if (!Array.isArray(curr)) curr = [];
+    curr.unshift(order);
+    await apiRequest(ORDERS_BIN_ID, 'PUT', curr);
+    localStorage.setItem('my_last_gift_order_id', orderId);
+    toast('🎉 تم إرسال طلبك بنجاح!');
+    cart = []; updateCartUI(); closeCartModal(); showCustomer();
+  } catch(e) { toast('❌ خطأ في الإرسال', true); }
+};
+
+window.checkMyOrderStatus = async () => {
+  const id = localStorage.getItem('my_last_gift_order_id');
+  if (!id) return;
+  document.getElementById('customerTrackBox').classList.remove('hidden');
+  document.getElementById('trackOrderIdLabel').textContent = `تتبع الطلب: (${id})`;
+  try {
+    const orders = await apiRequest(ORDERS_BIN_ID, 'GET');
+    const o = orders.find(x => x.id === id);
+    document.getElementById('trackStatusText').textContent = o ? (o.status === 'pending' ? '⏳ قيد المراجعة' : o.status === 'preparing' ? '🎀 قيد التجهيز والتغليف' : o.status === 'done' ? '🚚 تم التسليم' : '❌ ملغى') : "⚠️ لم يتم العثور على الطلب.";
+  } catch(e) {}
+};
+
+// ======================================================
+// الإدارة
+// ======================================================
+window.doLogin = () => {
+  if (document.getElementById('pwInput').value === localStorage.getItem('admin_password')) {
+    document.getElementById('loginScreen').classList.add('hidden');
+    document.getElementById('adminView').classList.remove('hidden');
+    fetchMenu(true); fetchOrders();
+  } else toast('❌ كلمة السر خاطئة', true);
+};
+
+window.logout = () => showGateway();
+
+window.showTab = (tabId, btn) => {
+  ['tabMenu', 'tabOrders', 'tabSettings'].forEach(id => document.getElementById(id).classList.toggle('hidden', id !== tabId));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  if (tabId === 'tabSettings') renderShippingRatesAdmin();
+};
+
+// معالجة الصور للمنتج الرئيسي وللأصناف
+window.handleMainFileSelect = (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  compressImage(file, (base64) => {
+    uploadedImageBase64 = base64;
+    document.getElementById('fileLabelText').textContent = '✅ تم اعتماد الصورة';
+  });
+};
+
+// معالجة صورة الصنف الأول
+window.handleFirstVarImage = (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  compressImage(file, (base64) => {
+    const preview = document.getElementById('var0ImgPreview');
+    preview.innerHTML = `<img src="${base64}" style="height:100%; width:100%; object-fit:cover; border-radius:6px;">`;
+    preview.dataset.img = base64;
+    document.getElementById('var0ImgLabel') && (document.getElementById('var0ImgLabel').remove());
+  });
+};
+
+// إدارة الأصناف الفرعية في لوحة الإدارة
+window.addAdminVariation = () => {
+  adminTempVariations.push({ id: 'var_' + Date.now(), name: '', img: '' });
+  renderAdminVariations();
+};
+
+window.removeAdminVariation = (index) => {
+  adminTempVariations.splice(index, 1);
+  renderAdminVariations();
+};
+
+window.handleVariationImage = (event, index) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  compressImage(file, (base64) => {
+    adminTempVariations[index].img = base64;
+    renderAdminVariations();
+  });
+};
+
+window.renderAdminVariations = () => {
+  const html = adminTempVariations.map((v, i) => `
+    <div style="display:flex; gap:6px; margin-bottom:8px; align-items:center; background:var(--card); padding:8px; border-radius:6px; border:1px solid var(--border); flex-wrap:wrap;">
+      <span style="font-size:11px; color:var(--muted); min-width:18px; text-align:center;">${i + 2}</span>
+      <input type="text" placeholder="اسم الصنف" value="${esc(v.name)}" oninput="adminTempVariations[${i}].name=this.value" style="flex:2; min-width:90px; padding:8px; font-size:12px;">
+      <input type="number" placeholder="السعر (دج)" value="${v.price||''}" oninput="adminTempVariations[${i}].price=parseFloat(this.value)||0" style="flex:1; min-width:75px; padding:8px; font-size:12px;">
+      <div style="flex:1; min-width:50px; display:flex; align-items:center; justify-content:center; border:1px dashed var(--border); border-radius:6px; cursor:pointer; height:38px; overflow:hidden;" onclick="document.getElementById('varFile_${i}').click()">
+        ${v.img ? `<img src="${v.img}" style="height:100%;width:100%;object-fit:cover;">` : `<span style="font-size:10px;color:var(--muted);">صورة</span>`}
+      </div>
+      <input type="file" id="varFile_${i}" accept="image/*" style="display:none;" onchange="handleVariationImage(event, ${i})">
+      <button type="button" class="btn btn-red btn-sm" onclick="removeAdminVariation(${i})" style="padding:6px 8px;">✕</button>
+    </div>
+  `).join('');
+  document.getElementById('adminVariationsList').innerHTML = html;
+};
+
+window.addProduct = async () => {
+  const name = document.getElementById('pName').value.trim();
+  const price = parseFloat(document.getElementById('pPrice').value);
+  if (!name || !price) { toast('❌ الاسم والسعر مطلوبان', true); return; }
+
+  // الصنف الأول (المدمج)
+  const var0Name  = (document.getElementById('var0Name')?.value || '').trim();
+  const var0Price = parseFloat(document.getElementById('var0Price')?.value) || price;
+  const var0ImgEl = document.getElementById('var0ImgPreview');
+  const var0Img   = var0ImgEl?.dataset?.img || '';
+
+  // بناء قائمة الأصناف
+  let allVariations = [];
+  if (var0Name) {
+    allVariations.push({ id: 'var0_' + Date.now().toString(36), name: var0Name, price: var0Price, img: var0Img || uploadedImageBase64 });
+  }
+  const extras = adminTempVariations.filter(v => v.name.trim() !== '');
+  allVariations = allVariations.concat(extras);
+  if (allVariations.length > 0 && !var0Name) {
+    allVariations.unshift({ id: 'var0_' + Date.now().toString(36), name: name, price: price, img: uploadedImageBase64 });
+  }
+
+  const productId = 'p_' + Date.now().toString(36);
+
+  // --- الصور تُحفظ في localStorage منفصلة ---
+  const imgStore = JSON.parse(localStorage.getItem('product_images') || '{}');
+  imgStore[productId] = uploadedImageBase64;
+  allVariations.forEach((v, i) => {
+    if (v.img) { imgStore[productId + '_v' + i] = v.img; v.imgKey = productId + '_v' + i; }
+    delete v.img; // لا نرسل الصورة للـ API
+  });
+  localStorage.setItem('product_images', JSON.stringify(imgStore));
+
+  // المنتج بدون صور لحفظه في API
+  const newProduct = {
+    id: productId, name, price,
+    category: document.getElementById('pCategory').value,
+    imgKey: productId, // مرجع للصورة في localStorage
+    variations: allVariations
+  };
+
+  const saveBtn = document.querySelector('.btn-gold[onclick="addProduct()"]');
+  const origText = saveBtn?.textContent || '';
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = '⏳ جاري الحفظ...'; }
+
+  try {
+    let current = await apiRequest(MENU_BIN_ID, 'GET');
+    if (!Array.isArray(current)) current = [];
+    current = current.filter(i => i.id !== 'init');
+    current.unshift(newProduct);
+
+    await apiRequest(MENU_BIN_ID, 'PUT', current);
+    menuItems = injectImagesIntoItems(current);
+
+    // تصفير الحقول
+    document.getElementById('pName').value = '';
+    document.getElementById('pPrice').value = '';
+    document.getElementById('var0Name').value = '';
+    document.getElementById('var0Price').value = '';
+    if (var0ImgEl) { var0ImgEl.innerHTML = `<span style="font-size:11px; color:var(--muted);">صورة الصنف</span>`; delete var0ImgEl.dataset.img; }
+    uploadedImageBase64 = '';
+    document.getElementById('fileLabelText').textContent = 'اختر صورة للمنتج';
+    adminTempVariations = [];
+    renderAdminVariations();
+
+    toast('✅ تم حفظ المنتج بنجاح!');
+    renderAdminProducts();
+  } catch(e) {
+    console.error('Save error:', e);
+    toast('❌ فشل الحفظ: ' + (e.message || 'خطأ في الاتصال'), true);
+  } finally {
+    if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = origText; }
+  }
+};
+
+// حقن الصور من localStorage إلى المنتجات بعد الجلب
+function injectImagesIntoItems(items) {
+  const imgStore = JSON.parse(localStorage.getItem('product_images') || '{}');
+  return items.map(p => {
+    const item = { ...p };
+    if (item.imgKey && imgStore[item.imgKey]) item.img = imgStore[item.imgKey];
+    if (item.variations) {
+      item.variations = item.variations.map((v, i) => {
+        const vCopy = { ...v };
+        if (vCopy.imgKey && imgStore[vCopy.imgKey]) vCopy.img = imgStore[vCopy.imgKey];
+        else if (!vCopy.img && item.img) vCopy.img = item.img; // fallback لصورة المنتج
+        return vCopy;
+      });
+    }
+    return item;
+  });
+}
+
+// محو جميع الطلبات
+window.clearAllOrders = async () => {
+  if (!confirm('⚠️ هل أنت متأكد من محو جميع الطلبات؟ لا يمكن التراجع عن هذا الإجراء!')) return;
+  try {
+    await apiRequest(ORDERS_BIN_ID, 'PUT', [{ id: 'init_order' }]);
+    ordersList = [];
+    toast('✅ تم محو جميع الطلبات');
+    fetchOrders();
+  } catch(e) { toast('❌ خطأ أثناء المحو', true); }
+};
+
+function renderAdminProducts() {
+  const catLabels = { box:'📦 علبة هدايا', cosmetics:'💄 تجميل', sweets:'🍬 حلويات', devices:'💇‍♀️ أجهزة', perfumes:'✨ عطور', wash:'🛁 غسول', other:'✏️ متنوع' };
+  document.getElementById('adminProductsList').innerHTML = `
+    <table class="products-table">
+      <thead><tr><th>الصورة</th><th>المنتج</th><th>القسم</th><th>الأصناف</th><th>السعر</th><th>التحكم</th></tr></thead>
+      <tbody>
+        ${menuItems.map(p => `
+          <tr>
+            <td>${p.img ? `<img src="${esc(p.img)}" loading="lazy">` : ``}</td>
+            <td><strong>${esc(p.name)}</strong></td>
+            <td style="color:var(--muted); font-size:11px;">${catLabels[p.category] || p.category}</td>
+            <td style="color:var(--gold-light); font-size:11px;">${p.variations ? p.variations.length : 0} أصناف</td>
+            <td style="color:var(--gold); font-weight:bold;">${p.price}</td>
+            <td style="display:flex; gap:4px;">
+              <button class="btn btn-dark btn-sm" onclick="openEditModal('${p.id}')">✏️ تعديل</button>
+              <button class="btn btn-red btn-sm" onclick="deleteProduct('${p.id}')">حذف</button>
+            </td>
+          </tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+// ======================================================
+// تعديل المنتج
+// ======================================================
+window.openEditModal = (id) => {
+  const p = menuItems.find(x => x.id === id);
+  if (!p) return;
+  editingProductId = id;
+
+  document.getElementById('editName').value = p.name;
+  document.getElementById('editPrice').value = p.price;
+  document.getElementById('editCategory').value = p.category;
+
+  // نسخ الأصناف (بدون تعديل المصدر)
+  editTempVariations = (p.variations || []).map(v => ({ ...v }));
+  renderEditVariations();
+  document.getElementById('editProductModal').classList.remove('hidden');
+};
+
+window.closeEditModal = () => {
+  document.getElementById('editProductModal').classList.add('hidden');
+  editingProductId = null;
+  editTempVariations = [];
+};
+
+window.addEditVariation = () => {
+  editTempVariations.push({ id: 'var_' + Date.now(), name: '', img: '' });
+  renderEditVariations();
+};
+
+window.removeEditVariation = (i) => {
+  editTempVariations.splice(i, 1);
+  renderEditVariations();
+};
+
+window.handleEditVariationImage = (event, i) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  compressImage(file, (b64) => {
+    editTempVariations[i].img = b64;
+    renderEditVariations();
+  });
+};
+
+function renderEditVariations() {
+  const html = editTempVariations.map((v, i) => `
+    <div style="display:flex; gap:6px; margin-bottom:8px; align-items:center; background:var(--card); padding:8px; border-radius:6px; border:1px solid var(--border); flex-wrap:wrap;">
+      <span style="font-size:11px; color:var(--muted); min-width:18px; text-align:center;">${i+1}</span>
+      <input type="text" value="${esc(v.name)}" placeholder="اسم الصنف"
+        oninput="editTempVariations[${i}].name=this.value"
+        style="flex:2; min-width:90px; padding:8px; font-size:12px;">
+      <input type="number" value="${v.price||''}" placeholder="السعر (دج)"
+        oninput="editTempVariations[${i}].price=parseFloat(this.value)||0"
+        style="flex:1; min-width:75px; padding:8px; font-size:12px;">
+      <div style="flex:1; min-width:50px; height:38px; border:1px dashed var(--border); border-radius:6px; overflow:hidden; cursor:pointer; display:flex; align-items:center; justify-content:center;"
+        onclick="document.getElementById('editVarFile_${i}').click()">
+        ${v.img
+          ? `<img src="${v.img}" style="width:100%;height:100%;object-fit:cover;">`
+          : `<span style="font-size:10px;color:var(--muted);">صورة</span>`}
+      </div>
+      <input type="file" id="editVarFile_${i}" accept="image/*" style="display:none;"
+        onchange="handleEditVariationImage(event,${i})">
+      <button type="button" class="btn btn-red btn-sm" onclick="removeEditVariation(${i})" style="padding:6px 8px;">✕</button>
+    </div>`).join('');
+  document.getElementById('editVariationsList').innerHTML = html ||
+    `<p style="font-size:11px;color:var(--muted);text-align:center;padding:8px;">لا توجد أصناف — اضغط "+ صنف جديد" لإضافة</p>`;
+}
+
+window.saveEditProduct = async () => {
+  const name  = document.getElementById('editName').value.trim();
+  const price = parseFloat(document.getElementById('editPrice').value);
+  const cat   = document.getElementById('editCategory').value;
+  if (!name || !price) { toast('❌ الاسم والسعر مطلوبان', true); return; }
+
+  const validVars = editTempVariations.filter(v => v.name.trim() !== '');
+
+  // تحديث الصور الجديدة في imgStore
+  const imgStore = JSON.parse(localStorage.getItem('product_images') || '{}');
+  const updatedVars = validVars.map((v, i) => {
+    const vCopy = { ...v };
+    if (vCopy.img && vCopy.img.startsWith('data:')) {
+      // صورة جديدة — احفظها
+      const key = editingProductId + '_v' + i + '_' + Date.now().toString(36);
+      imgStore[key] = vCopy.img;
+      vCopy.imgKey = key;
+      delete vCopy.img;
+    }
+    return vCopy;
+  });
+  localStorage.setItem('product_images', JSON.stringify(imgStore));
+
+  const btn = document.getElementById('editSaveBtn');
+  btn.disabled = true; btn.textContent = '⏳ جاري الحفظ...';
+
+  try {
+    let current = await apiRequest(MENU_BIN_ID, 'GET');
+    if (!Array.isArray(current)) current = [];
+    const idx = current.findIndex(p => p.id === editingProductId);
+    if (idx === -1) { toast('❌ لم يُعثر على المنتج', true); return; }
+
+    current[idx] = { ...current[idx], name, price, category: cat, variations: updatedVars };
+    await apiRequest(MENU_BIN_ID, 'PUT', current);
+    menuItems = injectImagesIntoItems(current.filter(i => i.id !== 'init'));
+
+    toast('✅ تم حفظ التعديلات!');
+    closeEditModal();
+    renderAdminProducts();
+  } catch(e) {
+    toast('❌ فشل الحفظ: ' + (e.message || 'خطأ'), true);
+  } finally {
+    btn.disabled = false; btn.textContent = '💾 حفظ التعديلات';
+  }
+};
+
+window.deleteProduct = async (id) => {
+  if (!confirm('هل تود الحذف؟')) return;
+  menuItems = menuItems.filter(p => p.id !== id);
+  await apiRequest(MENU_BIN_ID, 'PUT', menuItems.length === 0 ? [{ id: 'init', price: 0 }] : menuItems);
+  fetchMenu(true);
+};
+
+// طلبات الإدارة
+async function fetchOrders() {
+  try {
+    ordersList = await apiRequest(ORDERS_BIN_ID, 'GET');
+    if (!Array.isArray(ordersList)) ordersList = [];
+    ordersList = ordersList.filter(o => o.id !== 'init_order');
+
+    // ---- إحصائيات ----
+    const now = new Date();
+    const todayStr = now.toDateString();
+    const weekStart = new Date(now); weekStart.setDate(now.getDate() - now.getDay());
+    const monthNum = now.getMonth(); const yearNum = now.getFullYear();
+
+    let todayTotal = 0, weekTotal = 0, monthTotal = 0;
+    const daysData   = Array(7).fill(0);   // 0=أحد...6=سبت
+    const weeksData  = Array(4).fill(0);   // أسابيع الشهر 1..4
+    const monthsData = Array(12).fill(0);  // يناير..ديسمبر
+
+    ordersList.forEach(o => {
+      if (o.status === 'cancelled') return;
+      const d = new Date(o.timestamp);
+      const tot = Number(o.total) || 0;
+      if (d.toDateString() === todayStr) todayTotal += tot;
+      if (d >= weekStart) weekTotal += tot;
+      if (d.getMonth() === monthNum && d.getFullYear() === yearNum) monthTotal += tot;
+      // أيام الأسبوع
+      daysData[d.getDay()] += tot;
+      // أسابيع الشهر (الأسبوع 1 إلى 4)
+      if (d.getMonth() === monthNum && d.getFullYear() === yearNum) {
+        const wk = Math.min(3, Math.floor((d.getDate() - 1) / 7));
+        weeksData[wk] += tot;
+      }
+      // أشهر السنة
+      if (d.getFullYear() === yearNum) monthsData[d.getMonth()] += tot;
+    });
+
+    document.getElementById('statTodayPrice').innerHTML = `${todayTotal.toLocaleString()}<span> دج</span>`;
+    document.getElementById('statWeekPrice').innerHTML  = `${weekTotal.toLocaleString()}<span> دج</span>`;
+    document.getElementById('statMonthPrice').innerHTML = `${monthTotal.toLocaleString()}<span> دج</span>`;
+
+    // رسم تقارير الأيام
+    const daysMax = Math.max(...daysData, 1);
+    document.getElementById('daysReportContainer').innerHTML = DAYS_NAMES.map((n,i) => `
+      <div class="report-item">
+        <span class="label">${n}</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${Math.round(daysData[i]/daysMax*100)}%"></div></div>
+        <span class="val">${daysData[i].toLocaleString()} دج</span>
+      </div>`).join('');
+
+    // رسم تقارير الأسابيع الأربعة
+    const weeksMax = Math.max(...weeksData, 1);
+    document.getElementById('weeksReportContainer').innerHTML = ['الأسبوع الأول','الأسبوع الثاني','الأسبوع الثالث','الأسبوع الرابع'].map((n,i) => `
+      <div class="report-item">
+        <span class="label">${n}</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${Math.round(weeksData[i]/weeksMax*100)}%"></div></div>
+        <span class="val">${weeksData[i].toLocaleString()} دج</span>
+      </div>`).join('');
+
+    // رسم تقارير الأشهر
+    const monthsMax = Math.max(...monthsData, 1);
+    const MONTHS_AR = ['جانفي','فيفري','مارس','أفريل','ماي','جوان','جويلية','أوت','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    document.getElementById('monthsReportContainer').innerHTML = MONTHS_AR.map((n,i) => `
+      <div class="report-item">
+        <span class="label">${n}</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${Math.round(monthsData[i]/monthsMax*100)}%"></div></div>
+        <span class="val">${monthsData[i].toLocaleString()} دج</span>
+      </div>`).join('');
+
+    // عرض الطلبات
+    document.getElementById('ordersList').innerHTML = ordersList.length ? ordersList.map(o => {
+      const delivLabel = o.deliveryType === 'store' ? '🏪 استلام من المتجر' : o.deliveryType === 'office' ? '📦 مكتب البريد' : '🏠 منزل';
+      return `
+      <div class="order-card">
+        <div class="order-header">
+          <strong>الطلب: ${esc(o.id)}</strong>
+          <select class="btn-sm" style="width:auto; padding:4px;" onchange="changeOrderStatus('${o.id}', this.value)">
+            <option value="pending" ${o.status==='pending'?'selected':''}>⏳ انتظار</option>
+            <option value="preparing" ${o.status==='preparing'?'selected':''}>🎀 تجهيز</option>
+            <option value="done" ${o.status==='done'?'selected':''}>🚚 تم التوصيل</option>
+            <option value="cancelled" ${o.status==='cancelled'?'selected':''}>❌ ملغى</option>
+          </select>
+        </div>
+        <div style="font-size:12px; margin-bottom:4px;">👤 ${esc(o.customerName)} - ${esc(o.customerPhone)}</div>
+        <div style="font-size:12px; margin-bottom:8px;">📍 ${esc(o.wilaya)} ${o.daira?'/ '+esc(o.daira):''} | ${delivLabel}</div>
+        <div style="background:var(--surface); padding:8px; border-radius:6px; margin-bottom:8px; font-size:11px;">
+          ${o.items ? o.items.map(i => `<div>• ${esc(i.name)} × ${i.qty} — ${i.price} دج</div>`).join('') : ''}
+        </div>
+        ${o.giftMessage ? `<div style="font-size:11px; color:var(--muted); margin-bottom:8px;">💬 ${esc(o.giftMessage)}</div>` : ''}
+        <div style="display:flex; justify-content:space-between; font-size:12px;">
+          <span>شحن: ${o.shippingFee} دج</span>
+          <span style="color:var(--gold); font-weight:bold;">الإجمالي: ${o.total} دج</span>
+        </div>
+      </div>`}).join('') : `<p style="color:var(--muted); text-align:center; padding:20px;">لا توجد طلبات بعد.</p>`;
+  } catch(e){ console.error(e); }
+}
+
+window.changeOrderStatus = async (id, stat) => {
+  const o = ordersList.find(x => x.id === id);
+  if (o) o.status = stat;
+  await apiRequest(ORDERS_BIN_ID, 'PUT', ordersList);
+  toast('تم تغيير الحالة');
+};
+
+// ======================================================
+// إعدادات - دوال الإدارة
+// ======================================================
+function loadDisplayPreferences() {
+  try {
+    const saved = localStorage.getItem('custom_gift_theme');
+    if (!saved) return;
+    const theme = JSON.parse(saved);
+    if (theme.gold) document.getElementById('themeGold').value = theme.gold;
+    if (theme.goldLight) document.getElementById('themeGoldLight').value = theme.goldLight;
+    if (theme.bg) document.getElementById('themeBg').value = theme.bg;
+    if (theme.surface) document.getElementById('themeSurface').value = theme.surface;
+  } catch(e) {}
 }
 
 window.saveCustomTheme = () => {
@@ -765,7 +1669,7 @@ window.saveCustomTheme = () => {
   };
   localStorage.setItem('custom_gift_theme', JSON.stringify(theme));
   loadCustomTheme();
-  toast('🎨 تم حفظ وتطبيق ألوان الثيم بنجاح!');
+  toast('✅ تم حفظ الثيم!');
 };
 
 window.resetThemeToDefault = () => {
@@ -775,875 +1679,91 @@ window.resetThemeToDefault = () => {
   root.style.setProperty('--gold-light', '#e8c97a');
   root.style.setProperty('--bg', '#0f0f0f');
   root.style.setProperty('--surface', '#1a1a1a');
-  root.style.setProperty('--card', '#222222');
-  root.style.setProperty('--border', '#2e2e2e');
-  root.style.setProperty('--gold-dim', '#7a6230');
-  toast('🔄 تم استعادة الألوان الافتراضية بنجاح.');
+  toast('🔄 تم إعادة الثيم الافتراضي');
 };
-
-function adjustColorBrightness(hex, percent) {
-  let R = parseInt(hex.substring(1, 3), 16);
-  let G = parseInt(hex.substring(3, 5), 16);
-  let B = parseInt(hex.substring(5, 7), 16);
-  R = Math.min(255, parseInt(R * (100 + percent) / 100));
-  G = Math.min(255, parseInt(G * (100 + percent) / 100));
-  B = Math.min(255, parseInt(B * (100 + percent) / 100));
-  return "#" + R.toString(16).padStart(2, '0') + G.toString(16).padStart(2, '0') + B.toString(16).padStart(2, '0');
-}
-
-// ======================================================
-// PWA
-// ======================================================
-function registerPwaServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    const swCode = `
-      const CACHE_NAME = 'gift-v2';
-      self.addEventListener('install', (e) => {
-        e.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(['./'])));
-      });
-      self.addEventListener('fetch', (e) => {
-        e.respondWith(caches.match(e.request).then((res) => res || fetch(e.request)));
-      });
-    `;
-    const blob = new Blob([swCode], { type: 'application/javascript' });
-    navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
-  }
-  const manifestObj = {
-    name: "بوتيك الهدايا والبراندات الفاخرة",
-    short_name: "الملكي للهدايا",
-    start_url: "./",
-    display: "standalone",
-    background_color: "#0f0f0f",
-    theme_color: "#c9a84c",
-    orientation: "portrait",
-    icons: [{ src: "https://cdn-icons-png.flaticon.com/512/1162/1162251.png", type: "image/png", sizes: "512x512" }]
-  };
-  const link = document.createElement('link');
-  link.rel = 'manifest';
-  link.href = URL.createObjectURL(new Blob([JSON.stringify(manifestObj)], { type: 'application/json' }));
-  document.head.appendChild(link);
-}
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  document.getElementById('pwaBanner').classList.remove('hidden');
-});
-
-document.getElementById('btnPwaInstall').addEventListener('click', async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') document.getElementById('pwaBanner').classList.add('hidden');
-    deferredPrompt = null;
-  }
-});
-
-// ======================================================
-// أسعار الشحن
-// ======================================================
-function initShippingRates() {
-  try {
-    const saved = localStorage.getItem('gift_shipping_rates');
-    if (saved) {
-      shippingRates = JSON.parse(saved);
-    } else {
-      Object.keys(ALGERIA_GEOGRAPHY).forEach(code => {
-        shippingRates[code] = { home: 600, office: 400 };
-      });
-      localStorage.setItem('gift_shipping_rates', JSON.stringify(shippingRates));
-    }
-  } catch (e) {
-    Object.keys(ALGERIA_GEOGRAPHY).forEach(code => {
-      shippingRates[code] = { home: 600, office: 400 };
-    });
-  }
-}
-
-// ======================================================
-// التنقل بين الشاشات
-// ======================================================
-function applyRestaurantName() {
-  const currentName = localStorage.getItem('restaurant_name');
-  document.getElementById('heroRestName').textContent = currentName;
-  document.getElementById('settingRestName').value = currentName;
-}
 
 window.updateRestaurantName = () => {
-  const newName = document.getElementById('settingRestName').value.trim();
-  if (!newName) return;
-  localStorage.setItem('restaurant_name', newName);
+  const val = document.getElementById('settingRestName').value.trim();
+  if (!val) return;
+  localStorage.setItem('restaurant_name', val);
   applyRestaurantName();
-  toast('🏨 تم تحديث هوية الاسم بنجاح!');
+  toast('✅ تم تحديث الاسم!');
 };
 
-window.showGateway = () => {
-  stopAdminPolling();
-  toggle(['gatewayScreen'], ['loginScreen', 'customerView', 'adminView']);
-  cart = [];
-  updateCartUI();
-};
-
-window.showLogin   = () => toggle(['loginScreen'], ['gatewayScreen', 'customerView', 'adminView']);
-
-window.showCustomer = () => {
-  toggle(['customerView'], ['loginScreen', 'gatewayScreen', 'adminView']);
-  fetchMenu(false);
-  checkMyOrderStatus();
-};
-
-window.showAdmin = () => {
-  toggle(['adminView'], ['loginScreen', 'customerView', 'gatewayScreen']);
-  fetchMenu(true);
-  fetchOrders();
-  applyRestaurantName();
-  renderAdminShippingRatesManager();
-  startAdminPolling();
-};
-
-function toggle(show, hide) {
-  show.forEach(id => document.getElementById(id).classList.remove('hidden'));
-  hide.forEach(id => document.getElementById(id).classList.add('hidden'));
+function renderShippingRatesAdmin() {
+  const container = document.getElementById('shippingRatesManagerContainer');
+  if (!container) return;
+  container.innerHTML = Object.keys(ALGERIA_GEOGRAPHY).map(code => {
+    const w = ALGERIA_GEOGRAPHY[code];
+    const home = (shippingRates[code] || {}).home || 600;
+    const office = (shippingRates[code] || {}).office || 400;
+    return `<div class="shipping-rate-row">
+      <span style="font-size:11px;">${w.name}</span>
+      <input type="number" value="${home}" placeholder="منزل" id="sh_home_${code}" style="padding:4px; font-size:11px;">
+      <input type="number" value="${office}" placeholder="مكتب" id="sh_off_${code}" style="padding:4px; font-size:11px;">
+    </div>`;
+  }).join('');
+  // رأس الجدول
+  container.insertAdjacentHTML('afterbegin', `<div class="shipping-rate-row" style="font-weight:bold; color:var(--gold); font-size:11px; margin-bottom:6px;">
+    <span>الولاية</span><span>توصيل منزل (دج)</span><span>مكتب بريد (دج)</span></div>`);
 }
 
-// ======================================================
-// التسوق والويزارد
-// ======================================================
-window.startShopping = (mode) => {
-  shoppingMode = mode;
-  showCustomer();
-
-  if (mode === 'box') {
-    updateWizardUI(1);
-    document.getElementById('boxesSection').classList.remove('hidden');
-    document.getElementById('readyBoxesSection').classList.add('hidden');
-    document.getElementById('productsSection').classList.remove('hidden');
-    document.getElementById('productsSectionTitle').textContent = "الخطوة الثانية: أضف محتويات الهدية الفاخرة داخل العلبة";
-  } else if (mode === 'ready') {
-    updateWizardUI(2);
-    document.getElementById('boxesSection').classList.add('hidden');
-    document.getElementById('readyBoxesSection').classList.remove('hidden');
-    document.getElementById('productsSection').classList.add('hidden');
-    document.getElementById('readyBoxesSectionTitle').textContent = "اختر بوكس الهدايا المتكامل المفضل لديك واشترِه فوراً";
-  } else {
-    updateWizardUI(2);
-    document.getElementById('boxesSection').classList.add('hidden');
-    document.getElementById('readyBoxesSection').classList.add('hidden');
-    document.getElementById('productsSection').classList.remove('hidden');
-    document.getElementById('productsSectionTitle').textContent = "كتالوج الهدايا والبراندات الفاخرة المباشرة";
-  }
-};
-
-function updateWizardUI(step) {
-  const line = document.getElementById('wizardLineFill');
-  const w1 = document.getElementById('wStep1');
-  const w2 = document.getElementById('wStep2');
-  const w3 = document.getElementById('wStep3');
-
-  if (shoppingMode !== 'box') {
-    w1.classList.add('hidden');
-    if (step === 1) step = 2;
-  } else {
-    w1.classList.remove('hidden');
-  }
-
-  if (shoppingMode === 'box') {
-    w1.classList.toggle('active', step === 1);
-    w1.classList.toggle('done', step > 1);
-    w2.classList.toggle('active', step === 2);
-    w2.classList.toggle('done', step > 2);
-    w3.classList.toggle('active', step === 3);
-    line.style.width = step === 1 ? "0%" : step === 2 ? "50%" : "100%";
-  } else {
-    w2.classList.toggle('active', step === 2);
-    w2.classList.toggle('done', step > 2);
-    w3.classList.toggle('active', step === 3);
-    line.style.width = step === 2 ? "0%" : "100%";
-  }
-}
-
-// ======================================================
-// رفع الصور — ضغط تلقائي
-// ======================================================
-window.handleFileSelect = (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      let width = img.width;
-      let height = img.height;
-      const MAX_WIDTH = 600;
-      if (width > MAX_WIDTH) {
-        height *= MAX_WIDTH / width;
-        width = MAX_WIDTH;
-      }
-      canvas.width = width;
-      canvas.height = height;
-      canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-      uploadedImageBase64 = canvas.toDataURL('image/jpeg', 0.7);
-      document.getElementById('fileLabelText').textContent = '✅ تم ضغط واعتماد الصورة';
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-};
-
-// ======================================================
-// API — jsonbin.io
-// ======================================================
-async function apiRequest(binId, method = 'GET', data = null) {
-  const url = `https://api.jsonbin.io/v3/b/${binId}`;
-  const headers = {
-    "X-Master-Key": X_MASTER_KEY,
-    "Content-Type": "application/json"
-  };
-  if (method === 'PUT') headers["X-Bin-Versioning"] = "false";
-  const options = { method, headers };
-  if (data) options.body = JSON.stringify(data);
-  const res = await fetch(method === 'GET' ? url + '/latest' : url, options);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const json = await res.json();
-  return method === 'GET' ? json.record : json;
-}
-
-// ======================================================
-// التبويبات والإدارة
-// ======================================================
-window.showTab = (tabId, btn) => {
-  ['tabMenu', 'tabOrders', 'tabSettings'].forEach(id =>
-    document.getElementById(id).classList.toggle('hidden', id !== tabId)
-  );
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-};
-
-window.doLogin = () => {
-  const entered = document.getElementById('pwInput').value;
-  if (entered === localStorage.getItem('admin_password')) {
-    showAdmin();
-  } else {
-    toast('❌ كلمة السر خاطئة', true);
-  }
-};
-
-window.logout = () => {
-  showGateway();
-};
-
-window.updatePassword = () => {
-  const curr = document.getElementById('currentPw').value;
-  const next = document.getElementById('newPw').value.trim();
-  if (!next || next.length < 4) { toast('❌ كلمة المرور الجديدة قصيرة جداً', true); return; }
-  if (curr !== localStorage.getItem('admin_password')) { toast('❌ الكلمة الحالية خاطئة', true); return; }
-  localStorage.setItem('admin_password', next);
-  document.getElementById('currentPw').value = '';
-  document.getElementById('newPw').value = '';
-  toast('🔒 تم التحديث!');
-};
-
-// ======================================================
-// المنتجات
-// ======================================================
-async function fetchMenu(isAdmin = false) {
-  try {
-    menuItems = await apiRequest(MENU_BIN_ID, 'GET');
-    if (!Array.isArray(menuItems)) menuItems = [];
-    menuItems = menuItems.filter(i => i.id !== 'init');
-    if (isAdmin) renderAdminProducts();
-    else renderCustomerMenu();
-  } catch (e) {
-    toast('❌ فشل جلب البيانات من السيرفر', true);
-  }
-}
-
-function renderCustomerMenu() {
-  const boxes      = menuItems.filter(i => i.category === 'box');
-  const readyBoxes = menuItems.filter(i => i.category === 'ready');
-  let products   = menuItems.filter(i => i.category !== 'box' && i.category !== 'ready');
-
-  // الفلترة والترتيب (فقط على قسم المنتجات)
-  const searchEl = document.getElementById('filterSearch');
-  const catEl    = document.getElementById('filterCategory');
-  const sortEl   = document.getElementById('filterSort');
-
-  if (searchEl && searchEl.value.trim()) {
-    const q = searchEl.value.trim().toLowerCase();
-    products = products.filter(p => (p.name || '').toLowerCase().includes(q) || (p.desc || '').toLowerCase().includes(q));
-  }
-  if (catEl && catEl.value) {
-    products = products.filter(p => p.category === catEl.value);
-  }
-  if (sortEl) {
-    const sortBy = sortEl.value;
-    if (sortBy === 'priceAsc') products = [...products].sort((a, b) => a.price - b.price);
-    else if (sortBy === 'priceDesc') products = [...products].sort((a, b) => b.price - a.price);
-    else if (sortBy === 'rating') products = [...products].sort((a, b) => {
-      const avg = p => (p.reviews && p.reviews.length) ? p.reviews.reduce((s, r) => s + r.stars, 0) / p.reviews.length : 0;
-      return avg(b) - avg(a);
-    });
-    else if (sortBy === 'bestseller') products = [...products].sort((a, b) => {
-      const score = p => bestSellerIds.has(p.id) ? 1 : 0;
-      return score(b) - score(a);
-    });
-  }
-
-  document.getElementById('boxesGrid').innerHTML     = boxes.length      ? boxes.map(p => getCardHtml(p, true)).join('')  : `<p style="color:var(--muted); padding:10px; font-size:12px;" data-i18n="no_boxes">لا تتوفر علب حالياً.</p>`;
-  document.getElementById('readyBoxesGrid').innerHTML = readyBoxes.length ? readyBoxes.map(p => getCardHtml(p, false)).join('') : `<p style="color:var(--muted); padding:10px; font-size:12px;" data-i18n="no_ready">لا تتوفر بوكسات هدايا جاهزة حالياً.</p>`;
-  document.getElementById('menuGrid').innerHTML       = products.length   ? products.map(p => getCardHtml(p, false)).join('') : `<p style="color:var(--muted); padding:10px; font-size:12px;" data-i18n="no_products">لا تتوفر منتجات مطابقة لبحثك.</p>`;
-}
-
-function getCardHtml(p, isBoxCard) {
-  const reviews = p.reviews || [];
-  const avg = reviews.length
-    ? (reviews.reduce((s, r) => s + r.stars, 0) / reviews.length).toFixed(1)
-    : "5.0";
-  const isBest = bestSellerIds.has(p.id);
-  return `
-  <div class="menu-card">
-    ${p.img ? `<img src="${esc(p.img)}" loading="lazy">` : `<div class="img-placeholder">🎁</div>`}
-    <div class="card-body">
-      ${isBest ? `<span class="card-badge badge-best">🔥 الأكثر طلباً</span>` : ''}
-      <div class="card-name">${esc(p.name)}</div>
-      <div class="stars-display">★ ${avg} <span>(${reviews.length})</span></div>
-      <div class="card-price">${p.price} دج</div>
-      <a class="review-link" onclick="openReviewsModal('${p.id}')">التجارب والتقييمات</a>
-      <button class="btn btn-gold btn-sm" onclick="addToCart('${p.id}', ${isBoxCard})">+ السلة</button>
-    </div>
-  </div>`;
-}
-
-function renderAdminProducts() {
-  document.getElementById('adminProductsList').innerHTML = `
-    <table class="products-table">
-      <thead><tr><th>الصورة</th><th>العنصر</th><th>التصنيف</th><th>السعر</th><th>التحكم</th></tr></thead>
-      <tbody>
-        ${menuItems.map(p => `
-          <tr>
-            <td>${p.img ? `<img src="${esc(p.img)}" loading="lazy">` : `<div style="background:var(--card); width:40px; height:40px; border-radius:6px;"></div>`}</td>
-            <td><strong>${esc(p.name)}</strong></td>
-            <td style="color:var(--muted); font-size:11px;">${p.category === 'ready' ? '🎁 بوكس جاهز' : p.category === 'box' ? '📦 علبة فارغة' : '🛍️ قطعة منفردة'}</td>
-            <td style="color:var(--gold); font-weight:bold;">${p.price} دج</td>
-            <td><button class="btn btn-red btn-sm" onclick="deleteProduct('${p.id}')">حذف</button></td>
-          </tr>`).join('')}
-      </tbody>
-    </table>`;
-}
-
-window.addProduct = async () => {
-  const name     = document.getElementById('pName').value.trim();
-  const price    = parseFloat(document.getElementById('pPrice').value);
-  const category = document.getElementById('pCategory').value;
-  const desc     = document.getElementById('pDesc').value.trim();
-  if (!name || !price) { toast('❌ اسم المنتج والسعر مطلوبان', true); return; }
-
-  menuItems.unshift({
-    id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
-    name, price, category,
-    img: uploadedImageBase64,
-    desc,
-    reviews: []
+window.saveShippingRatesFromAdmin = () => {
+  Object.keys(ALGERIA_GEOGRAPHY).forEach(code => {
+    const hEl = document.getElementById(`sh_home_${code}`);
+    const oEl = document.getElementById(`sh_off_${code}`);
+    if (hEl && oEl) shippingRates[code] = { home: parseFloat(hEl.value)||0, office: parseFloat(oEl.value)||0 };
   });
-  await apiRequest(MENU_BIN_ID, 'PUT', menuItems);
-  document.getElementById('pName').value  = '';
-  document.getElementById('pPrice').value = '';
-  document.getElementById('pDesc').value  = '';
-  uploadedImageBase64 = '';
-  document.getElementById('fileLabelText').textContent = 'اختر صورة للمنتج';
-  toast('✅ تم الحفظ!');
-  fetchMenu(true);
-};
-
-window.deleteProduct = async (id) => {
-  if (!confirm('هل تود الحذف؟')) return;
-  menuItems = menuItems.filter(p => p.id !== id);
-  await apiRequest(MENU_BIN_ID, 'PUT', menuItems.length === 0 ? [{ id: 'init', price: 0 }] : menuItems);
-  fetchMenu(true);
+  localStorage.setItem('gift_shipping_rates', JSON.stringify(shippingRates));
+  toast('✅ تم حفظ أسعار الشحن!');
 };
 
 // ======================================================
-// التقييمات
+// طلب خاص (شيء آخر)
 // ======================================================
-window.openReviewsModal = (prodId) => {
-  currentReviewProductId = prodId;
-  const p = menuItems.find(x => x.id === prodId);
-  if (!p) return;
-  document.getElementById('reviewsModalTitle').textContent = `آراء حول: ${p.name}`;
-  setSelectStars(5);
-  renderCommentsList(p.reviews || []);
-  document.getElementById('reviewsModal').classList.remove('hidden');
+window.openOtherRequestModal = () => {
+  document.getElementById('otherRequestModal').classList.remove('hidden');
 };
 
-window.closeReviewsModal = () => document.getElementById('reviewsModal').classList.add('hidden');
+window.submitOtherRequest = async () => {
+  const name = document.getElementById('otherName').value.trim();
+  const phone = document.getElementById('otherPhone').value.trim();
+  const details = document.getElementById('otherDetails').value.trim();
+  if (!name || !phone || !details) { toast('❌ يرجى ملء جميع الحقول', true); return; }
 
-window.setSelectStars = (num) => {
-  selectedRatingStars = num;
-  document.querySelectorAll('#starsSelector .star').forEach((s, idx) =>
-    s.classList.toggle('active', idx < num)
-  );
-};
-
-window.submitReview = async () => {
-  const user = document.getElementById('revUser').value.trim() || 'مقتني مجهول';
-  const text = document.getElementById('revText').value.trim();
-  if (!text) return;
-  const p = menuItems.find(x => x.id === currentReviewProductId);
-  if (!p) return;
-  if (!p.reviews) p.reviews = [];
-  p.reviews.unshift({ user, text, stars: selectedRatingStars, date: new Date().toLocaleDateString('ar-DZ') });
-  await apiRequest(MENU_BIN_ID, 'PUT', menuItems);
-  toast('⭐ شكراً لتقييمك!');
-  renderCommentsList(p.reviews);
-  fetchMenu(false);
-};
-
-function renderCommentsList(reviews) {
-  const container = document.getElementById('commentsListContainer');
-  container.innerHTML = reviews.length
-    ? reviews.map(r => `
-        <div class="comment-item">
-          <div class="comment-meta"><strong>${esc(r.user)}</strong><span>${'★'.repeat(r.stars)}</span></div>
-          <div>${esc(r.text)}</div>
-        </div>`).join('')
-    : '<p style="font-size:11px; color:var(--muted); text-align:center;">لا توجد تقييمات سابقة.</p>';
-}
-
-// ======================================================
-// السلة
-// ======================================================
-window.addToCart = (id, isBoxCard) => {
-  const p = menuItems.find(x => x.id === id);
-  if (!p) return;
-  if (shoppingMode === 'box' && isBoxCard) {
-    cart = cart.filter(c => {
-      const m = menuItems.find(x => x.id === c.id);
-      return m && m.category !== 'box';
-    });
-  }
-  const existing = cart.find(c => c.id === id);
-  if (existing) {
-    existing.qty++;
-  } else {
-    cart.push({ id, name: p.name, price: p.price, qty: 1 });
-  }
-  updateCartUI();
-  toast('🛒 أُضيف للسلة');
-  if (shoppingMode === 'box' && isBoxCard) updateWizardUI(2);
-};
-
-function updateCartUI() {
-  const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const count = cart.reduce((s, c) => s + c.qty, 0);
-  document.getElementById('cartCount').textContent   = count;
-  document.getElementById('cartTotalLabel').textContent = total + " دج";
-  document.getElementById('cartBar').classList.toggle('hidden', count === 0);
-}
-
-window.openCartModal = () => {
-  if (shoppingMode === 'box') {
-    const hasBox = cart.some(c => {
-      const m = menuItems.find(x => x.id === c.id);
-      return m && m.category === 'box';
-    });
-    if (!hasBox) { toast('❌ اختر علبة التغليف أولاً في أعلى الصفحة!', true); return; }
-  }
-  updateWizardUI(3);
-  document.getElementById('cartItemsList').innerHTML = cart.map(c => `
-    <div class="cart-item">
-      <div><strong>${esc(c.name)}</strong><div>${c.price} دج</div></div>
-      <div style="display:flex; align-items:center; gap:6px;">
-        <button class="qty-btn" onclick="changeQty('${c.id}', -1)">-</button>
-        <span>${c.qty}</span>
-        <button class="qty-btn" onclick="changeQty('${c.id}', 1)">+</button>
-      </div>
-    </div>`).join('');
-
-  document.getElementById('custWilaya').innerHTML =
-    '<option value="">-- اختر الولاية --</option>' +
-    Object.keys(ALGERIA_GEOGRAPHY).map(code =>
-      `<option value="${code}">${ALGERIA_GEOGRAPHY[code].name}</option>`
-    ).join('');
-
-  calculateTotalShipping();
-  document.getElementById('cartModal').classList.remove('hidden');
-};
-
-window.closeCartModal = () => {
-  document.getElementById('cartModal').classList.add('hidden');
-  updateWizardUI(cart.length > 0 ? 2 : 1);
-};
-
-window.changeQty = (id, amt) => {
-  const c = cart.find(x => x.id === id);
-  if (!c) return;
-  c.qty += amt;
-  if (c.qty <= 0) cart = cart.filter(x => x.id !== id);
-  updateCartUI();
-  if (cart.length === 0) closeCartModal();
-  else openCartModal();
-};
-
-window.onWilayaChange = () => {
-  const code = document.getElementById('custWilaya').value;
-  if (!code) {
-    document.getElementById('custDaira').innerHTML = '<option value="">اختر الولاية أولاً</option>';
-    document.getElementById('custCommune').innerHTML = '<option value="">اختر الدائرة أولاً</option>';
-    calculateTotalShipping();
-    return;
-  }
-  document.getElementById('custDaira').innerHTML =
-    '<option value="">-- اختر الدائرة --</option>' +
-    Object.keys(ALGERIA_GEOGRAPHY[code].dairas).map(d =>
-      `<option value="${d}">${d}</option>`
-    ).join('');
-  calculateTotalShipping();
-};
-
-window.onDairaChange = () => {
-  const code  = document.getElementById('custWilaya').value;
-  const daira = document.getElementById('custDaira').value;
-  if (!daira || !code) return;
-  document.getElementById('custCommune').innerHTML =
-    '<option value="">-- اختر البلدية --</option>' +
-    ALGERIA_GEOGRAPHY[code].dairas[daira].map(c =>
-      `<option value="${c}">${c}</option>`
-    ).join('');
-};
-
-window.calculateTotalShipping = () => {
-  const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const code = document.getElementById('custWilaya').value;
-  const type = document.getElementById('custDeliveryType').value;
-  const fee  = (code && shippingRates[code]) ? (shippingRates[code][type] || 0) : 0;
-  document.getElementById('modalSubtotal').textContent  = subtotal;
-  document.getElementById('modalShippingFee').textContent = fee;
-  document.getElementById('cartModalTotal').textContent = subtotal + fee;
-};
-
-// ======================================================
-// إرسال الطلب
-// ======================================================
-window.submitOrder = async () => {
-  const name    = document.getElementById('custName').value.trim();
-  const phone   = document.getElementById('custPhone').value.trim();
-  const code    = document.getElementById('custWilaya').value;
-  const daira   = document.getElementById('custDaira').value;
-  const commune = document.getElementById('custCommune').value;
-  const type    = document.getElementById('custDeliveryType').value;
-
-  if (!name || !phone || !code || !daira || !commune) {
-    toast('❌ املأ كافة البيانات المطلوبة', true);
-    return;
-  }
-
-  const subtotal    = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const shippingFee = shippingRates[code]?.[type] || 0;
-  const orderId     = 'gift_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
-
-  const newOrder = {
-    id: orderId,
-    customerName: name,
-    customerPhone: phone,
-    wilaya: ALGERIA_GEOGRAPHY[code].name,
-    daira,
-    commune,
-    deliveryType: type,
-    giftMessage: document.getElementById('custGiftMsg').value.trim(),
-    items: cart.map(c => ({ name: c.name, price: c.price, qty: c.qty })),
-    subtotal,
-    shippingFee,
-    total: subtotal + shippingFee,
-    status: 'pending',
-    timestamp: new Date().toISOString()
+  const orderId = 'other_' + Date.now().toString().slice(-6);
+  const order = {
+    id: orderId, customerName: name, customerPhone: phone,
+    wilaya: 'طلب خاص', daira: '', commune: '',
+    deliveryType: 'other',
+    giftMessage: details,
+    items: [{ name: 'طلب خاص: ' + details.slice(0, 60), price: 0, qty: 1 }],
+    subtotal: 0, shippingFee: 0, total: 0,
+    status: 'pending', timestamp: new Date().toISOString()
   };
+
+  const btn = document.querySelector('[onclick="submitOtherRequest()"]');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ جاري الإرسال...'; }
 
   try {
     let curr = await apiRequest(ORDERS_BIN_ID, 'GET');
     if (!Array.isArray(curr)) curr = [];
-    curr.unshift(newOrder);
+    curr.unshift(order);
     await apiRequest(ORDERS_BIN_ID, 'PUT', curr);
     localStorage.setItem('my_last_gift_order_id', orderId);
-    toast('🎉 تم إرسال طلبك بنجاح!');
-    cart = [];
-    updateCartUI();
-    closeCartModal();
-    showCustomer();
-  } catch (e) {
-    toast('❌ حدث خطأ في الشبكة، جرب لاحقاً', true);
+    document.getElementById('otherRequestModal').classList.add('hidden');
+    document.getElementById('otherName').value = '';
+    document.getElementById('otherPhone').value = '';
+    document.getElementById('otherDetails').value = '';
+    toast('✅ تم إرسال طلبك! سنتواصل معك قريباً.');
+  } catch(e) {
+    toast('❌ فشل الإرسال، حاول مرة أخرى', true);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '📨 إرسال الطلب'; }
   }
 };
 
-// ======================================================
-// تتبع الطلب
-// ======================================================
-window.checkMyOrderStatus = async () => {
-  const id = localStorage.getItem('my_last_gift_order_id');
-  if (!id) return;
-  document.getElementById('customerTrackBox').classList.remove('hidden');
-  document.getElementById('trackOrderIdLabel').textContent = `تتبع هديتك رقم (${id}):`;
-  try {
-    const orders = await apiRequest(ORDERS_BIN_ID, 'GET');
-    const o = orders.find(x => x.id === id);
-    if (o) {
-      let txt = "⏳ قيد المراجعة والفرز الأول";
-      if (o.status === 'preparing') txt = "🎀 هديتك قيد التنسيق والتغليف الفاخر الآن";
-      if (o.status === 'done')      txt = "🚚 خرجت مع الموزع / تم التسليم!";
-      if (o.status === 'cancelled') txt = "❌ تم إلغاء هذا الطلب.";
-      document.getElementById('trackStatusText').textContent = txt;
-    } else {
-      document.getElementById('trackStatusText').textContent = "⚠️ لم يتم العثور على الطلب.";
-    }
-  } catch (e) {
-    document.getElementById('trackStatusText').textContent = "⚠️ تعذّر الاتصال، حاول لاحقاً.";
-  }
-};
-
-// ======================================================
-// الطلبات — لوحة الإدارة
-// ======================================================
-function orderStatusLabel(status) {
-  switch (status) {
-    case 'pending':   return '⏳ قيد الانتظار';
-    case 'preparing': return '🎀 قيد التغليف';
-    case 'done':      return '🚚 تم التوصيل';
-    case 'cancelled': return '❌ ملغى';
-    default:          return esc(status);
-  }
-}
-
-// ======================================================
-// الأكثر طلباً — حساب من تاريخ الطلبات
-// ======================================================
-function computeBestSellers() {
-  const counts = {};
-  ordersList.forEach(o => {
-    (o.items || []).forEach(it => {
-      const match = menuItems.find(m => m.name === it.name);
-      if (match) counts[match.id] = (counts[match.id] || 0) + (it.qty || 1);
-    });
-  });
-  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 5).map(e => e[0]);
-  bestSellerIds = new Set(sorted);
-  try { localStorage.setItem('gift_bestsellers', JSON.stringify(sorted)); } catch (e) {}
-}
-
-function loadCachedBestSellers() {
-  try {
-    const saved = JSON.parse(localStorage.getItem('gift_bestsellers') || '[]');
-    bestSellerIds = new Set(saved);
-  } catch (e) { bestSellerIds = new Set(); }
-}
-
-async function fetchOrders() {
-  try {
-    ordersList = await apiRequest(ORDERS_BIN_ID, 'GET');
-    if (!Array.isArray(ordersList)) ordersList = [];
-    ordersList = ordersList.filter(o => o.id !== 'init_order');
-
-    if (ordersList.length > lastOrdersCount && lastOrdersCount > 0) {
-      document.getElementById('orderAlertSound').play().catch(() => {});
-      toast('🔔 تنبيه: تم استقبال طلبية جديدة الآن!');
-    }
-    lastOrdersCount = ordersList.length;
-    computeBestSellers();
-    renderAdminOrders();
-    processAdvancedStats();
-  } catch (e) {
-    toast('❌ فشل تحديث الطلبات', true);
-  }
-}
-
-function renderAdminOrders() {
-  const container = document.getElementById('ordersList');
-  if (ordersList.length === 0) {
-    container.innerHTML = '<p style="color:var(--muted); padding:10px;">لا توجد طلبات.</p>';
-    return;
-  }
-  container.innerHTML = ordersList.map(o => `
-    <div class="order-card">
-      <div class="order-header">
-        <strong>الطلب: ${esc(o.id)}</strong>
-        <span style="font-weight:700; color:${o.status==='done'?'var(--green)':o.status==='cancelled'?'var(--red)':'var(--gold)'};">${orderStatusLabel(o.status)}</span>
-      </div>
-      <div style="font-size:12px; margin-bottom:8px; line-height:1.5;">
-        <p>👤 العميل: ${esc(o.customerName)} (${esc(o.customerPhone)})</p>
-        <p>📍 العنوان: ${esc(o.wilaya)} | ${esc(o.commune)}</p>
-      </div>
-      <div style="background:var(--surface); padding:8px; border-radius:6px; margin-bottom:8px; font-size:11px;">
-        ${o.items ? o.items.map(i => `<div>• ${esc(i.name)} × ${i.qty}</div>`).join('') : ''}
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
-        <span style="font-weight:bold; color:var(--gold); font-size:13px;">${o.total} دج</span>
-        <div style="display:flex; gap:4px; align-items:center;">
-          <select class="btn-sm" style="width:auto; padding:6px 8px; font-size:11px;" onchange="changeOrderStatus('${o.id}', this.value)">
-            <option value="pending" ${o.status==='pending'?'selected':''}>⏳ قيد الانتظار</option>
-            <option value="preparing" ${o.status==='preparing'?'selected':''}>🎀 قيد التغليف</option>
-            <option value="done" ${o.status==='done'?'selected':''}>🚚 تم التوصيل</option>
-            <option value="cancelled" ${o.status==='cancelled'?'selected':''}>❌ ملغى</option>
-          </select>
-          <button class="btn btn-red btn-sm" onclick="deleteOrder('${o.id}')">حذف</button>
-        </div>
-      </div>
-    </div>`).join('');
-}
-
-window.changeOrderStatus = async (id, stat) => {
-  const o = ordersList.find(x => x.id === id);
-  if (o) o.status = stat;
-  try {
-    await apiRequest(ORDERS_BIN_ID, 'PUT', ordersList);
-    fetchOrders();
-  } catch (e) {
-    toast('❌ فشل تحديث الحالة', true);
-  }
-};
-
-window.deleteOrder = async (id) => {
-  if (!confirm('هل تود شطب الطلب؟')) return;
-  ordersList = ordersList.filter(o => o.id !== id);
-  try {
-    await apiRequest(ORDERS_BIN_ID, 'PUT', ordersList);
-    fetchOrders();
-  } catch (e) {
-    toast('❌ فشل الحذف', true);
-  }
-};
-
-// ======================================================
-// إدارة أسعار الشحن
-// ======================================================
-function renderAdminShippingRatesManager() {
-  document.getElementById('shippingRatesManagerContainer').innerHTML =
-    Object.keys(ALGERIA_GEOGRAPHY).map(code => {
-      const r = shippingRates[code] || { home: 600, office: 400 };
-      return `<div class="shipping-rate-row">
-        <span>${ALGERIA_GEOGRAPHY[code].name}</span>
-        <input type="number" class="admin-ship-home" data-code="${code}" value="${r.home}"/>
-        <input type="number" class="admin-ship-office" data-code="${code}" value="${r.office}"/>
-      </div>`;
-    }).join('');
-}
-
-window.saveShippingRatesFromAdmin = () => {
-  document.querySelectorAll('.admin-ship-home').forEach(i => {
-    const c = i.getAttribute('data-code');
-    if (!shippingRates[c]) shippingRates[c] = {};
-    shippingRates[c].home = parseFloat(i.value) || 0;
-  });
-  document.querySelectorAll('.admin-ship-office').forEach(i => {
-    const c = i.getAttribute('data-code');
-    if (!shippingRates[c]) shippingRates[c] = {};
-    shippingRates[c].office = parseFloat(i.value) || 0;
-  });
-  localStorage.setItem('gift_shipping_rates', JSON.stringify(shippingRates));
-  toast('💾 تم الحفظ!');
-};
-
-// ======================================================
-// الإحصائيات والتقارير
-// ======================================================
-function processAdvancedStats() {
-  let todayTotal = 0, weekTotal = 0, monthTotal = 0;
-  const now = new Date();
-  const daysData   = { "الأحد": 0, "الإثنين": 0, "الثلاثاء": 0, "الأربعاء": 0, "الخميس": 0, "الجمعة": 0, "السبت": 0 };
-  const weeksData  = { "الأسبوع 1": 0, "الأسبوع 2": 0, "الأسبوع 3": 0, "الأسبوع 4": 0 };
-  const monthsData = {};
-  MONTHS_NAMES.forEach(m => monthsData[m] = 0);
-
-  ordersList.forEach(o => {
-    const oDate = new Date(o.timestamp);
-    const orderPrice = o.total || 0;
-    if (oDate.toDateString() === now.toDateString()) todayTotal += orderPrice;
-    if ((now - oDate) <= 7 * 24 * 60 * 60 * 1000) {
-      weekTotal += orderPrice;
-      const dName = DAYS_NAMES[oDate.getDay()];
-      if (daysData[dName] !== undefined) daysData[dName] += orderPrice;
-    }
-    if (oDate.getMonth() === now.getMonth() && oDate.getFullYear() === now.getFullYear()) {
-      monthTotal += orderPrice;
-      const d = oDate.getDate();
-      if (d <= 7)       weeksData["الأسبوع 1"] += orderPrice;
-      else if (d <= 14) weeksData["الأسبوع 2"] += orderPrice;
-      else if (d <= 21) weeksData["الأسبوع 3"] += orderPrice;
-      else              weeksData["الأسبوع 4"] += orderPrice;
-    }
-    if (oDate.getFullYear() === now.getFullYear()) {
-      monthsData[MONTHS_NAMES[oDate.getMonth()]] += orderPrice;
-    }
-  });
-
-  document.getElementById('statTodayPrice').innerHTML = todayTotal + '<span> دج</span>';
-  document.getElementById('statWeekPrice').innerHTML  = weekTotal  + '<span> دج</span>';
-  document.getElementById('statMonthPrice').innerHTML = monthTotal + '<span> دج</span>';
-  renderReportBars('daysReportContainer',   daysData);
-  renderReportBars('weeksReportContainer',  weeksData);
-  renderReportBars('monthsReportContainer', monthsData);
-}
-
-function renderReportBars(containerId, dataObj) {
-  const vals = Object.values(dataObj);
-  const max  = Math.max(...vals, 1);
-  document.getElementById(containerId).innerHTML = Object.keys(dataObj).map(key => {
-    const val = dataObj[key];
-    const pct = ((val / max) * 100).toFixed(0);
-    return `<div class="report-item">
-      <span class="label">${key}</span>
-      <div class="bar-bg"><div class="bar-fill" style="width: ${pct}%"></div></div>
-      <span class="val">${val} دج</span>
-    </div>`;
-  }).join('');
-}
-
-// ======================================================
-// Polling ذكي — يعمل فقط عندما لوحة الإدارة مفتوحة
-// ======================================================
-function startAdminPolling() {
-  stopAdminPolling();
-  adminPollingInterval = setInterval(() => {
-    if (!document.getElementById('adminView').classList.contains('hidden')) {
-      fetchOrders();
-    }
-  }, 20000);
-}
-
-function stopAdminPolling() {
-  if (adminPollingInterval) {
-    clearInterval(adminPollingInterval);
-    adminPollingInterval = null;
-  }
-}
-
-// إيقاف الـ polling عند إخفاء التبويب لتوفير الطلبات
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    stopAdminPolling();
-  } else if (!document.getElementById('adminView').classList.contains('hidden')) {
-    startAdminPolling();
-  }
-});
-
-// ======================================================
-// أدوات مساعدة
-// ======================================================
-function toast(msg, isError = false) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.toggle('error', isError);
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-function esc(str) {
-  if (!str) return '';
-  return str.toString()
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
+function esc(str) { return str ? str.toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;") : ''; }
 </script>
 </body>
 </html>
