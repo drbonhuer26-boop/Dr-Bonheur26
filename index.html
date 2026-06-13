@@ -119,8 +119,19 @@
     }
     .gateway-card:hover { border-color: var(--gold); box-shadow: var(--shadow); transform: translateY(-2px); }
     .gateway-card .icon { font-size: 36px; }
+    .gateway-card .cat-img { width: 56px; height: 56px; object-fit: cover; border-radius: 50%; border: 2px solid var(--gold); }
     .gateway-card h3 { color: var(--gold-light); font-size: 14px; font-weight: 700; }
     .gateway-card p { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+    .cat-img-admin-row {
+      display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border);
+    }
+    .cat-img-admin-row:last-child { border-bottom: none; }
+    .cat-img-admin-row .cat-img-preview {
+      width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); background: var(--bg);
+      display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+    }
+    .cat-img-admin-row .cat-img-name { flex: 1; font-size: 12px; font-weight: 700; }
 
     /* زر الهدية المستطيل */
     .gift-btn-rect {
@@ -322,29 +333,29 @@
   <h1 class="gateway-title">مرحباً بك في متجرنا</h1>
   <p class="gateway-subtitle">اختر القسم الذي تود تصفحه أو ابدأ بتنسيق هديتك الخاصة</p>
 
-  <div class="gateway-grid">
+  <div class="gateway-grid" id="gatewayGrid">
     <div class="gateway-card" onclick="startShopping('cosmetics')">
-      <div class="icon">💄</div>
+      <div class="icon" data-cat="cosmetics">💄</div>
       <h3>مواد التجميل</h3>
     </div>
     <div class="gateway-card" onclick="startShopping('sweets')">
-      <div class="icon">🍬</div>
+      <div class="icon" data-cat="sweets">🍬</div>
       <h3>حلويات</h3>
     </div>
     <div class="gateway-card" onclick="startShopping('devices')">
-      <div class="icon">💇‍♀️</div>
+      <div class="icon" data-cat="devices">💇‍♀️</div>
       <h3>أجهزة العناية بالشعر</h3>
     </div>
     <div class="gateway-card" onclick="startShopping('perfumes')">
-      <div class="icon">✨</div>
+      <div class="icon" data-cat="perfumes">✨</div>
       <h3>عطور</h3>
     </div>
     <div class="gateway-card" onclick="startShopping('wash')">
-      <div class="icon">🛁</div>
+      <div class="icon" data-cat="wash">🛁</div>
       <h3>غسول شعر وجسم</h3>
     </div>
     <div class="gateway-card" onclick="startShopping('other')">
-      <div class="icon">✏️</div>
+      <div class="icon" data-cat="other">✏️</div>
       <h3>منتجات متنوعة</h3>
       <p>تصفح منتجات إضافية متنوعة</p>
     </div>
@@ -712,6 +723,11 @@
         <div class="shipping-rates-manager" id="shippingRatesManagerContainer"></div>
         <button class="btn btn-gold" style="margin-top:12px;" onclick="saveShippingRatesFromAdmin()">💾 حفظ أسعار الشحن</button>
       </div>
+      <div class="add-product-form">
+        <h3 style="font-size:14px; margin-bottom:6px;">🖼️ صور الأقسام (الواجهة الرئيسية)</h3>
+        <p style="font-size:11px; color:var(--muted); margin-bottom:10px;">اختر صورة لكل قسم لتظهر بدل الإيموجي في الواجهة الرئيسية.</p>
+        <div id="categoryImagesManagerContainer"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -839,6 +855,8 @@ window.addEventListener('load', () => {
   loadDisplayPreferences();
   initShippingRates();
   applyRestaurantName();
+  applyCategoryImages();
+  renderCategoryImagesAdmin();
   showGateway();
 });
 
@@ -1688,6 +1706,76 @@ window.updateRestaurantName = () => {
   localStorage.setItem('restaurant_name', val);
   applyRestaurantName();
   toast('✅ تم تحديث الاسم!');
+};
+
+// ======================================================
+// صور الأقسام (بدل الإيموجي)
+// ======================================================
+const CATEGORY_LIST = [
+  { key: 'cosmetics', name: 'مواد التجميل', icon: '💄' },
+  { key: 'sweets',    name: 'حلويات',        icon: '🍬' },
+  { key: 'devices',   name: 'أجهزة العناية بالشعر', icon: '💇‍♀️' },
+  { key: 'perfumes',  name: 'عطور',          icon: '✨' },
+  { key: 'wash',      name: 'غسول شعر وجسم', icon: '🛁' },
+  { key: 'other',     name: 'منتجات متنوعة', icon: '✏️' }
+];
+
+function getCategoryImages() {
+  try { return JSON.parse(localStorage.getItem('category_images') || '{}'); } catch(e) { return {}; }
+}
+
+function applyCategoryImages() {
+  const images = getCategoryImages();
+  document.querySelectorAll('#gatewayGrid .icon[data-cat]').forEach(el => {
+    const cat = el.getAttribute('data-cat');
+    if (images[cat]) {
+      el.innerHTML = `<img class="cat-img" src="${images[cat]}" alt="">`;
+    } else {
+      const def = CATEGORY_LIST.find(c => c.key === cat);
+      if (def) el.innerHTML = def.icon;
+    }
+  });
+}
+
+function renderCategoryImagesAdmin() {
+  const container = document.getElementById('categoryImagesManagerContainer');
+  if (!container) return;
+  const images = getCategoryImages();
+  container.innerHTML = CATEGORY_LIST.map(c => {
+    const preview = images[c.key]
+      ? `<img class="cat-img-preview" src="${images[c.key]}" alt="">`
+      : `<div class="cat-img-preview">${c.icon}</div>`;
+    return `
+      <div class="cat-img-admin-row">
+        ${preview}
+        <span class="cat-img-name">${c.name}</span>
+        <input type="file" accept="image/*" id="catImgFile_${c.key}" style="display:none;" onchange="handleCategoryImageSelect(event, '${c.key}')">
+        <button class="btn btn-dark btn-sm" onclick="document.getElementById('catImgFile_${c.key}').click()">📷 تغيير</button>
+        ${images[c.key] ? `<button class="btn btn-red btn-sm" onclick="removeCategoryImage('${c.key}')">🗑️</button>` : ''}
+      </div>`;
+  }).join('');
+}
+
+window.handleCategoryImageSelect = (event, key) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  compressImage(file, (dataUrl) => {
+    const images = getCategoryImages();
+    images[key] = dataUrl;
+    localStorage.setItem('category_images', JSON.stringify(images));
+    applyCategoryImages();
+    renderCategoryImagesAdmin();
+    toast('✅ تم تحديث صورة القسم!');
+  }, 200, 0.6);
+};
+
+window.removeCategoryImage = (key) => {
+  const images = getCategoryImages();
+  delete images[key];
+  localStorage.setItem('category_images', JSON.stringify(images));
+  applyCategoryImages();
+  renderCategoryImagesAdmin();
+  toast('🗑️ تم حذف صورة القسم');
 };
 
 function renderShippingRatesAdmin() {
